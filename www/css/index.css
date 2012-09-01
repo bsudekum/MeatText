@@ -1,0 +1,20 @@
+html,
+body {
+    height:100%;
+    font-size:12px;
+    width:100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+#map {
+    height: 330px;
+    width: 100%;
+    padding: 0px;
+    margin: 0px;
+}
+
+#page,#content {
+	padding: 0px;
+	margin: 0px;
+}
