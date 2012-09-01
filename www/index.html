@@ -16,36 +16,22 @@
         <script type="text/javascript" src="js/leaflet/leaflet.js"></script>
         <script type="text/javascript" src="cordova-2.0.0.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
-       <!-- <script type="text/javascript" src="js/sms/SMSComposer.js"></script>-->
+        <script type="text/javascript" src="js/sms/SMSComposer.js"></script>
         <script>
-function captureSuccess(mediaFiles) {
-    navigator.notification.alert('Success taking picture:');
-}
-
-function captureError(mediaFiles) {
-    navigator.notification.alert('Error taking picture: ' + error.code);
-}
-$(document).bind("deviceready", function () {
-    $("#takePhotoButton").bind("tap", function () {
-        navigator.device.capture.captureImage(captureSuccess, captureError, {
-            limit: 1
-        });
-    });
-});
-
-    // var args;
+    
+         var args //Text
 
         </script>
     </head>
     
     <body>
         <!-- Start of first page: #one -->
-        <div data-role="page" id="one">
+        <div data-role="page" id="one" data-theme="c">
 
-            <div data-role="header" data-position="inline">
-            <a href="index.html" id="geolocate">Find me</a>
+            <div data-role="header" data-position="inline" data-theme="c">
+            <a href="index.html" id="geolocate" data-theme="c"><img src="img/location.png" /></a>
 
-                 <h1>Meet Me Here</h1>
+                 <h1>Meat Me Here</h1>
 
             </div><!-- /header -->
 
@@ -53,7 +39,7 @@ $(document).bind("deviceready", function () {
 
                 <div id="map"></div>
                 
-                <p><a href="#two" data-role="button" data-transition="slidefade">Text Your Location</a></p>
+                <p><a href="#two" data-role="button" data-transition="slidefade" data-theme="c">Text Your Location</a></p>
 
             </div>
             <!-- /content -->
@@ -62,8 +48,8 @@ $(document).bind("deviceready", function () {
 
 
         <!-- Start of second page: #two -->
-        <div data-role="page" id="two">
-            <div data-role="header" data-position="inline"> <a href="index.html" data-transition="slidefade">Back</a>
+        <div data-role="page" id="two" data-theme="c" >
+            <div data-role="header" data-position="inline" data-theme="c"> <a href="index.html" data-transition="slidefade" data-theme="c" >Back</a>
 
                  <h1>Message</h1>
 
@@ -73,13 +59,12 @@ $(document).bind("deviceready", function () {
 
             <a id="takePhotoButton" data-role="button">Take Photo</a>
 
-     
-
-
+    
                  <center><h3>Your Message</h3></center>
 
-                <input type="text" name="name"placeholder="Hey, t me here!"/>
-             <!--   <button onclick="cordova.exec(null,null, 'SMSComposer','showSMSComposer',[args])">Send your message</button>-->
+                  <center><input type="text" name="name" placeholder="Hey, lets me here!"/></center>
+                <button onclick="cordova.exec(null,null, 'SMSComposer','showSMSComposer',[args])">Send your message</button>
+
 
 
 

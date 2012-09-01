@@ -5,9 +5,10 @@ function onDeviceReady() {
 
     var map = L.map('map').setView([51.505, -0.09], 13);
 
-    var cloudmade = L.tileLayer('http://{s}.tiles.mapbox.com/v3/mapbox.mapbox-streets/{z}/{x}/{y}.png', {
+    var cloudmade = L.tileLayer('http://a.tiles.mapbox.com/v3/bobbysud.map-tyt3admo/{z}/{x}/{y}.png', {
         zoomControl: false,
-        detectRetina: true
+        detectRetina: true,
+        maxZoom: 17,
     }).addTo(map);
 
     var marker = L.marker([51.5, -0.09]).addTo(map);
@@ -36,6 +37,6 @@ function onDeviceReady() {
         map.locate({setView: true, maxZoom: 16, enableHighAccuracy: true});
     }
 
-//     var args;
+  var args;
 
 }; //Device on onDeviceReady

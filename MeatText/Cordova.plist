@@ -28,6 +28,8 @@
 	</array>
 	<key>Plugins</key>
 	<dict>
+		<key>SMSComposer</key>
+		<string>SMSComposer</string>
 		<key>Device</key>
 		<string>CDVDevice</string>
 		<key>Logger</key>
