@@ -1,2 +1,2 @@
-![MeatText](https://github.com/rsudekum/MeatText/blob/master/other/meat.jpg)Text
-================================================================================
+![MeatText](https://raw.github.com/rsudekum/MeatText/master/other/meat.jpg)Text
+===============================================================================
