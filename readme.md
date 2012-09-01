@@ -1,2 +1,2 @@
-![MeatText](rsudekum.github.com/MeatText/other/meat.jpg)Text
+![MeatText](/other/meat.jpg)Text
 ===============================
