@@ -19,27 +19,27 @@
         <script type="text/javascript" src="js/sms/SMSComposer.js"></script>
         <script>
     
-         var args //Text
+
+           touchMove = function(event) {
+      // Prevent scrolling on this element
+      event.preventDefault();
+  }
 
         </script>
+
     </head>
     
     <body>
         <!-- Start of first page: #one -->
         <div data-role="page" id="one" data-theme="c">
+            
+            <a href="#" id="geolocate" data-theme="c" data-role="button" data-inline="true" data-mini="true"><img src="img/location.png" /></a>
 
-            <div data-role="header" data-position="inline" data-theme="c">
-            <a href="index.html" id="geolocate" data-theme="c"><img src="img/location.png" /></a>
-
-                 <h1>Meat Me Here</h1>
-
-            </div><!-- /header -->
 
             <div data-role="content">
 
                 <div id="map"></div>
                 
-                <p><a href="#two" data-role="button" data-transition="slidefade" data-theme="c">Text Your Location</a></p>
 
             </div>
             <!-- /content -->

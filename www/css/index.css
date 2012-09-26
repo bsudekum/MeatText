@@ -5,16 +5,28 @@ body {
     width:100%;
     padding: 0px;
     margin: 0px;
+    overflow: hidden;
 }
 
 #map {
-    height: 330px;
+    height: 460px;
     width: 100%;
     padding: 0px;
     margin: 0px;
+    position: absolute;
+    top:0px;
+
 }
 
 #page,#content {
 	padding: 0px;
 	margin: 0px;
+}
+
+.ui-content{
+    padding: 0px
+}
+
+#geolocate{
+    z-index: 100;
 }

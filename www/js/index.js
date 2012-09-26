@@ -11,8 +11,17 @@ function onDeviceReady() {
         maxZoom: 17,
     }).addTo(map);
 
-    var marker = L.marker([51.5, -0.09]).addTo(map);
+    var marker = L.marker([0, 0]).addTo(map);
 
+
+        function onMapClick(e) {
+           L.marker(e.latlng).addTo(map)
+            .bindPopup("<a href='#two' data-transition='slidefade' /><h4 style='color:black;'>Text Location</h4></a>").openPopup()
+            .clearLayers();
+            popup.removeLayer();
+        };
+
+        map.on('click', onMapClick);
 
     var control = L.control.layers({CloudMade: cloudmade}, {marker: marker});
     control._map = map;
