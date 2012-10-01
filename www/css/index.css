@@ -45,3 +45,17 @@ border-radius: 5px;
 top: 4px;
 left: 3px
 }
+
+.ui-page {
+    -webkit-backface-visibility: hidden;
+}
+
+.ui-mobile-viewport-transitioning,
+.ui-mobile-viewport-transitioning .ui-page {
+    overflow: visible;
+}
+
+
+.ui-page {
+    -webkit-backface-visibility: hidden;
+}

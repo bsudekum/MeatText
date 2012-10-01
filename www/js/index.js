@@ -28,7 +28,7 @@ function onDeviceReady() {
 
         L.marker(e.latlng, {draggable: true})
             .addTo(map)
-            .bindPopup("<a href='#two' data-transition='slidefade'/><h2 style='color:black;text-decoration:none;'>Text Location ►</h2></a>")
+            .bindPopup("<a href='#two'/><h2 style='color:black;text-decoration:none;'>Text Location ►</h2></a>")
             .openPopup()
             .clearLayers();
         popup.removeLayer();
