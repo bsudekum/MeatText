@@ -9,7 +9,7 @@ body {
 }
 
 #map {
-    height: 460px;
+    height: 100%;
     width: 100%;
     padding: 0px;
     margin: 0px;
@@ -29,4 +29,19 @@ body {
 
 #geolocate{
     z-index: 100;
+}
+
+.leaflet-container a {
+    text-decoration: none;
+}
+
+.leaflet-popup-content-wrapper {
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+}
+
+#geolocate{
+top: 4px;
+left: 3px
 }

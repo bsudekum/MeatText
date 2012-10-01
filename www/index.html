@@ -4,76 +4,59 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="format-detection" content="telephone=no" />
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width;"
-        />
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width;"/>
         <link rel="stylesheet" type="text/css" href="css/jquery.mobile.css" />
-        <link rel="stylesheet" type="text/css" href="css/jq.mobile.structure.css"
-        />
+        <link rel="stylesheet" type="text/css" href="css/jq.mobile.structure.css"/>
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/jquery.mobile.js"></script>
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        
         <link rel="stylesheet" type="text/css" href="js/leaflet/leaflet.css" />
         <script type="text/javascript" src="js/leaflet/leaflet.js"></script>
         <script type="text/javascript" src="cordova-2.0.0.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript" src="js/sms/SMSComposer.js"></script>
-        <script>
-    
 
-           touchMove = function(event) {
-      // Prevent scrolling on this element
-      event.preventDefault();
-  }
-
-        </script>
 
     </head>
     
     <body>
-        <!-- Start of first page: #one -->
-        <div data-role="page" id="one" data-theme="c">
-            
-            <a href="#" id="geolocate" data-theme="c" data-role="button" data-inline="true" data-mini="true"><img src="img/location.png" /></a>
+    <!-- Start of first page: #one -->
+    <div data-role="page" id="one" data-theme="c">
+        <a href="#" id="geolocate" data-theme="c" data-role="button" data-inline="true" data-mini="true"><img src="img/scope2.png" width="20px" height="20px" /></a>
 
-
-            <div data-role="content">
-
-                <div id="map"></div>
-                
-
-            </div>
-            <!-- /content -->
+        <div data-role="content">
+            <div id="map"></div>
         </div>
-        <!-- /page one -->
-
-
-        <!-- Start of second page: #two -->
-        <div data-role="page" id="two" data-theme="c" >
-            <div data-role="header" data-position="inline" data-theme="c"> <a href="index.html" data-transition="slidefade" data-theme="c" >Back</a>
-
-                 <h1>Message</h1>
-
-            </div>
-            <!-- /header -->
-            <div data-role="content"> <a href="#" data-role="button">Add Contacts</a>
-
-            <a id="takePhotoButton" data-role="button">Take Photo</a>
-
     
-                 <center><h3>Your Message</h3></center>
+    </div><!-- /content -->
 
-                  <center><input type="text" name="name" placeholder="Hey, lets me here!"/></center>
-                <button onclick="cordova.exec(null,null, 'SMSComposer','showSMSComposer',[args])">Send your message</button>
+    <!-- Start of second page: #two -->
+    <div data-role="page" id="two" data-theme="c">
+        <div data-role="header" data-position="inline" data-theme="c"> <a href="index.html" data-transition="slidefade" data-theme="c">Back</a>
 
+             <h1>Message</h1>
 
-
-
-            </div>
-            <!-- /content -->
         </div>
-        <!-- /page two -->
+        <!-- /header -->
+   
+        <div id="input" data-role="fieldcontain">
+            <input type="text" name="name" id="name" value="Let's meet here. "/>
         </div>
-        <!-- /page popup -->
-    </body>
+        <input onclick="ComposeSMS();" type="button" value="Compose SMS text with number and body"/>
+        <br />
+    </div>
+    <!-- /content -->
+    </div>
+    <!-- /page two -->
+    </div>
+    <!-- /page popup -->
+ 
+</body>
 
 </html>
+
+
+
+
+
