@@ -4,7 +4,7 @@ function onDeviceReady() {
 
 
     var map = L.map('map')
-        .setView([51.505, - 0.09], 13);
+        .setView([37.76718664006672, -122.42511749267578], 13);
 
     var cloudmade = L.tileLayer('http://a.tiles.mapbox.com/v3/bobbysud.map-tyt3admo/{z}/{x}/{y}.png', {
         zoomControl: false,
@@ -22,15 +22,15 @@ function onDeviceReady() {
         var lng = e.latlng.lng.toFixed(5);
         var latlng = +lat + ',' + lng;
 
-        ok = " http://maps.apple.com/maps?spn=" + latlng;
+        ok = " http://maps.apple.com/maps?q="+latlng + "&ll=" + latlng+"&z=18";
         message = $(ok).html();
 
 
         L.marker(e.latlng, {draggable: true})
             .addTo(map)
-            .bindPopup("<a href='#two'/><h2 style='color:black;text-decoration:none;'>Text Location ►</h2></a>")
+            .bindPopup("<a href='#two'/><h3 style='color:black;text-decoration:none;'>Text This Location ►</h3></a>")
             .openPopup()
-            .clearLayers();
+  
         popup.removeLayer();
     };
 
@@ -56,10 +56,14 @@ function onDeviceReady() {
 
         map.locate({
             setView: true,
-            maxZoom: 16,
+            maxZoom: 17,
             enableHighAccuracy: true
         });
     }
+
+     var bingGeocoder = new L.Control.BingGeocoder('AmFJ03ozVugKu0Y_uijzwvFEKfKY5VCesm1eiBqGhchxQ3uKFUQMYsKJLNdfHsIR');
+
+        map.addControl(bingGeocoder);
 
 
 }; //Device on onDeviceReady
@@ -73,5 +77,3 @@ var ComposeSMS = function () {
     console.log(messageTwo);
     window.plugins.smsComposer.showSMSComposer('', messageTwo);
 };
-
-

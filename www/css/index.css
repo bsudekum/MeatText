@@ -59,3 +59,15 @@ left: 3px
 .ui-page {
     -webkit-backface-visibility: hidden;
 }
+
+.ui-content{
+    padding: 0px
+}
+
+.leaflet-container a {
+    text-decoration: none;
+}
+
+.ui-input-search {
+    z-index: 100;
+}

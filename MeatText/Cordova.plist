@@ -25,9 +25,12 @@
 	<key>ExternalHosts</key>
 	<array>
 		<string>*</string>
+		<string>(*)</string>
 	</array>
 	<key>Plugins</key>
 	<dict>
+		<key>TwitterPlugin</key>
+		<string>TwitterPlugin</string>
 		<key>SMSComposer</key>
 		<string>SMSComposer</string>
 		<key>Device</key>

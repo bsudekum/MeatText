@@ -4,55 +4,88 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="format-detection" content="telephone=no" />
+        <link rel="stylesheet" type="text/css" href="js/geocode/Control.BingGeocoder.css"/>
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width;"/>
         <link rel="stylesheet" type="text/css" href="css/jquery.mobile.css" />
         <link rel="stylesheet" type="text/css" href="css/jq.mobile.structure.css"/>
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/jquery.mobile.js"></script>
-        
         <link rel="stylesheet" type="text/css" href="js/leaflet/leaflet.css" />
         <script type="text/javascript" src="js/leaflet/leaflet.js"></script>
         <script type="text/javascript" src="cordova-2.0.0.js"></script>
         <link rel="stylesheet" type="text/css" href="css/index.css" />
-        <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript" src="js/sms/SMSComposer.js"></script>
-        <script type="text/javascript">$(document).bind("mobileinit", function () {  $.mobile.defaultPageTransition = "none"; });</script>
-
+        <script type="text/javascript" src="js/geocode/Control.BingGeocoder.js"></script>    
 
     </head>
     
     <body>
     <!-- Start of first page: #one -->
     <div data-role="page" id="one" data-theme="c">
-        <a href="#" id="geolocate" data-theme="c" data-role="button" data-inline="true" data-mini="true"><img src="img/scope2.png" width="20px" height="20px" /></a>
-
+        
+        <a href="#" id="geolocate" data-theme="c" data-role="button" data-inline="true" data-mini="true"><img src="img/scope2.png" width="15px" height="15px" /></a>
+        
         <div data-role="content">
+        
             <div id="map"></div>
-        </div>
+        
+        </div><!--Content-->
     
     </div><!-- /content -->
 
-    <!-- Start of second page: #two -->
+
     <div data-role="page" id="two" data-theme="c">
-        <div data-role="header" data-position="inline" data-theme="c"> <a href="index.html" data-theme="c">Back</a>
+        
+        <div data-role="header" data-position="inline" data-theme="c"> <a href="index.html" data-theme="c">Back</a><h1>MeatText</h1></div>
 
-             <h1>Message</h1>
+        <br>
 
-        </div>
-        <!-- /header -->
-   
-        <div id="input" data-role="fieldcontain">
-            <input type="text" name="name" id="name" value="Let's meet here. "/>
-        </div>
-        <input onclick="ComposeSMS();" type="button" value="Compose SMS text with number and body"/>
-        <br />
+        <center><h3>What do you want your message to say?</h3></center>
+
+        <br>
+        
+        <center><input type="text" name="name" id="name" value="Let's meet here. "/></center>
+    
+        <br>
+        <br>
+
+        <center><input onclick="ComposeSMS();" type="button" value="Choose contacts and send!" data-theme="b"/><center>
+
+        <br>   
+        <br>
+        <br>
+        <br>
+        <br>
+
+        <p>Want to find out more information?</p><a href="#three" data-role="button" data-inline="true">►</a>
+
     </div>
-    <!-- /content -->
-    </div>
-    <!-- /page two -->
-    </div>
+
+    <div data-role="page" id="three" data-theme="c">
+
+        <div data-role="header" data-position="inline" data-theme="c"> <a href="#two" data-theme="c">Back</a><h1>MeatText</h1></div>
+
+        <br>
+        <br>
+
+        <center><h4>This app was created by <a href="http://visuallybs.com">Bobby Sudekum</a>. Map tiles by <a href="http://mapbox.com">Mapbox</a>, under CC BY 3.0. Data by <a href="http://www.openstreetmap.org/">OpenStreetMap</a>, under CC BY SA.</h4>
+
+        <br>
+        <br>
+
+        <p>Contact me with bugs at <a href="http://twitter.com/bobws">@Bobws</a>
+
+        </center>
+
+    </div> 
+
     <!-- /page popup -->
- 
+
+
+
+    <script type="text/javascript" src="js/index.js">
+
+    </script> 
 </body>
 
 </html>
