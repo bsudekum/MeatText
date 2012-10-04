@@ -9,7 +9,7 @@ function onDeviceReady() {
     var cloudmade = L.tileLayer('http://a.tiles.mapbox.com/v3/bobbysud.map-tyt3admo/{z}/{x}/{y}.png', {
         zoomControl: false,
         detectRetina: true,
-        maxZoom: 17,
+        maxZoom: 18,
     })
         .addTo(map);
 
@@ -77,3 +77,5 @@ var ComposeSMS = function () {
     console.log(messageTwo);
     window.plugins.smsComposer.showSMSComposer('', messageTwo);
 };
+
+
