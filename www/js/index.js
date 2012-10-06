@@ -9,7 +9,7 @@ function onDeviceReady() {
     var cloudmade = L.tileLayer('http://a.tiles.mapbox.com/v3/bobbysud.map-tyt3admo/{z}/{x}/{y}.png', {
         zoomControl: false,
         detectRetina: true,
-        maxZoom: 18,
+        maxZoom: 17,
     })
         .addTo(map);
 
@@ -44,7 +44,9 @@ function onDeviceReady() {
         function onLocationFound(e) {
 
             L.marker(e.latlng)
-                .addTo(map)
+            .addTo(map).addTo(map)
+            .bindPopup("<a href='#two'/><h3 style='color:black;text-decoration:none;'>Text This Location ►</h3></a>")
+            .openPopup()
         }
 
         function onLocationError(e) {
