@@ -71,3 +71,7 @@ left: 3px
 .ui-input-search {
     z-index: 100;
 }
+
+.leaflet-popup-content {
+    margin:13px;
+}

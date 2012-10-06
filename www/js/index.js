@@ -20,10 +20,10 @@ function onDeviceReady() {
 
         var lat = e.latlng.lat.toFixed(5);
         var lng = e.latlng.lng.toFixed(5);
-        var latlng = +lat + ',' + lng;
+        latlng = +lat + ',' + lng;
 
-        ok = " http://maps.apple.com/maps?q="+latlng + "&ll=" + latlng+"&z=18";
-        message = $(ok).html();
+        url = " http://maps.apple.com/maps?q="+latlng + "&ll=" + latlng+"&z=18";
+        message = $(url).html();
 
 
         L.marker(e.latlng, {draggable: true})
@@ -45,8 +45,7 @@ function onDeviceReady() {
 
             L.marker(e.latlng)
             .addTo(map).addTo(map)
-            .bindPopup("<a href='#two'/><h3 style='color:black;text-decoration:none;'>Text This Location ►</h3></a>")
-            .openPopup()
+           
         }
 
         function onLocationError(e) {
@@ -73,11 +72,22 @@ function onDeviceReady() {
 
 //SMS
 var ComposeSMS = function () {
-    contents = $("#name")
-        .val();
-    messageTwo = contents + ok;
+    contents = $("#name").val();
+    messageTwo = contents + url;
     console.log(messageTwo);
-    window.plugins.smsComposer.showSMSComposer('', messageTwo);
+    window.plugins.smsComposer.showSMSComposerWithCB(myCallback,'', messageTwo);
+}
+
+var myCallback = function(result){
+
+if(result == 0)
+    alert("Cancelled");
+else if(result == 1)
+    L.marker(latlng).addTo(map)
+                .bindPopup("Sent").openPopup()
+                console.log(messageTwo);
+
+   
 };
 
 
