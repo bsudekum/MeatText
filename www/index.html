@@ -16,7 +16,11 @@
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <script type="text/javascript" src="js/sms/SMSComposer.js"></script>
         <script type="text/javascript" src="js/geocode/Control.BingGeocoder.js"></script>    
-
+        <script>
+            $(function() { 
+                $.mobile.defaultHomeScroll = 0;
+            });
+        </script>
     </head>
     
     <body>
@@ -53,7 +57,7 @@
 
         <br>   
         <br>
-        <br>
+        <div id="sentbox"></div>
         <br>
         <br>
 

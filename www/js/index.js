@@ -1,6 +1,7 @@
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
+    navigator.splashscreen.hide()
 
 
     var map = L.map('map')
@@ -13,8 +14,6 @@ function onDeviceReady() {
     })
         .addTo(map);
 
-    var marker = L.marker([0, 0])
-        .addTo(map);
 
     function onMapClick(e) {
 
@@ -25,13 +24,14 @@ function onDeviceReady() {
         url = " http://maps.apple.com/maps?q="+latlng + "&ll=" + latlng+"&z=18";
         message = $(url).html();
 
-
         L.marker(e.latlng, {draggable: true})
             .addTo(map)
-            .bindPopup("<a href='#two'/><h3 style='color:black;text-decoration:none;'>Text This Location ►</h3></a>")
+            .bindPopup("<a href='#two'/><h3 id='sent' style='color:black;text-decoration:none;'>Text This Location ►</h3></a>")
             .openPopup()
+
+            elem = document.getElementById('sentbox').innerHTML = "<h3 style='text-align:center;font-color:#00CC33;'></h3>";
+
   
-        popup.removeLayer();
     };
 
     map.on('click', onMapClick);
@@ -66,7 +66,6 @@ function onDeviceReady() {
 
         map.addControl(bingGeocoder);
 
-
 }; //Device on onDeviceReady
 
 
@@ -79,15 +78,11 @@ var ComposeSMS = function () {
 }
 
 var myCallback = function(result){
+    if(result == 1)
 
-if(result == 0)
-    alert("Cancelled");
-else if(result == 1)
-    L.marker(latlng).addTo(map)
-                .bindPopup("Sent").openPopup()
-                console.log(messageTwo);
+        elem = document.getElementById('sentbox').innerHTML = "<h3 style='text-align:center;font-color:#00CC33;'>Location Sent!</h3>";
 
-   
+        elem = document.getElementById('sent').innerHTML = "<a href='#two'/><h3 id='sent' style='color:black;text-decoration:none;text-align:center;margin:5px'>Location Sent!</h3></a>";
 };
 
 
