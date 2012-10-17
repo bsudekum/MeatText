@@ -7,7 +7,7 @@ function onDeviceReady() {
     var map = L.map('map')
         .setView([37.76718664006672, -122.42511749267578], 13);
 
-    var cloudmade = L.tileLayer('http://a.tiles.mapbox.com/v3/bobbysud.map-tyt3admo/{z}/{x}/{y}.png', {
+    var tiles = L.tileLayer('http://a.tiles.mapbox.com/v3/bobbysud.map-tyt3admo/{z}/{x}/{y}.png', {
         zoomControl: false,
         detectRetina: true,
         maxZoom: 17,
@@ -43,13 +43,13 @@ function onDeviceReady() {
 
         function onLocationFound(e) {
 
-            L.marker(e.latlng)
-            .addTo(map).addTo(map)
-           
+            L.marker(e.latlng, {draggable: true})
+            .addTo(map).bindPopup("<a href='#two'/><h3 id='sent' style='color:black;text-decoration:none;'>Text This Location ►</h3></a>")
+            .openPopup()
         }
 
         function onLocationError(e) {
-            alert(e.message);
+            alert("Please make sure your location services are enabled.");
         }
 
         map.on('locationfound', onLocationFound);
@@ -58,7 +58,8 @@ function onDeviceReady() {
         map.locate({
             setView: true,
             maxZoom: 17,
-            enableHighAccuracy: true
+            enableHighAccuracy: true,
+            locationWatch:true
         });
     }
 
@@ -80,7 +81,7 @@ var ComposeSMS = function () {
 var myCallback = function(result){
     if(result == 1)
 
-        elem = document.getElementById('sentbox').innerHTML = "<h3 style='text-align:center;font-color:#00CC33;'>Location Sent!</h3>";
+        elem = document.getElementById('sentbox').innerHTML = "<h3 style='text-align:center;'>Location Sent!</h3>";
 
         elem = document.getElementById('sent').innerHTML = "<a href='#two'/><h3 id='sent' style='color:black;text-decoration:none;text-align:center;margin:5px'>Location Sent!</h3></a>";
 };

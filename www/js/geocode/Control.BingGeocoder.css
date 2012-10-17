@@ -9,11 +9,12 @@
 .leaflet-control-geocoder a {
 	background-image: url(images/geocoder.png);
 	width: 36px;
-	height: 36px;
+	height: 70px;
 }
 
 #mytext{
-	left: 18px;
+	left: 25px;
+	top:-7px;
 	position: relative;
 }
 
