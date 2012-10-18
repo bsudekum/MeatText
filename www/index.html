@@ -15,12 +15,13 @@
         <script type="text/javascript" src="cordova-2.0.0.js"></script>
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <script type="text/javascript" src="js/sms/SMSComposer.js"></script>
-        <script type="text/javascript" src="js/geocode/Control.BingGeocoder.js"></script>    
+        <script type="text/javascript" src="js/geocode/Control.BingGeocoder.js"></script>   
         <script>
             $(function() { 
                 $.mobile.defaultHomeScroll = 0;
             });
         </script>
+
     </head>
     
     <body>
@@ -40,7 +41,7 @@
 
     <div data-role="page" id="two" data-theme="c">
         
-        <div data-role="header" data-position="inline" data-theme="c"><a href="index.html" data-theme="c">Back</a>
+        <div data-role="header" data-position="inline" data-theme="c"><a href="#one" data-theme="c">Back</a>
             <h1>MeatText</h1>
         </div>
 
@@ -50,7 +51,7 @@
 
         <br>
         
-        <center><input type="text" name="name" id="name" value="Let's meet here. "/></center>
+        <center><form action="" method="" data-ajax="true"><input type="text" data-ajax="true" name="name" id="textValue" value="Lets meet here. "/></form></center>
     
         <br>
         <br>
