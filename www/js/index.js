@@ -7,7 +7,7 @@ function onDeviceReady() {
     map = L.map('map')
         .setView([37.76718664006672, -122.42511749267578], 13);
 
-    tiles = L.tileLayer('http://a.tiles.mapbox.com/v3/bobbysud.map-tyt3admo/{z}/{x}/{y}.png', {
+    tiles = L.tileLayer('http://{s}.tiles.mapbox.com/v3/bobbysud.map-tyt3admo/{z}/{x}/{y}.png', {
         zoomControl: false,
         detectRetina: true,
         maxZoom: 17,
