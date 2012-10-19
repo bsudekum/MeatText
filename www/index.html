@@ -16,11 +16,8 @@
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <script type="text/javascript" src="js/sms/SMSComposer.js"></script>
         <script type="text/javascript" src="js/geocode/Control.BingGeocoder.js"></script>   
-        <script>
-            $(function() { 
-                $.mobile.defaultHomeScroll = 0;
-            });
-        </script>
+
+
 
     </head>
     
@@ -41,22 +38,18 @@
 
     <div data-role="page" id="two" data-theme="c">
         
-        <div data-role="header" data-position="inline" data-theme="c"><a href="#one" data-theme="c">Back</a>
+        <div data-role="header" data-position="inline" data-theme="c"><a href="#one" data-theme="c" id="back">Back</a>
             <h1>MeatText</h1>
         </div>
 
         <br>
 
-        <center><h3>What do you want your message to say?</h3></center>
-
-        <br>
-        
-        <center><form action="" method="" data-ajax="true"><input type="text" data-ajax="true" name="name" id="textValue" value="Lets meet here. "/></form></center>
+       
     
         <br>
         <br>
 
-        <center><input onclick="ComposeSMS();" type="button" value="Choose contacts and send!" data-theme="b"/><center>
+        <center><type="button" value="Choose contacts and send!" data-theme="b"/><center>
 
         <br>   
         <br>
@@ -64,13 +57,13 @@
         <br>
         <br>
 
-        <p>Want to find out more information?</p><a href="#three" data-role="button" data-inline="true">►</a>
+        <p>Want to find out more information?</p><a href="#one" data-role="button" data-inline="true">►</a>
 
     </div>
 
     <div data-role="page" id="three" data-theme="c">
 
-        <div data-role="header" data-position="inline" data-theme="c"> <a href="#two" data-theme="c">Back</a><h1>MeatText</h1></div>
+        <div data-role="header" data-position="inline" data-theme="c" id="back"> <a href="#two" data-theme="c" >Back</a><h1>MeatText</h1></div>
 
         <br>
         <br>
@@ -96,19 +89,13 @@
 
 
     <script type="text/javascript" src="js/index.js"></script> 
-<script type="text/javascript">
+<script>
+            $(function() { 
+                $.mobile.defaultHomeScroll = 0;
+                $('textValue').textinput('disable');   
+            });
 
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-22516962-1']);
-      _gaq.push(['_trackPageview']);
-
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-
-</script>
+        </script>
 </body>
 
 </html>
