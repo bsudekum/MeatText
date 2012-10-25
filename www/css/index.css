@@ -11,11 +11,9 @@
 html,
 body {
     height:100%;
-    font-size:12px;
     width:100%;
     padding: 0px;
-    margin: 0px;
-    overflow: hidden;
+    margin:0px;
 }
 
 #map {
@@ -24,21 +22,8 @@ body {
     padding: 0px;
     margin: 0px;
     position: absolute;
-    top:0px;
+    z-index: 1;
 
-}
-
-#page,#content {
-	padding: 0px;
-	margin: 0px;
-}
-
-.ui-content{
-    padding: 0px 
-}
-
-#geolocate{
-    z-index: 100;
 }
 
 .leaflet-container a {
@@ -46,40 +31,26 @@ body {
 }
 
 .leaflet-popup-content-wrapper {
--moz-border-radius: 5px;
--webkit-border-radius: 5px;
-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
 }
 
 #geolocate{
-top: 5px;
-left: 3px
-}
-
-.ui-page {
-    -webkit-backface-visibility: hidden;
-}
-
-.ui-mobile-viewport-transitioning,
-.ui-mobile-viewport-transitioning .ui-page {
-    overflow: visible;
-}
-
-
-.ui-page {
-    -webkit-backface-visibility: hidden;
-}
-
-.ui-content{
-    padding: 0px
+    position: absolute;
+    top: 7px;
+    left: 7px;
+    z-index: 1000;
+    background-color:#EDEDED;
+    padding: 8px 10px 5px 9px;
+    border-radius: 8px;
+    border-style:solid;
+    border-color:grey;
+    border-width: 1px;
 }
 
 .leaflet-container a {
     text-decoration: none;
-}
-
-.ui-input-search {
-    z-index: 100;
 }
 
 .leaflet-popup-content {

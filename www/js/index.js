@@ -2,17 +2,40 @@
 document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
+// after device ready, create a local alias and start the tracker with your own id.
+var googleAnalytics = window.plugins.googleAnalyticsPlugin;
+googleAnalytics.startTrackerWithAccountID("UA-35792201-1");
+
+// Track an event in your application
+// more here : http://code.google.com/apis/analytics/docs/tracking/eventTrackerGuide.html
+googleAnalytics.trackEvent("category", "action", "label goes here", 666);
 
 
-    map = L.map('map')
-      
+map = L.map('map');
+L.Browser.retina = true;
 
-    tiles = L.tileLayer('http://{s}.tiles.mapbox.com/v3/bobbysud.map-tyt3admo/{z}/{x}/{y}.png', {
-        zoomControl: false,
-        detectRetina: true,
-        maxZoom: 17,
-    })
-        .addTo(map);
+  L.zoomTMSLayer({
+    url:            'http://{s}.tiles.mapbox.com/v3/bobbysud.map-tyt3admo/',
+    layername :     '',
+    serviceVersion: '',
+    tileMaxZoom:    17,
+    maxZoom:        17,
+    tms:            false,
+    zoomControl: false,
+    reuseTiles: true, //Panning is sticky if false
+    updateWhenIdle: false, //Loads tiles during pan
+    unloadInvisibleTiles: true, //slows down app is false
+    detectRetina:true,
+  }).addTo(map);
+
+
+
+    /*    map.on( "zoomend", function( e ) {
+    zoom = map.getZoom( );
+    if ( zoom >= 17 ) {
+        alert("hi");
+    }
+});*/
 
     function onLocationFoundStart(e) {
         
@@ -50,7 +73,7 @@ function onDeviceReady() {
     };
 
     map.on('click', onMapClick);
-
+  
 //Geolocate    
     var geolocate = document.getElementById('geolocate');
 
