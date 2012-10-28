@@ -1,5 +1,5 @@
-![MeatText](https://raw.github.com/rsudekum/MeatText/master/other/meat.jpg)Text
-===============================================================================
+###[MeatText](https://itunes.apple.com/us/app/meattext/id567921159?mt=8 "MeatText")
+
 
 
 
