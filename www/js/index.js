@@ -17,7 +17,7 @@ L.Browser.retina = true;
     layername :     '',
     serviceVersion: '',
     tileMaxZoom:    17,
-    maxZoom:        17,
+    maxZoom:        18,
     tms:            false,
     zoomControl: false,
     reuseTiles: true, //Panning is sticky if false
@@ -26,12 +26,7 @@ L.Browser.retina = true;
     detectRetina:true,
   }).addTo(map);
 
-    /*    map.on( "zoomend", function( e ) {
-    zoom = map.getZoom( );
-    if ( zoom >= 17 ) {
-        alert("hi");
-    }
-});*/
+
     function onLocationFound(e) {
 
         lat = e.latlng.lat.toFixed(5);
@@ -57,7 +52,7 @@ L.Browser.retina = true;
 
         map.locate({
             setView: true,
-            maxZoom: 17,
+            maxZoom: 16,
             enableHighAccuracy: true,
         });
 
@@ -109,7 +104,7 @@ L.Browser.retina = true;
 
         map.locate({
             setView: true,
-            maxZoom: 17,
+            maxZoom: 16,
             enableHighAccuracy: true,
         });
     }
