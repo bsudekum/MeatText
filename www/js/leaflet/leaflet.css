@@ -209,17 +209,7 @@
 
 /* Zoom and fade animations */
 
-.leaflet-fade-anim .leaflet-tile, .leaflet-fade-anim .leaflet-popup {
-	opacity: 0;
 
-	-webkit-transition: opacity 0.2s linear;
-	-moz-transition: opacity 0.2s linear;
-	-o-transition: opacity 0.2s linear;
-	transition: opacity 0.2s linear;
-	}
-.leaflet-fade-anim .leaflet-tile-loaded, .leaflet-fade-anim .leaflet-map-pane .leaflet-popup {
-	opacity: 1;
-	}
 
 .leaflet-zoom-anim .leaflet-zoom-animated {
 	-webkit-transition: -webkit-transform 0.25s cubic-bezier(0.25,0.1,0.25,0.75);
@@ -304,7 +294,7 @@
 /* Visual appearance */
 
 .leaflet-container {
-	background: #ddd;
+	background: #e8e0d9;
 	}
 .leaflet-container a {
 	color: #0078A8;

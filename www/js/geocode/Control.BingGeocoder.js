@@ -39,12 +39,12 @@ L.Control.BingGeocoder = L.Control.extend({
 		input.id = "mytext";
 		input.name = "name";
 		input.basic = "basic";
-		input.placeholder = "Search a location"; 
+		input.placeholder = "Search for a location"; 
 
 		
 
 		var submit = document.createElement('button');
-		submit.type = "submit";
+		submit.type = "";
 		submit.id= "mybutton";
 		submit.innerHTML = this.options.text;
 		submit.onClick = "retun false";

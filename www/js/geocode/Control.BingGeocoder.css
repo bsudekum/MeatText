@@ -16,6 +16,9 @@
 	left: 25px;
 	top:-7px;
 	position: relative;
+	height:15px;
+	border-radius: 6px;
+	opacity: .75;
 }
 
 .leaflet-touch .leaflet-control-geocoder a {
