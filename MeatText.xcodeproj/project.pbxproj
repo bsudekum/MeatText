@@ -39,6 +39,7 @@
 		30A0434914DC770100060A13 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 30A0434614DC770100060A13 /* Localizable.strings */; };
 		30E1352710E2C1420031B30D /* Cordova.plist in Resources */ = {isa = PBXBuildFile; fileRef = 30E1352610E2C1420031B30D /* Cordova.plist */; };
 		30E5649213A7FCAF007403D8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 30E5649113A7FCAF007403D8 /* CoreMedia.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		EF2327F4163E238600DAD808 /* libsqlite3.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = EF2327F3163E238600DAD808 /* libsqlite3.0.dylib */; };
 		EF38486D1617C63E009DB02E /* SMSComposer.m in Sources */ = {isa = PBXBuildFile; fileRef = EF38486C1617C63E009DB02E /* SMSComposer.m */; };
 		EF83BCDA161D5383004AEBA5 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF83BCD8161D51FF004AEBA5 /* Default-568h@2x.png */; };
 		EF83BCDD161D576B004AEBA5 /* icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF83BCDC161D576B004AEBA5 /* icon-72@2x.png */; };
@@ -118,6 +119,7 @@
 		30E5649113A7FCAF007403D8 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		32CA4F630368D1EE00C91783 /* MeatText-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MeatText-Prefix.pch"; sourceTree = "<group>"; };
 		8D1107310486CEB800E47090 /* MeatText-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "MeatText-Info.plist"; path = "../MeatText-Info.plist"; plistStructureDefinitionIdentifier = "com.apple.xcode.plist.structure-definition.iphone.info-plist"; sourceTree = "<group>"; };
+		EF2327F3163E238600DAD808 /* libsqlite3.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.0.dylib; path = usr/lib/libsqlite3.0.dylib; sourceTree = SDKROOT; };
 		EF38486B1617C63E009DB02E /* SMSComposer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSComposer.h; sourceTree = "<group>"; };
 		EF38486C1617C63E009DB02E /* SMSComposer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSComposer.m; sourceTree = "<group>"; };
 		EF83BCD8161D51FF004AEBA5 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../../../Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -133,6 +135,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				301BF5BD109A6A2B0062928A /* CFNetwork.framework in Frameworks */,
+				EF2327F4163E238600DAD808 /* libsqlite3.0.dylib in Frameworks */,
 				EFBB806915F1C0A9009A5FEC /* MessageUI.framework in Frameworks */,
 				301BF552109A68D80062928A /* libCordova.a in Frameworks */,
 				1D60589F0D05DD5A006BFB54 /* Foundation.framework in Frameworks */,
@@ -142,7 +146,6 @@
 				301BF5B7109A6A2B0062928A /* AddressBookUI.framework in Frameworks */,
 				301BF5B9109A6A2B0062928A /* AudioToolbox.framework in Frameworks */,
 				301BF5BB109A6A2B0062928A /* AVFoundation.framework in Frameworks */,
-				301BF5BD109A6A2B0062928A /* CFNetwork.framework in Frameworks */,
 				301BF5BF109A6A2B0062928A /* CoreLocation.framework in Frameworks */,
 				301BF5C1109A6A2B0062928A /* MediaPlayer.framework in Frameworks */,
 				301BF5C3109A6A2B0062928A /* QuartzCore.framework in Frameworks */,
@@ -244,6 +247,7 @@
 		29B97323FDCFA39411CA2CEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EF2327F3163E238600DAD808 /* libsqlite3.0.dylib */,
 				1DF5F4DF0D08C38300B7A737 /* UIKit.framework */,
 				1D30AB110D05D00D00671497 /* Foundation.framework */,
 				288765FC0DF74451002DB57D /* CoreGraphics.framework */,
@@ -518,6 +522,12 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "MeatText/MeatText-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/MeatText/Plugins/GoogSDK\"",
+					"\"$(SRCROOT)/../../../../Downloads/phonegap-phonegap-plugins-45e8b92/iOS/GoogleAnalytics/GoogSDK\"",
+					"\"$(SRCROOT)/MeatText/Plugins\"",
+				);
 				PRODUCT_NAME = MeatText;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -536,6 +546,12 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "MeatText/MeatText-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/MeatText/Plugins/GoogSDK\"",
+					"\"$(SRCROOT)/../../../../Downloads/phonegap-phonegap-plugins-45e8b92/iOS/GoogleAnalytics/GoogSDK\"",
+					"\"$(SRCROOT)/MeatText/Plugins\"",
+				);
 				PRODUCT_NAME = MeatText;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;

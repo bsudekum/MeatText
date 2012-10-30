@@ -101,10 +101,10 @@
 
 
 .leaflet-zoom-anim .leaflet-zoom-animated {
-	-webkit-transition: -webkit-transform 0.25s cubic-bezier(0.25,0.1,0.25,0.75);
-	-moz-transition: -moz-transform 0.25s cubic-bezier(0.25,0.1,0.25,0.75);
-	-o-transition: -o-transform 0.25s cubic-bezier(0.25,0.1,0.25,0.75);
-	transition: transform 0.25s cubic-bezier(0.25,0.1,0.25,0.75);
+	-webkit-transition: -webkit-transform 0.1s cubic-bezier(0.25,0.1,0.25,0.25);
+	-moz-transition: -moz-transform 0.1s cubic-bezier(0.25,0.1,0.25,0.25);
+	-o-transition: -o-transform 0.1s cubic-bezier(0.25,0.1,0.25,0.25);
+	transition: transform 0.1s cubic-bezier(0.25,0.1,0.25,0.25);
 	}
 
 .leaflet-zoom-anim .leaflet-tile,

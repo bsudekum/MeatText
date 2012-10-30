@@ -24,11 +24,16 @@
 	<true/>
 	<key>ExternalHosts</key>
 	<array>
+		<string>https://www.google.com/analytics</string>
+		<string>google-analytics.com</string>
+		<string>google.com/analytics</string>
 		<string>*</string>
 		<string>(*)</string>
 	</array>
 	<key>Plugins</key>
 	<dict>
+		<key>GoogleAnalyticsPlugin</key>
+		<string>GoogleAnalyticsPlugin</string>
 		<key>SMSComposer</key>
 		<string>SMSComposer</string>
 		<key>Device</key>

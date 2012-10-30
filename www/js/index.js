@@ -26,18 +26,21 @@ L.Browser.retina = true;
     detectRetina:true,
   }).addTo(map);
 
-
     function onLocationFound(e) {
 
         lat = e.latlng.lat.toFixed(5);
         lng = e.latlng.lng.toFixed(5);
         latlng = +lat + ',' + lng;
+
         url = "http://maps.apple.com/maps?q="+latlng + "&ll=" + latlng+"&z=18";
         message = $(url).html();
+
         markerLocation = new L.LatLng(e.latlng.lat, e.latlng.lng);
         marker = new L.Marker(markerLocation, {draggable:true});
+
         locationPerson.clearLayers();
         locationPerson.addLayer(marker);
+
         marker.bindPopup("<a href='#one' input onclick='ComposeSMSme();'/><h3 id='sent' style='color:black;text-decoration:none;'>Text Your Location ►</h3></a>")
             .openPopup()
         }
@@ -56,20 +59,25 @@ L.Browser.retina = true;
             enableHighAccuracy: true,
         });
 
-
     function onMapClick(e) {
 
         lat = e.latlng.lat.toFixed(5);
         lng = e.latlng.lng.toFixed(5);
         latlng = +lat + ',' + lng;
+
         url = "http://maps.apple.com/maps?q="+latlng + "&ll=" + latlng+"&z=18";
+
         message = $(url).html();
+
         markerLocation = new L.LatLng(e.latlng.lat, e.latlng.lng);
         marker = new L.Marker(markerLocation, {draggable: true});
+
         locationClick.clearLayers();
         locationClick.addLayer(marker);
+
         marker.bindPopup("<a href='#one'input onclick='ComposeSMS();'/><h3 id='sent' style='color:black;text-decoration:none;'>Text This Location ►</h3></a>")
         .openPopup();
+
         elem = document.getElementById('sentbox').innerHTML = "<h3 style='text-align:center;font-color:#00CC33;'></h3>";
 
     };
@@ -136,8 +144,6 @@ var myCallback = function(result){
 
     else if(result == 1)
         elem = document.getElementById('sent').innerHTML = "<a href='#one'/><h3 id='sent' style='color:black;text-decoration:none;text-align:center;margin:5px'>Location Sent!</h3></a>";
-    
-    
 };
 
 

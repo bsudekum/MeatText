@@ -6,8 +6,6 @@
     text-decoration: none;
 }
 
-
-
 html,
 body {
     height:100%;
@@ -17,6 +15,10 @@ body {
     position: fixed;
     -webkit-overflow-scrolling: touch;
     -webkit-transform: translate3d(0px,0px,0px);
+    overflow: hidden; 
+    -webkit-touch-callout: none; 
+    -webkit-user-select: none; 
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 #map {
@@ -69,4 +71,11 @@ body {
 
 .leaflet-popup-pane{
     opacity: .85;
+}
+
+#my-div-icon {
+    height:20px;
+    width: 20px;
+    color:blue;
+}
 }
