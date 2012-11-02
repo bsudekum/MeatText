@@ -31,22 +31,18 @@ L.Browser.retina = true;
         lat = e.latlng.lat.toFixed(5);
         lng = e.latlng.lng.toFixed(5);
         latlng = +lat + ',' + lng;
-
-        url = "http://maps.apple.com/maps?q="+latlng + "&ll=" + latlng+"&z=18";
-        message = $(url).html();
-
+        url = "http://maps.apple.com/maps?q="+latlng;
+        message = $(url)
         markerLocation = new L.LatLng(e.latlng.lat, e.latlng.lng);
         marker = new L.Marker(markerLocation, {draggable:true});
-
         locationPerson.clearLayers();
         locationPerson.addLayer(marker);
-
-        marker.bindPopup("<a href='#one' input onclick='ComposeSMSme();'/><h3 id='sent' style='color:black;text-decoration:none;'>Text Your Location ►</h3></a>")
+        marker.bindPopup("<a href='#one' input onclick='ComposeSMSme();'/><p id='sent' style='color:black;text-decoration:none;'>Text Your Location ►</p></a>")
             .openPopup()
         }
 
         function onLocationError(e) {
-            map.setView(new L.LatLng(37.76718664006672, -122.42511749267578), 13);
+            map.setView(new L.LatLng(37.76718664006672, -122.42511749267578), 14);
             navigator.notification.alert("Please make sure your location services area enabled.");
         }
 
@@ -63,26 +59,18 @@ L.Browser.retina = true;
 
         lat = e.latlng.lat.toFixed(5);
         lng = e.latlng.lng.toFixed(5);
-        latlng = +lat + ',' + lng;
-
-        url = "http://maps.apple.com/maps?q="+latlng + "&ll=" + latlng+"&z=18";
-
-        message = $(url).html();
-
+        latlng =lat+ ',' + lng;
+        url = "http://maps.apple.com/maps?q="+latlng;
+        message = $(url)
         markerLocation = new L.LatLng(e.latlng.lat, e.latlng.lng);
         marker = new L.Marker(markerLocation, {draggable: true});
-
         locationClick.clearLayers();
         locationClick.addLayer(marker);
-
-        marker.bindPopup("<a href='#one'input onclick='ComposeSMS();'/><h3 id='sent' style='color:black;text-decoration:none;'>Text This Location ►</h3></a>")
+        marker.bindPopup("<a href='#one'input onclick='ComposeSMS();'/><p id='sent' style='color:black;text-decoration:none;'>Text This Location ►</p></a>")
         .openPopup();
-
-        elem = document.getElementById('sentbox').innerHTML = "<h3 style='text-align:center;font-color:#00CC33;'></h3>";
-
     };
 
-    map.on('click', onMapClick);
+    map.on('contextmenu', onMapClick);
   
 //Geolocate    
     var geolocate = document.getElementById('geolocate');
@@ -94,13 +82,13 @@ L.Browser.retina = true;
         lat = e.latlng.lat.toFixed(5);
         lng = e.latlng.lng.toFixed(5);
         latlng = +lat + ',' + lng;
-        url = "http://maps.apple.com/maps?q="+latlng + "&ll=" + latlng+"&z=18";
-        message = $(url).html();
+        url = "http://maps.apple.com/maps?spn="+latlng;
+        message = $(url)
         markerLocation = new L.LatLng(e.latlng.lat, e.latlng.lng);
         marker = new L.Marker(markerLocation, {draggable:true});
         locationPerson.clearLayers();
         locationPerson.addLayer(marker);
-        marker.bindPopup("<a href='#one' input onclick='ComposeSMSme();'/><h3 id='sent' style='color:black;text-decoration:none;'>Text Your Location ►</h3></a>")
+        marker.bindPopup("<a href='#one' input onclick='ComposeSMSme();'/><p id='sent' style='color:black;text-decoration:none;'>Text Your Location ►</p></a>")
             .openPopup()
         }
 
@@ -117,22 +105,27 @@ L.Browser.retina = true;
         });
     }
 
+     
+    //Geocoder
      var bingGeocoder = new L.Control.BingGeocoder('AmFJ03ozVugKu0Y_uijzwvFEKfKY5VCesm1eiBqGhchxQ3uKFUQMYsKJLNdfHsIR');
         map.addControl(bingGeocoder);
+
+
+
 
 }; //Device on onDeviceReady
 
 
 //SMS for onclick event
 var ComposeSMS = function () {
-    messageTwo = "Let's meet here.\n\n"+url;
+    messageTwo = "Let's meet here.\n"+url;
     window.plugins.smsComposer.showSMSComposerWithCB(myCallback,'', messageTwo);
     console.log(messageTwo);
 }
 
 //SMS for your location
 var ComposeSMSme = function () {
-    messageTwo = "I'm right here.\n\n" + url;
+    messageTwo = "I'm right here.\n"+url;
     window.plugins.smsComposer.showSMSComposerWithCB(myCallback,'', messageTwo);
     console.log(messageTwo);
 }
@@ -143,7 +136,7 @@ var myCallback = function(result){
         console.log("cancelled");
 
     else if(result == 1)
-        elem = document.getElementById('sent').innerHTML = "<a href='#one'/><h3 id='sent' style='color:black;text-decoration:none;text-align:center;margin:5px'>Location Sent!</h3></a>";
+        elem = document.getElementById('sent').innerHTML = "<a href='#one'/><p id='sent' style='color:black;text-decoration:none;text-align:center;margin:5px'>Location Sent!</p></a>";
 };
 
 

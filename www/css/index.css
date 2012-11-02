@@ -78,4 +78,15 @@ body {
     width: 20px;
     color:blue;
 }
+.leaflet-popup-content p {
+margin: -1px 0;
+top: 1px;
+left:1px;
+text-align: center;
+position: relative;
+opacity: 1;
+}
+
+.leaflet-container a {
+color: rgba(0, 120, 168, 0);
 }

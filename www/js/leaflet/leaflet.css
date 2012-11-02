@@ -93,9 +93,6 @@
 	display: none;
 	}
 
-
-
-
 /* Zoom and fade animations */
 
 
@@ -154,22 +151,7 @@
 	-o-transform: rotate(45deg);
 	transform: rotate(45deg);
 	}
-.leaflet-container a.leaflet-popup-close-button {
-	position: absolute;
-	top: 0;
-	right: 0;
-	padding: 4px 5px 0 0;
-	text-align: center;
-	width: 18px;
-	height: 14px;
-	font: 16px/14px Tahoma, Verdana, sans-serif;
-	color: #c3c3c3;
-	text-decoration: none;
-	font-weight: bold;
-	}
-.leaflet-container a.leaflet-popup-close-button:hover {
-	color: #999;
-	}
+
 .leaflet-popup-content p {
 	margin: 18px 0;
 	}
@@ -216,5 +198,5 @@
 	border-radius: 20px;
 	}
 .leaflet-popup-content {
-	font: 12px/1.4 "Helvetica Neue", Arial, Helvetica, sans-serif;
+	font: 12px/1.4 "Helvetica Neue", sans-serif;
 	}
