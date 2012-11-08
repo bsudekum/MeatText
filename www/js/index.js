@@ -37,8 +37,11 @@ L.Browser.retina = true;
         marker = new L.Marker(markerLocation, {draggable:true});
         locationPerson.clearLayers();
         locationPerson.addLayer(marker);
-        marker.bindPopup("<a href='#one' input onclick='ComposeSMSme();'/><p id='sent' style='color:black;text-decoration:none;'>Text Your Location ►</p></a>")
+        marker.bindPopup("<a href='#one'/><p id='sent' style='color:black;text-decoration:none;'>Text Your Location ►</p></a>")
             .openPopup()
+            $("#sent").click(function(){
+                $("#panel").slideToggle("fast");
+            });
         }
 
         function onLocationError(e) {
@@ -66,8 +69,12 @@ L.Browser.retina = true;
         marker = new L.Marker(markerLocation, {draggable: true});
         locationClick.clearLayers();
         locationClick.addLayer(marker);
-        marker.bindPopup("<a href='#one'input onclick='ComposeSMS();'/><p id='sent' style='color:black;text-decoration:none;'>Text This Location ►</p></a>")
+        marker.bindPopup("<a href='#one'/><p id='sent' style='color:black;text-decoration:none;'>Text This Location ►</p></a>")
         .openPopup();
+
+         $("#sent").click(function(){
+            $("#panel").slideToggle("fast");
+        }); 
     };
 
     map.on('contextmenu', onMapClick);
@@ -88,9 +95,13 @@ L.Browser.retina = true;
         marker = new L.Marker(markerLocation, {draggable:true});
         locationPerson.clearLayers();
         locationPerson.addLayer(marker);
-        marker.bindPopup("<a href='#one' input onclick='ComposeSMSme();'/><p id='sent' style='color:black;text-decoration:none;'>Text Your Location ►</p></a>")
+        marker.bindPopup("<a href='#one' /><p id='sent' style='color:black;text-decoration:none;'>Text Your Location ►</p></a>")
             .openPopup()
-        }
+
+            $("#sent").click(function(){
+                $("#panel").slideToggle("fast");
+            });
+        };
 
         function onLocationError(e) {
         }
@@ -114,6 +125,73 @@ L.Browser.retina = true;
 }; //Device on onDeviceReady
 
 
+//Copy
+//Copy
+//Copy
+
+var copyLink = function () {
+    function get_short_url(url, login, api_key, func)
+    {
+        $.getJSON(
+            "http://api.bitly.com/v3/shorten?callback=?", 
+            { 
+                "format": "json",
+                "apiKey": api_key,
+                "login": login,
+                "longUrl": url
+            },
+            function(response)
+            {
+                func(response.data.url);
+            }
+        );
+    }
+    var login = "o_7iuqro3rja";
+    var api_key = "R_0e5b4318f72e53dfee13fb1491229204";
+    get_short_url(url, login, api_key, function(short_url) {
+        console.log(short_url);
+    
+
+    messageTwo = "Here is the location: "+short_url+"\n\n\n\n Sent via MeatText.com";
+    window.plugins.clipboardPlugin.getText(function(messageTwo) {alert(messageTwo)})
+    console.log(messageTwo);
+    });
+}
+
+
+
+
+
+//Email for onclick event
+var emailComposer = function () {
+    function get_short_url(url, login, api_key, func)
+    {
+        $.getJSON(
+            "http://api.bitly.com/v3/shorten?callback=?", 
+            { 
+                "format": "json",
+                "apiKey": api_key,
+                "login": login,
+                "longUrl": url
+            },
+            function(response)
+            {
+                func(response.data.url);
+            }
+        );
+    }
+    var login = "o_7iuqro3rja";
+    var api_key = "R_0e5b4318f72e53dfee13fb1491229204";
+    get_short_url(url, login, api_key, function(short_url) {
+        console.log(short_url);
+    
+
+    messageTwo = "Here is the location: "+short_url+"\n\n\n\n Sent via MeatText.com";
+    window.plugins.emailComposer.showEmailComposer("Let's meet here!",messageTwo,"","","");
+    console.log(messageTwo);
+    });
+}
+
 //SMS for onclick event
 var ComposeSMS = function () {
     function get_short_url(url, login, api_key, func)
@@ -132,15 +210,11 @@ var ComposeSMS = function () {
             }
         );
     }
-
-
     var login = "o_7iuqro3rja";
     var api_key = "R_0e5b4318f72e53dfee13fb1491229204";
-
     get_short_url(url, login, api_key, function(short_url) {
         console.log(short_url);
     
-
     messageTwo = "Let's meet here.\n\n"+short_url;
     window.plugins.smsComposer.showSMSComposerWithCB(myCallback,'', messageTwo);
     console.log(messageTwo);
@@ -166,10 +240,8 @@ var ComposeSMSme = function () {
             }
         );
     }
-
     var login = "o_7iuqro3rja";
     var api_key = "R_0e5b4318f72e53dfee13fb1491229204";
-
     get_short_url(url, login, api_key, function(short_url) {
         console.log(short_url);
     
@@ -177,7 +249,6 @@ var ComposeSMSme = function () {
     window.plugins.smsComposer.showSMSComposerWithCB(myCallback,'', messageTwo);
     console.log(messageTwo);
     });
-
 }
 
 var myCallback = function(result){

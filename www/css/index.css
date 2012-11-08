@@ -47,7 +47,7 @@ body {
 }
 
 #geolocate{
-    position: absolute;
+    position: relative;
     top: 7px;
     left: 7px;
     z-index: 1000;
@@ -91,3 +91,46 @@ opacity: 1;
 color: rgba(0, 120, 168, 0);
 }
 
+
+a:focus {
+    outline: none;
+}
+#panel {
+    bottom:0px;
+    background: #ddd;
+    height: 100px;
+    display: none;
+    z-index: 4000;
+    position: absolute;
+    width: 100%;
+}
+
+#links{
+    position: relative;
+    left:40px;
+}
+.slide {
+    margin: 0;
+    padding: 0;
+    border-top: solid 1px #grey;
+    width: 100%;
+
+
+}
+.btn-slide {
+    text-align: center;
+    width: 144px;
+    height: 31px;
+    padding: 10px 10px 0 0;
+    margin: 0 auto;
+    display: block;
+    font: bold 120%/100% Arial, Helvetica, sans-serif;
+    color: black;
+    text-decoration: none;
+    z-index: 4000;
+    position: absolute;
+
+}
+.active {
+    background-position: right 12px;
+}

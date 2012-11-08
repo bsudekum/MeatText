@@ -15,17 +15,45 @@
         <script type="text/javascript" src="js/leaflet/L.zoomTMSLayer.js"></script>
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <script type="text/javascript" src="js/sms/SMSComposer.js"></script>
-        <script type="text/javascript" src="js/GoogleAnalyticsPlugin.js"></script>
+        <script type="text/javascript" src="js/EmailComposer.js"></script>
+        <script type="text/javascript" src="js/TwitterPlugin.js"></script>
         <script type="text/javascript" src="js/geocode/Control.BingGeocoder.js"></script> 
     </head>
 <body>
-    <div id="map"></div>
-    <a href="#" id="geolocate" style="z-index:1000"><img src="img/scope2.png" width="17px" height="17px"/></a>
+        <div id="panel">
+            <div id="links">
+                <div id="copyLink"></div>
+                <img src="img/sms.png" input onclick='ComposeSMS();' width="60px" height="45px"/>
+                <img src="img/email.png" input onclick='emailComposer();' width="88px" height="65px"/>
+                <img src="img/link.png" input onclick='tweet();' width="88px" height="65px"/>
+            </div>
+        </div>
+
+        <div id="map"></div>
+            <a href="#" id="geolocate"><img src="img/scope2.png" width="17px" height="17px"/></a>
+
+
 </body>
 
 <script type="text/javascript">
-
-
+var tweet = function(){    
+  
+        
+    // is twitter setup? If not, tell the user to go do it
+    window.plugins.twitter.isTwitterSetup(function(r) {
+        if (r === 1) {
+            // twitter is setup, compose a new tweet
+              window.plugins.twitter.composeTweet(
+                  function(s){ },
+                  function(e){ console.log("quoteText"); console.log("failed"); }, 
+                  "-  via @inspir8ion_app");
+        } else {
+        navigator.notification.alert("It looks like you haven't enabled Twitter.", null, "Oops!");
+        }
+    });
+    
+    this.preventDefault();
+}  
 </script>
 
 </html>
