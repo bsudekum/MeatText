@@ -34,6 +34,10 @@
 	<dict>
 		<key>GoogleAnalyticsPlugin</key>
 		<string>GoogleAnalyticsPlugin</string>
+		<key>TwitterPlugin</key>
+		<string>TwitterPlugin</string>
+		<key>EmailComposer</key>
+		<string>EmailComposer</string>
 		<key>SMSComposer</key>
 		<string>SMSComposer</string>
 		<key>Device</key>

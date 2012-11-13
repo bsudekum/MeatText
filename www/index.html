@@ -7,6 +7,7 @@
         <link rel="stylesheet" type="text/css" href="js/geocode/Control.BingGeocoder.css"/>
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width;"/>
         <script type="text/javascript" src="cordova-2.0.0.js"></script>
+        <script type="text/javascript" src="js/GoogleAnalyticsPlugin.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="js/jquery.mobile.js"></script>
@@ -17,43 +18,40 @@
         <script type="text/javascript" src="js/sms/SMSComposer.js"></script>
         <script type="text/javascript" src="js/EmailComposer.js"></script>
         <script type="text/javascript" src="js/TwitterPlugin.js"></script>
+        
         <script type="text/javascript" src="js/geocode/Control.BingGeocoder.js"></script> 
     </head>
 <body>
         <div id="panel">
             <div id="links">
-                <div id="copyLink"></div>
-                <img src="img/sms.png" input onclick='ComposeSMS();' width="60px" height="45px"/>
-                <img src="img/email.png" input onclick='emailComposer();' width="88px" height="65px"/>
-                <img src="img/link.png" input onclick='tweet();' width="88px" height="65px"/>
+                
+                <div id="smsText" input onclick='ComposeSMS();'>
+                    <img src="img/chat.png" width="50px" height="40px"/>
+                    <p>Text</p>
+                </div>
+
+                <div id="emailText" input onclick='emailComposer();'>
+                    <img src="img/email.png" width="70px" height="60px"/>
+                    <p>Email</email>
+                </div>
+
+                <div id="twitterText" input onclick='tweet();'>
+                    <img src="img/twitter.png" width="65px" height="65px"/>
+                    <p>Tweet</p>
+                </div>
+
             </div>
         </div>
 
         <div id="map"></div>
-            <a href="#" id="geolocate"><img src="img/scope2.png" width="17px" height="17px"/></a>
+        <a href="#" id="geolocate"><img src="img/scope2.png" width="17px" height="17px"/></a>
 
 
 </body>
 
 <script type="text/javascript">
-var tweet = function(){    
-  
-        
-    // is twitter setup? If not, tell the user to go do it
-    window.plugins.twitter.isTwitterSetup(function(r) {
-        if (r === 1) {
-            // twitter is setup, compose a new tweet
-              window.plugins.twitter.composeTweet(
-                  function(s){ },
-                  function(e){ console.log("quoteText"); console.log("failed"); }, 
-                  "-  via @inspir8ion_app");
-        } else {
-        navigator.notification.alert("It looks like you haven't enabled Twitter.", null, "Oops!");
-        }
-    });
-    
-    this.preventDefault();
-}  
+
+
 </script>
 
 </html>

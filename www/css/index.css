@@ -19,6 +19,7 @@ body {
     -webkit-touch-callout: none; 
     -webkit-user-select: none; 
     -webkit-tap-highlight-color: rgba(0,0,0,0);
+    font-family: "HelveticaNeue-Light";
 }
 
 #map {
@@ -48,14 +49,14 @@ body {
 
 #geolocate{
     position: relative;
-    top: 7px;
+    top: 13px;
     left: 7px;
     z-index: 1000;
     background-color:white;
     padding: 8px 10px 5px 9px;
     border-radius: 8px;
     border-style:solid;
-    border-color:grey;
+    border-color:lightgrey;
     border-width: 1px;
     -webkit-tap-highlight-color:rgba(0,0,0,0);
     opacity: .75;
@@ -66,18 +67,14 @@ body {
 }
 
 .leaflet-popup-content {
-    margin:13px;
+    margin:6px 13px;
+    color:white;
 }
 
 .leaflet-popup-pane{
     opacity: .85;
 }
 
-#my-div-icon {
-    height:20px;
-    width: 20px;
-    color:blue;
-}
 .leaflet-popup-content p {
 margin: -1px 0;
 top: 1px;
@@ -85,6 +82,15 @@ left:1px;
 text-align: center;
 position: relative;
 opacity: 1;
+color:white;
+}
+
+.leaflet-popup-content-wrapper, .leaflet-popup-tip {
+background: white;
+box-shadow: 0 3px 10px #888;
+-moz-box-shadow: 0 3px 10px #888;
+-webkit-box-shadow: 0 3px 14px #999;
+background: white;
 }
 
 .leaflet-container a {
@@ -97,12 +103,17 @@ a:focus {
 }
 #panel {
     bottom:0px;
-    background: #ddd;
+    background: white;
     height: 100px;
     display: none;
     z-index: 4000;
     position: absolute;
     width: 100%;
+    border-top: #999;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-top-color:grey;
+    opacity: .8;
 }
 
 #links{
@@ -112,7 +123,6 @@ a:focus {
 .slide {
     margin: 0;
     padding: 0;
-    border-top: solid 1px #grey;
     width: 100%;
 
 
@@ -133,4 +143,57 @@ a:focus {
 }
 .active {
     background-position: right 12px;
+}
+#smsText{
+    position: relative;
+    top: 9px;
+    left: 5px;
+    background: #ddd;
+    width: 222px;
+    padding: -2px;
+    border-radius: 4px;
+    padding: 5px;
+    height: 72px;
+}
+
+#smsText p{
+    position: relative;
+top: -11px;
+left: 8px;
+}
+
+#emailText {
+position: relative;
+right: -88px;
+top: -81px;
+widows: 40px;
+width: 86px;
+
+}
+
+#emailText p{
+    position: relative;
+top: -18px;
+left: 16px;
+}
+
+#twitterText{
+    position: relative;
+top: -197px;
+
+
+
+right: -175px;
+}
+
+#twitterText p{
+position: relative;
+top: -25px;
+left: 8px;
+}
+
+@media only screen and (device-width: 768px) {
+    #links {
+        left:263px;
+    }
 }

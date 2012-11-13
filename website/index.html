@@ -1,0 +1,177 @@
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>MeatText</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="MeatText is an iOS app that tells your friends where to meet you." content="">
+    <meta name="Bobby Sudekum MeatText" content="">
+    <script src="bootstrap/js/jquery.js"></script>
+
+    <!-- Le styles -->
+    <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
+      <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <style type="text/css">
+    @media (max-width: 979px) {
+
+  .navbar-fixed-top {
+    margin-bottom: 0px;
+  }
+}
+body{
+font-family: "HelveticaNeue-Light";
+}
+
+  /* Featurettes
+    ------------------------- */
+
+    .featurette-divider {
+      margin: 80px 0;
+      color: black; /* Space out the Bootstrap <hr> more */
+    }
+    .featurette {
+    padding-top: 120px; /* Vertically center images part 1: add padding above and below text. */
+      overflow: hidden; /* Vertically center images part 2: clear their floats. */
+    }
+    .featurette-image {
+      margin-top: -120px; /* Vertically center images part 3: negative margin up the image the same amount of the padding to center it. */
+    }
+
+    /* Give some space on the sides of the floated elements so text doesn't run right into it. */
+    .featurette-image.pull-left {
+      margin-right: 40px;
+    }
+    .featurette-image.pull-right {
+      margin-left: 40px;
+    }
+
+    /* Thin out the marketing headings */
+    .featurette-heading {
+      font-size: 50px;
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: -1px;
+    }
+
+    </style>
+  
+
+    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Fav and touch icons -->
+    
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="bootstrap/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="bootstrap/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="bootstrap/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="bootstrap/ico/apple-touch-icon-57-precomposed.png">
+
+    <script type="text/javascript">
+
+    if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) {
+   if (document.cookie.indexOf("iphone_redirect=false") == -1) $(window).load(function(){
+        $('#myModal').modal('show');
+    });
+}
+
+
+
+    </script>
+
+
+  </head>
+
+  <body>
+
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="brand" href="#">MeatText</a>
+            <ul class="nav nav-pills pull-right">
+              <li><a href="#myModal" data-toggle="modal">Get the App</a></li>
+              <li><a href="#about">About the app</a></li>
+            </ul>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="container">
+
+    
+      <iframe src="map/index.html" width="100%" height="700px" frameBorder="0" style="position:absolute; left:0px; z-index:20"></IFRAME>  
+
+      <!-- Modal -->
+
+      <center>
+        <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-body">
+            <h4>Did you know MeatText is in the app?</h4>
+            <a href="https://itunes.apple.com/us/app/meattext/id567921159?"><img src="img/badge.png"/></a>
+            <br>
+            <br>
+            <button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Close</button>
+        </div>
+      </center>
+
+
+   
+     
+     
+
+      <!-- START THE FEATURETTES -->
+
+<div id="text">
+
+      <a name="about"><div class="featurette"></a>
+        <img class="featurette-image pull-right" src="img/meattext_l_ns.png">
+        <h2 class="featurette-heading">Share your location with anyone.  <span class="muted">No matter what device, operating system or connection you share.</span></h2>
+        <p class="lead">MeatText is platform agnostic- when sharing your locatio, it defaults to your native mapping app (Apple maps, Google Maps).</p>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="featurette">
+        <img class="featurette-image pull-left" src="img/meattext_l_ns.png" height="20%" width="20%">
+        <h2 class="featurette-heading">It's incredible more accurate than other services.  <span class="muted">Accuracey is everything.</span></h2>
+        <p class="lead">Apple Maps sends a location that is tied to the nearest restaurant, business or center of a park. MeatText is tied to latitude and longitude.</p>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <div class="featurette">
+        <img class="featurette-image pull-right" src="img/meattext_l_ns.png" height="20%" width="20%">
+        <h2 class="featurette-heading">And lastly, this one. <span class="muted">Checkmate.</span></h2>
+        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+      </div>
+
+      <hr class="featurette-divider">
+
+      <!-- /END THE FEATURETTES -->
+
+</div>
+    </div> <!-- /container -->
+
+
+     
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+$(window).resize(function () {
+    var h = $(window).height(),
+        offsetTop = 60; // Calculate the top offset
+
+    $('#map').css('height', (h - offsetTop));
+}).resize();
+</script>
+
+  </body>
+</html>
