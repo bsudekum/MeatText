@@ -19,8 +19,9 @@
     margin-bottom: 0px;
   }
 }
-body{
-font-family: "HelveticaNeue-Light";
+html{
+font-family: helvetica;
+font-weight: lighter;
 }
 
   /* Featurettes
@@ -62,24 +63,16 @@ font-family: "HelveticaNeue-Light";
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <!-- Fav and touch icons -->
-    
+
     <link rel="shortcut icon" href="favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="bootstrap/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="bootstrap/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="bootstrap/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="bootstrap/ico/apple-touch-icon-57-precomposed.png">
+
 
     <script type="text/javascript">
-
     if((navigator.userAgent.match(/iPhone/i)) || (navigator.userAgent.match(/iPod/i))) {
    if (document.cookie.indexOf("iphone_redirect=false") == -1) $(window).load(function(){
         $('#myModal').modal('show');
     });
-}
-
-
-
+ }
     </script>
 
 
@@ -91,10 +84,9 @@ font-family: "HelveticaNeue-Light";
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <a class="brand" href="#">MeatText</a>
+          <a class="brand" href="#about" style="position: relative; top: 7px;">MeatText</a>
             <ul class="nav nav-pills pull-right">
-              <li><a href="#myModal" data-toggle="modal">Get the App</a></li>
-              <li><a href="#about">About the app</a></li>
+              <li><a href="https://itunes.apple.com/us/app/meattext/id567921159?">Get the App <img src="img/example_sm.png" height="50px" width="20px"></a></li>
             </ul>
         </div>
       </div>
@@ -104,7 +96,7 @@ font-family: "HelveticaNeue-Light";
     <div class="container">
 
     
-      <iframe src="map/index.html" width="100%" height="700px" frameBorder="0" style="position:absolute; left:0px; z-index:20"></IFRAME>  
+      <iframe src="embed/" width="100%" height="600px" frameBorder="0" style="position:absolute; left:0px; z-index:20"></IFRAME>  
 
       <!-- Modal -->
 
@@ -119,25 +111,22 @@ font-family: "HelveticaNeue-Light";
         </div>
       </center>
 
-
-   
-     
-     
+      <center id="map-footer"><p>MeatText Web-Interface. Send someone a text! <a href='map/'>Full screen mode</p></a></center>
 
       <!-- START THE FEATURETTES -->
 
 <div id="text">
 
       <a name="about"><div class="featurette"></a>
-        <img class="featurette-image pull-right" src="img/meattext_l_ns.png">
+        <img class="featurette-image pull-right" src="img/example_md.png">
         <h2 class="featurette-heading">Share your location with anyone.  <span class="muted">No matter what device, operating system or connection you share.</span></h2>
-        <p class="lead">MeatText is platform agnostic- when sharing your locatio, it defaults to your native mapping app (Apple maps, Google Maps).</p>
+        <p class="lead">MeatText is platform agnostic- when sharing your location, it defaults to the recipients native mapping app (Apple maps, Google Maps). Your friend does not have <a href="https://itunes.apple.com/us/app/meattext/id567921159?" target="_blank">MeatText</a>? No problem, the connection will still be made.</p>
       </div>
 
       <hr class="featurette-divider">
 
       <div class="featurette">
-        <img class="featurette-image pull-left" src="img/meattext_l_ns.png" height="20%" width="20%">
+        <img class="featurette-image pull-left" src="img/meattext_s_ns.png">
         <h2 class="featurette-heading">It's incredible more accurate than other services.  <span class="muted">Accuracey is everything.</span></h2>
         <p class="lead">Apple Maps sends a location that is tied to the nearest restaurant, business or center of a park. MeatText is tied to latitude and longitude.</p>
       </div>
@@ -145,33 +134,33 @@ font-family: "HelveticaNeue-Light";
       <hr class="featurette-divider">
 
       <div class="featurette">
-        <img class="featurette-image pull-right" src="img/meattext_l_ns.png" height="20%" width="20%">
-        <h2 class="featurette-heading">And lastly, this one. <span class="muted">Checkmate.</span></h2>
-        <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+        <img class="featurette-image pull-right" src="img/social.png">
+        <h2 class="featurette-heading">Want to Tweet the location of the conference to the masses? <span class="muted">Or E-Mail your grandma the location of the park bench?</span></h2>
+        <p class="lead">We've got you covered. With MeatText you can text, Tweet or E-Mail your location.</p>
       </div>
 
       <hr class="featurette-divider">
 
       <!-- /END THE FEATURETTES -->
 
-</div>
+      </div><!-- Text-->
     </div> <!-- /container -->
 
-
-     
-    <!-- Le javascript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
     
     <script src="bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-$(window).resize(function () {
-    var h = $(window).height(),
-        offsetTop = 60; // Calculate the top offset
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36301032-1']);
+  _gaq.push(['_setDomainName', 'meattext.com']);
+  _gaq.push(['_trackPageview']);
 
-    $('#map').css('height', (h - offsetTop));
-}).resize();
-</script>
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+    </script>
 
   </body>
 </html>

@@ -5353,18 +5353,34 @@ i[class^="icon-"] {
 
   iframe {
   	position: absolute;
-  	top:40px;
+  	top:60px;
   }
 }
 html, body{
 background: url('../../img/background.png') repeat top center;
 }
 
-iframe{
-	margin-bottom: 500px
-}
 #text{
 position: relative;
-padding-top: 900px;
+padding-top: 640px;
 }
 
+@media (min-width: 980px) {
+  #text {
+    padding-top:700px;
+  }
+}
+
+#map-footer{
+  position: relative;
+top: 668px;
+font-style: italic;
+z-index: 1000000;
+
+}
+
+@media (max-width: 980px) {
+  #map-footer {
+    top:608px;
+  }
+}
