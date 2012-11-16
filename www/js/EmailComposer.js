@@ -26,7 +26,7 @@ EmailComposer.prototype.showEmailComposer = function(subject,body,toRecipients,c
 		args.bccRecipients = bccRecipients;
 	if(subject)
 		args.subject = subject;
-	if(body)
+	if(body) 
 		args.body = body;
 	if(bIsHTML)
 		args.bIsHTML = bIsHTML;

@@ -140,6 +140,10 @@ L.Browser.retina = true;
             });
         };
 
+        $("#buttonDown").click(function(){
+                $("#panel").slideToggle("fast");
+                $(this).toggleClass("sent");  // Toggle the active button 
+            });
 
     map.on("popupopen", resetSlide);
 
@@ -147,42 +151,6 @@ L.Browser.retina = true;
 
 
 }; //Device on onDeviceReady
-
-
-//Copy
-//Copy
-//Copy
-
-var copyLink = function () {
-    function get_short_url(url, login, api_key, func)
-    {
-        $.getJSON(
-            "http://api.bitly.com/v3/shorten?callback=?", 
-            { 
-                "format": "json",
-                "apiKey": api_key,
-                "login": login,
-                "longUrl": url
-            },
-            function(response)
-            {
-                func(response.data.url);
-            }
-        );
-    }
-    var login = "o_7iuqro3rja";
-    var api_key = "R_0e5b4318f72e53dfee13fb1491229204";
-    get_short_url(url, login, api_key, function(short_url) {
-        console.log(short_url);
-    
-
-    messageTwo = "Here is the location: "+short_url+"\n\n\n\n Sent via MeatText.com";
-    window.plugins.clipboardPlugin.getText(function(messageTwo) {alert(messageTwo)})
-    console.log(messageTwo);
-    });
-}
-
-
 
 
 
@@ -211,7 +179,7 @@ var emailComposer = function () {
     
 
     messageTwo = "Here is the location: "+short_url+"\n\n\n\n Sent via MeatText.com";
-    window.plugins.emailComposer.showEmailComposer("Let's meet here!",messageTwo,"","","");
+    window.plugins.emailComposer.showEmailComposerWithCB(myCallbackEmail,"Let's meet here.",messageTwo,"","","");
     console.log(messageTwo);
     });
 }
@@ -246,41 +214,21 @@ var ComposeSMS = function () {
 
 }
 
-//SMS for your location
-var ComposeSMSme = function () {
-    function get_short_url(url, login, api_key, func)
-    {
-        $.getJSON(
-            "http://api.bitly.com/v3/shorten?callback=?", 
-            { 
-                "format": "json",
-                "apiKey": api_key,
-                "login": login,
-                "longUrl": url
-            },
-            function(response)
-            {
-                func(response.data.url);
-            }
-        );
-    }
-    var login = "o_7iuqro3rja";
-    var api_key = "R_0e5b4318f72e53dfee13fb1491229204";
-    get_short_url(url, login, api_key, function(short_url) {
-        console.log(short_url);
-    
-    messageTwo = "I'm right here.\n\n"+short_url;
-    window.plugins.smsComposer.showSMSComposerWithCB(myCallback,'', messageTwo);
-    console.log(messageTwo);
-    });
-}
-
 var myCallback = function(result){
 
     if(result == 0)
         console.log("cancelled");
 
     else if(result == 1)
+        elem = document.getElementById('sent').innerHTML = "<a href='#one'/><p id='sent' style='color:black;text-decoration:none;text-align:center;margin:5px'>Location Sent!</p></a>";
+};
+
+var myCallbackEmail = function(result){
+
+    if(result == 0)
+        console.log("cancelled");
+
+    else if(result == 2)
         elem = document.getElementById('sent').innerHTML = "<a href='#one'/><p id='sent' style='color:black;text-decoration:none;text-align:center;margin:5px'>Location Sent!</p></a>";
 };
 
@@ -307,7 +255,7 @@ var tweet = function () {
     get_short_url(url, login, api_key, function(short_url) {
         console.log(short_url);
     
-    messageTwo = "Here's the spot!\n"+short_url;
+    messageTwo = "Here's the spot:\n"+short_url;
 
 
 // is twitter setup? If not, tell the user to go do it
@@ -315,8 +263,8 @@ var tweet = function () {
         if (r === 1) {
             // twitter is setup, compose a new tweet
               window.plugins.twitter.composeTweet(
-                  function(s){ },
-                  function(e){ console.log("quoteText"); console.log("failed"); }, 
+                  function(s){elem = document.getElementById('sent').innerHTML = "<a href='#one'/><p id='sent' style='color:black;text-decoration:none;text-align:center;margin:5px'>Location Sent!</p></a>";},
+                  function(e){console.log("Tweet Cancelled")}, 
                   ""+ messageTwo + "");
         } else {
         navigator.notification.alert("It looks like you haven't enabled Twitter.", null, "Oops!");

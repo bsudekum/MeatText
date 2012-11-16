@@ -197,3 +197,10 @@ left: 8px;
         left:263px;
     }
 }
+
+#buttonDown{
+    position: absolute;
+    bottom: 225px;
+    left: -29px;
+    z-index=1000000;
+}

@@ -44,8 +44,13 @@
 		EF31DEEF164B6F8400223E3A /* TwitterPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = EF31DEEE164B6F8400223E3A /* TwitterPlugin.m */; };
 		EF31DEF1164B6FF100223E3A /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF31DEF0164B6FF100223E3A /* Twitter.framework */; };
 		EF31DEF3164B6FFB00223E3A /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF31DEF2164B6FFB00223E3A /* Accounts.framework */; };
+		EF3645BA1654871D0026AECA /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EF3645B91654871D0026AECA /* Default-Portrait~ipad.png */; };
+		EF3645BC1654892B0026AECA /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = EF3645BB1654892B0026AECA /* Default-Portrait@2x~ipad.png */; };
+		EF3645BE16548ABD0026AECA /* icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = EF3645BD16548ABD0026AECA /* icon-72.png */; };
+		EF3645C016548BF20026AECA /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF3645BF16548BF20026AECA /* Icon@2x.png */; };
+		EF3645C116548C520026AECA /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF83BCD8161D51FF004AEBA5 /* Default-568h@2x.png */; };
+		EF3645C3165492410026AECA /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF3645C2165492410026AECA /* Icon@2x.png */; };
 		EF38486D1617C63E009DB02E /* SMSComposer.m in Sources */ = {isa = PBXBuildFile; fileRef = EF38486C1617C63E009DB02E /* SMSComposer.m */; };
-		EF83BCDA161D5383004AEBA5 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF83BCD8161D51FF004AEBA5 /* Default-568h@2x.png */; };
 		EF83BCDD161D576B004AEBA5 /* icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EF83BCDC161D576B004AEBA5 /* icon-72@2x.png */; };
 		EF83BCDF161D5796004AEBA5 /* icon.png in Resources */ = {isa = PBXBuildFile; fileRef = EF83BCDE161D5795004AEBA5 /* icon.png */; };
 		EFBB806915F1C0A9009A5FEC /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFBB806815F1C0A9009A5FEC /* MessageUI.framework */; };
@@ -130,6 +135,11 @@
 		EF31DEEE164B6F8400223E3A /* TwitterPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterPlugin.m; sourceTree = "<group>"; };
 		EF31DEF0164B6FF100223E3A /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		EF31DEF2164B6FFB00223E3A /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		EF3645B91654871D0026AECA /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
+		EF3645BB1654892B0026AECA /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
+		EF3645BD16548ABD0026AECA /* icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon-72.png"; sourceTree = "<group>"; };
+		EF3645BF16548BF20026AECA /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
+		EF3645C2165492410026AECA /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon@2x.png"; sourceTree = "<group>"; };
 		EF38486B1617C63E009DB02E /* SMSComposer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SMSComposer.h; sourceTree = "<group>"; };
 		EF38486C1617C63E009DB02E /* SMSComposer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SMSComposer.m; sourceTree = "<group>"; };
 		EF83BCD8161D51FF004AEBA5 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../../../Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -210,6 +220,11 @@
 		29B97314FDCFA39411CA2CEA /* CustomTemplate */ = {
 			isa = PBXGroup;
 			children = (
+				EF3645C2165492410026AECA /* Icon@2x.png */,
+				EF3645BF16548BF20026AECA /* Icon@2x.png */,
+				EF3645BD16548ABD0026AECA /* icon-72.png */,
+				EF3645BB1654892B0026AECA /* Default-Portrait@2x~ipad.png */,
+				EF3645B91654871D0026AECA /* Default-Portrait~ipad.png */,
 				EF31DEF2164B6FFB00223E3A /* Accounts.framework */,
 				EF31DEF0164B6FF100223E3A /* Twitter.framework */,
 				EFC0C46E1627B1CD00C93A73 /* Default.png */,
@@ -442,11 +457,16 @@
 				30A0434914DC770100060A13 /* Localizable.strings in Resources */,
 				3088BBC1154F3926009F9C59 /* Default@2x~iphone.png in Resources */,
 				3088BBC2154F3926009F9C59 /* Default~iphone.png in Resources */,
-				EF83BCDA161D5383004AEBA5 /* Default-568h@2x.png in Resources */,
 				EF83BCDD161D576B004AEBA5 /* icon-72@2x.png in Resources */,
 				EF83BCDF161D5796004AEBA5 /* icon.png in Resources */,
 				EFC0C46D1627AE8100C93A73 /* Default@2x.png in Resources */,
 				EFC0C46F1627B1CD00C93A73 /* Default.png in Resources */,
+				EF3645BA1654871D0026AECA /* Default-Portrait~ipad.png in Resources */,
+				EF3645BC1654892B0026AECA /* Default-Portrait@2x~ipad.png in Resources */,
+				EF3645BE16548ABD0026AECA /* icon-72.png in Resources */,
+				EF3645C016548BF20026AECA /* Icon@2x.png in Resources */,
+				EF3645C116548C520026AECA /* Default-568h@2x.png in Resources */,
+				EF3645C3165492410026AECA /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,6 +553,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMPRESS_PNG_FILES = NO;
 				COPY_PHASE_STRIP = NO;
 				DEPLOYMENT_LOCATION = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -541,7 +562,7 @@
 				GCC_PREFIX_HEADER = "MeatText/MeatText-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "MeatText/MeatText-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/MeatText/Plugins/GoogSDK\"",
@@ -561,13 +582,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				COMPRESS_PNG_FILES = NO;
 				COPY_PHASE_STRIP = YES;
 				DEPLOYMENT_LOCATION = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "MeatText/MeatText-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "MeatText/MeatText-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/MeatText/Plugins/GoogSDK\"",
