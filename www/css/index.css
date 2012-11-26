@@ -164,8 +164,8 @@ left: 8px;
 
 #emailText {
 position: relative;
-right: -88px;
-top: -81px;
+right: -94px;
+top: -68px;
 widows: 40px;
 width: 86px;
 
@@ -173,23 +173,20 @@ width: 86px;
 
 #emailText p{
     position: relative;
-top: -18px;
-left: 16px;
+top: -10px;
+left: 8px;
 }
 
 #twitterText{
-    position: relative;
-top: -197px;
-
-
-
-right: -175px;
+position: relative;
+top: -168px;
+right: -180px;
 }
 
 #twitterText p{
 position: relative;
-top: -25px;
-left: 8px;
+top: -15px;
+left: 1px;
 }
 
 @media only screen and (device-width: 768px) {

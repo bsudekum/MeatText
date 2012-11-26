@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="MeatText is an iOS app that tells your friends where to meet you." content="">
     <meta name="Bobby Sudekum MeatText" content="">
+    <script type="text/javascript">var switchTo5x=true;</script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({publisher: "7b9b63dc-23b8-485e-a90f-d0c817412acf"});</script>
     <script src="bootstrap/js/jquery.js"></script>
 
     <!-- Le styles -->
@@ -15,9 +18,10 @@
     <style type="text/css">
     @media (max-width: 979px) {
 
-  .navbar-fixed-top {
+  .navbar-fixed-top { 
     margin-bottom: 0px;
   }
+  .twitter-share-button { vertical-align: text-bottom }
 }
 html{
 font-family: helvetica;
@@ -73,20 +77,30 @@ font-weight: lighter;
         $('#myModal').modal('show');
     });
  }
+
     </script>
 
 
   </head>
 
   <body>
+    <div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
 
 
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
-          <a class="brand" href="#about" style="position: relative; top: 7px;">MeatText</a>
+          <a class="brand" href="#" style="position: relative; top: 7px;">MeatText</a>
             <ul class="nav nav-pills pull-right">
               <li><a href="https://itunes.apple.com/us/app/meattext/id567921159?">Get the App <img src="img/example_sm.png" height="50px" width="20px"></a></li>
+              <li><a href="http://meattext.com/map" target="_blank" style="position: relative; top: 9px;">Web App</a></li>
             </ul>
         </div>
       </div>
@@ -96,14 +110,23 @@ font-weight: lighter;
     <div class="container">
 
     
-      <iframe src="embed/" width="100%" height="600px" frameBorder="0" style="position:absolute; left:0px; z-index:20"></IFRAME>  
+      <!--<iframe src="http://www.meattext.com/embed/#17/37.79786/-122.42380" width="100%" height="500px" frameBorder="0" style="position:absolute; left:0px; z-index:20 padding"></IFRAME> -->
+
 
       <!-- Modal -->
 
       <center>
         <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-body">
-            <h4>Did you know MeatText is in the app?</h4>
+            <h4>Did you know MeatText is in the app store?</h4>
+            <a href="https://itunes.apple.com/us/app/meattext/id567921159?"><img src="img/badge.png"/></a>
+            <br>
+            <br>
+            <button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Close</button>
+        </div>
+        <div id="privacyModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="modal-body">
+            <h4>Did you know MeatText is in the app store?</h4>
             <a href="https://itunes.apple.com/us/app/meattext/id567921159?"><img src="img/badge.png"/></a>
             <br>
             <br>
@@ -111,11 +134,55 @@ font-weight: lighter;
         </div>
       </center>
 
-      <center id="map-footer"><p>MeatText Web-Interface. Send someone a text! <a href='map/'>Full screen mode</p></a></center>
 
       <!-- START THE FEATURETTES -->
 
 <div id="text">
+
+   <!-- Three columns of text below the carousel -->
+   <center id="three">
+      <h1>Easily share locations</h1>
+      <p class="muted">How it works</p>
+      <br>
+      <br>
+      <br>
+      <hr>
+      <div class="row">
+        <div class="span4">
+          <img src="img/example_md.png" width="40%">
+          <h2>Where?</h2>
+          <p>Click the location you want to send.</p>
+        </div><!-- /.span4 -->
+        <div class="span4">
+          <img src="img/social.png">
+          <h2>Send</h2>
+          <p><strong>Tweet, E-Mail or Text.</strong><br><br>This is what your message will send: <a href="https://maps.google.com/maps?q=37.7604862,-122.4267697" target="_blank">a.MeatText.com/WnFyJs</a> - Just a URL, simple right?</p>
+        </div><!-- /.span4 -->
+        <div class="span4">
+          <img src="img/example_apple.png" width="40%">
+          <h2>Open</h2>
+          <p>MeatText defaults to your native mapping app. If you don't have a mapping app, it opens in Google Maps.</p>
+        </div><!-- /.span4 -->        
+      </div><!-- /.row -->
+      <br>
+      <iframe style="-webkit-transform: rotate(-90deg); -moz-transform: rotate(-90deg);"src="http://player.vimeo.com/video/54251268?title=0&amp;byline=0&amp;portrait=0&amp;badge=0" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+    </center>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://meattext.com" data-text="Share your location with MeatText" style="position:relative !important; width:82px!important;">Tweet</a>
+<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+<div class="fb-like" data-href="http://meattext.com" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
+<div id="pinterest">
+<a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.meattext.com&media=http%3A%2F%2Fwww.meattext.com%2Fimg%2Fmeattext_buffer.png&description=Share%20your%20location%20with%20MeatText" class="pin-it-button" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" style="vertical-align:text-bottom!important; top:-3px"/></a></div>
+      <center>
+      <hr>
+      
+      <h4>Give it a go ▼<h4>
+      <iframe src="http://www.meattext.com/embed/#17/37.79786/-122.42380" width="100%" height="500px" frameBorder="0" style="position:relative; left:0px; top:30px; z-index:20"></IFRAME>
+
+    </center>
+    <br>
+      <center id="map-footer"><p>MeatText Web-Interface. Send someone a text! <a href='http://meattext.com/map'>Full screen mode</p></a></center>
+      <br>
+      <hr>
 
       <a name="about"><div class="featurette"></a>
         <img class="featurette-image pull-right" src="img/example_md.png">
@@ -126,8 +193,8 @@ font-weight: lighter;
       <hr class="featurette-divider">
 
       <div class="featurette">
-        <img class="featurette-image pull-left" src="img/meattext_s_ns.png">
-        <h2 class="featurette-heading">It's incredible more accurate than other services.  <span class="muted">Accuracey is everything.</span></h2>
+        <img class="featurette-image pull-left" src="img/meattext_buffer.png">
+        <h2 class="featurette-heading">It's incredibly more accurate than other services.  <span class="muted">Accuracy is everything.</span></h2>
         <p class="lead">Apple Maps sends a location that is tied to the nearest restaurant, business or center of a park. MeatText is tied to latitude and longitude.</p>
       </div>
 
@@ -144,23 +211,54 @@ font-weight: lighter;
       <!-- /END THE FEATURETTES -->
 
       </div><!-- Text-->
-    </div> <!-- /container -->
+      <footer>
+        <p class="pull-right"><a href="#">Back to top</a></p>
+        <p>&copy; <a href="http://visuallybs.com">Bobby Sudekum</a>  ·  <a href="#Modal" data-toggle="modal">Privacy</a></p>
+ 
+        <!-- Modal -->
+        <div id="Modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h3 id="ModalLabel">Privacy</h3>
+              </div>
+                <div class="modal-body">
+                  <p><em><strong>Who is my location shared with?</strong></em></p>
+                  <p>Your location is shared with anyone you share it with.  If you tweet it, it will be made public (as long as your tweets are public). The location you share is just one location in time, I.E. it does not update as you move.</p>
+                  <p><em><strong>How long does the link to the location last?</strong></em></p>
+                  <p>Indefinitely</p>
+                  <p><em><strong>Can I restrict who sees my location?</strong></em></p>
+                  <p>If you prefer that someone does not see your location, don't share it with them.</p>
+                  <p><em><strong>I have another question...</strong></em></p>
+                  <p>Cool, shoot me an <a href="mailto:rsudekum@gmail.com">E-mail</a>.</p>
+                </div>
+                <div class="modal-footer">
+                  <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+                </div>
+              </div>
+              </footer>
+            </div> <!-- /container -->
 
     
     <script src="bootstrap/js/bootstrap.min.js"></script>
     <script type="text/javascript">
-      var _gaq = _gaq || [];
-  _gaq.push(['_setAccount', 'UA-36301032-1']);
-  _gaq.push(['_setDomainName', 'meattext.com']);
-  _gaq.push(['_trackPageview']);
+          var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-36301032-1']);
+      _gaq.push(['_setDomainName', 'meattext.com']);
+      _gaq.push(['_trackPageview']);
 
-  (function() {
-    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-  })();
-
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
     </script>
-
+<script type="text/javascript" src="//assets.pinterest.com/js/pinit.js"></script>
   </body>
+  <style type="text/css">
+
+  .pin-it-button{
+  vertical-align: text-bottom!important;
+  bottom:3px;
+}
+  </style>
 </html>

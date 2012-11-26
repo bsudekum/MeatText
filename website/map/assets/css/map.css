@@ -8,73 +8,40 @@
 body {
 	background: #ffffff;
 	color: #111111;
-	font-family: Helvetica;
+	 font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
 	font-weight: lighter;
 	padding: 20px;
 	font-size: 30px;
 	}
 
-	h1 {
-
-		margin-bottom: 20px;
-		}
 	
 	form#payment {
-		background: rgb(72, 164, 207);
 		-moz-border-radius: 5px;
 		-webkit-border-radius: 5px;
 		-khtml-border-radius: 5px;
 		border-radius: 5px;
 		counter-reset: fieldsets;
 		padding: 10px;
-		width: 115px;
+	
 		}
 		
 		form#payment fieldset {
 			border: none;
-			margin-bottom: 10px;
 			}
 		
-		form#payment fieldset:last-of-type {
-			margin-bottom: 0;
-			}
-			
-			form#payment legend {
-				color: #384313;
-			
-				font-weight: bold;
-				padding-bottom: -5px;
-				text-shadow: 0 1px 1px #c0d576;
-				}
-				
 				form#payment > fieldset > legend:before {
 					content: "Step " counter(fieldsets) ": ";
 					counter-increment: fieldsets;
 					}
 				
-				form#payment fieldset fieldset legend {
-					color: #111111;
-					font-size: 13px;
-					font-weight: normal;
-					padding-bottom: 0;
-					}
-			
 			form#payment ol li {
-				background: #b9cf6a;
-				background: rgba(255,255,255,.3);
-				border-color: #e3ebc3;
-				border-color: rgba(255,255,255,.6);
-				border-style: solid;
-				border-width: 2px;
+				
 				-moz-border-radius: 5px;
 				-webkit-border-radius: 5px;
 				-khtml-border-radius: 5px;
 				border-radius: 5px;
-				line-height: 30px;
-				list-style: none;
-				padding: 2px 2px;
-				margin-bottom: 2px;
 		
+				list-style: none;
 				}
 							
 				form#payment ol ol li {
@@ -83,46 +50,24 @@ body {
 					float: left;
 					}
 			
-			form#payment label {
-				float: left;
-				font-size: 13px;
-				width: 110px;
-				}
-				
-			form#payment fieldset fieldset label {
-				background:none no-repeat left 50%;
-				line-height: 20px;
-				padding: 0 0 0 30px;
-				width: auto;
-				}
-					
-				form#payment label[for=visa] {
-					background-image: url(visa.gif);
-					}
-				form#payment label[for=amex] {
-					background-image: url(amex.gif);
-					}
-				form#payment label[for=mastercard] {
-					background-image: url(mastercard.gif);
-					}
-					
 				form#payment fieldset fieldset label:hover {
 					cursor: pointer;
 					}
 				
 			form#payment input:not([type=radio]),
 			form#payment textarea {
-				background: #ffffff;
-				border: none;
+				background: lightgrey;
+				border-style:solid;
+				border-width: 1px;
+				border-color: grey
 				-moz-border-radius: 3px;
 				-webkit-border-radius: 3px;
 				-khtml-border-radius: 3px;
 				border-radius: 3px;
-			
 				outline: none;
-				padding: 5px;
-				width: 100px;
-				padding-left: 2px
+				padding: 9px;
+				width: 137px;
+				padding-left: 20px
 				}
 					
 				form#payment input:not([type=submit]):focus,
@@ -132,11 +77,11 @@ body {
 					
 				form#payment input[type=radio] {
 					float: left;
-					margin-right: 5px;
+					
 					}
 						
 			form#payment button {
-				background: #384313;
+
 				border: none;
 				-moz-border-radius: 20px;
 				-webkit-border-radius: 20px;
@@ -149,13 +94,11 @@ body {
 				padding: 3px 12px;
 				text-shadow: 0 1px 1px black;
 				text-transform: uppercase;
+				cursor:pointer;
 
 				}
-					
-				form#payment button:hover {
-					background: #1e2506;
-					cursor: pointer;
-					}
+				
+
 
 				#location{
 					display: none;
@@ -209,7 +152,7 @@ body {
       	z-index: 1001;
       	position: absolute;
       	left: 50px;
-      	top: 10px;
+      
       	font-family: helvetica;
       	font-size: 20px;
       }
@@ -261,12 +204,15 @@ body {
 }
 
 .leaflet-popup-content-wrapper {
--moz-border-radius: 8px;
--webkit-border-radius: 8px;
-border-radius: 8px;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
 }
 .leaflet-popup-content {
-margin: 1px 1px;
+display: inline-block;
+width: 200px !important;
+max-height: 2000px !important;
+margin: 1px;
 }
 
 .leaflet-popup-close-button {
@@ -277,17 +223,100 @@ form#payment ol li{
 	line-height: 0px;
 }
 
-form#payment input:not([type="radio"]){
-	height: 15px;
-}
+
 
 ol{
 	position: relative;
-	left:-1px;
 }
 
 #notes{
 	font-family: helvetica;
 	font-weight:lighter;
 	font-size:1em;
+}
+
+#email{
+	float: right;
+	position: relative;
+	left:-18px;
+	z-index: 1000;
+}
+
+.texttoggle{
+	float: right;
+	position: relative;
+	left:-9px;
+	z-index: 1000
+}
+
+.texttoggle img{
+	position: relative;
+	top:15px;
+}
+
+#twitter{
+	float:right;
+	position: relative;
+	left: -23px;
+	z-index: 1000;
+}
+
+#popupStuff p {
+	text-align: center;
+	margin-bottom:-15px;
+	text-decoration: none;
+}
+
+#popupStuff a {
+	text-decoration: none;
+}
+
+.leaflet-container a.leaflet-popup-close-button{
+	z-index: 10001;
+}
+
+.leaflet-control-attribution a {
+	text-decoration: none;
+
+}
+
+.leaflet-control-attribution {
+	font-size: 9px !important;
+}
+
+.leaflet-popup{
+	opacity: .90 !important;
+	 /* IE 8 */
+  -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=86)" !important;
+
+  /* IE 5-7 */
+  filter: alpha(opacity=90) !important;
+
+  /* Netscape */
+  -moz-opacity: 0.90 !important;
+
+  /* Safari 1.x */
+  -khtml-opacity: 0.90 !important;
+
+  /* Good browsers */
+  opacity: 0.90 !important;
+}
+
+ol li:nth-child(2)  {
+		padding:2px;
+				}
+
+ol li:nth-child(1) {
+		padding:2px;
+				}
+#panel {
+	
+	position: relative;
+    display: none;
+    width: 100%;
+    border-top-color:grey;
+    opacity: .8;
+    border-style:line;
+    border-top:grey;
+    border-width: 1px
 }

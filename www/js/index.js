@@ -156,6 +156,8 @@ L.Browser.retina = true;
 
 //Email for onclick event
 var emailComposer = function () {
+    $('#emailText img').attr('src','img/loading.gif');
+
     function get_short_url(url, login, api_key, func)
     {
         $.getJSON(
@@ -176,16 +178,18 @@ var emailComposer = function () {
     var api_key = "R_0e5b4318f72e53dfee13fb1491229204";
     get_short_url(url, login, api_key, function(short_url) {
         console.log(short_url);
-    
 
     messageTwo = "Here is the location: "+short_url+"\n\n\n\n Sent via MeatText.com";
     window.plugins.emailComposer.showEmailComposerWithCB(myCallbackEmail,"Let's meet here.",messageTwo,"","","");
     console.log(messageTwo);
+    $('#emailText img').attr('src','img/email.png');
     });
 }
 
 //SMS for onclick event
 var ComposeSMS = function () {
+    $('#smsText img').attr('src','img/loading.gif');
+
     function get_short_url(url, login, api_key, func)
     {
         $.getJSON(
@@ -206,10 +210,13 @@ var ComposeSMS = function () {
     var api_key = "R_0e5b4318f72e53dfee13fb1491229204";
     get_short_url(url, login, api_key, function(short_url) {
         console.log(short_url);
+
     
     messageTwo = "Let's meet here.\n\n"+short_url;
     window.plugins.smsComposer.showSMSComposerWithCB(myCallback,'', messageTwo);
     console.log(messageTwo);
+        
+        $('#smsText img').attr('src','img/chat.png');
     });
 
 }
@@ -232,8 +239,9 @@ var myCallbackEmail = function(result){
         elem = document.getElementById('sent').innerHTML = "<a href='#one'/><p id='sent' style='color:black;text-decoration:none;text-align:center;margin:5px'>Location Sent!</p></a>";
 };
 
-//SMS for your location
+//Tweet for your location
 var tweet = function () {
+    $('#twitterText img').attr('src','img/loading.gif');
     function get_short_url(url, login, api_key, func)
     {
         $.getJSON(
@@ -273,6 +281,7 @@ var tweet = function () {
 
 
     console.log(messageTwo);
+    $('#twitterText img').attr('src','img/twitter.png');
     });
 
 
