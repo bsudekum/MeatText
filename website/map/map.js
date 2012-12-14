@@ -9,7 +9,7 @@ function runMap() {
 
         marker= new L.LayerGroup();
          L.zoomTMSLayer({ 
-            url:            'http://{s}.tiles.mapbox.com/v3/mapbox.mapbox-streets/',
+            url:            'http://{s}.tiles.mapbox.com/v3/bobbysud.map-f61iq31n/',
             layername :     '',
             serviceVersion: '',
             tileMaxZoom:    17,

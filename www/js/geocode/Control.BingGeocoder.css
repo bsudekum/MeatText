@@ -2,6 +2,7 @@
 	background-position: 50% 50%;
 	background-repeat: no-repeat;
 	display: block;
+	z-index: 214748!important;
 }
 
 
@@ -10,41 +11,62 @@
 	background-image: url(images/geocoder.png);
 	width: 36px;
 	height: 70px;
+	z-index: 214748!important;
 }
 
 #mytext{
-	left: 25px;
+	border-style:solid;
+	border-color:lightgrey;
+	border-width: 1px;
+	left: -65px; 
 	top: 6px;
 	position: relative;
-	height:15px;
-	border-radius: 6px;
-	opacity: .75;
+	height:20px;
+	border-radius: 3px;
+	z-index: 214748!important;
+	background: white url(../../img/search.png) left no-repeat;
+	padding-left: 12px;
+	width: 108px;
+	opacity: .8;
+
+}
+
+
+#mytext:focus{
+	border-color:grey;
 }
 
 .leaflet-touch .leaflet-control-geocoder a {
 	width: 44px;
 	height: 44px;
+	z-index: 214748!important;
 }
 
 .leaflet-control-geocoder .leaflet-control-geocoder-form,
 .leaflet-control-geocoder-expanded .leaflet-control-geocoder-toggle {
 	display: none;
+	z-index: 214748!important;
 }
 
 .leaflet-control-geocoder-expanded .leaflet-control-geocoder-form {
 	display: block;
 	position: relative;
+	z-index: 214748!important;
 }
 
 .leaflet-control-geocoder-expanded .leaflet-control-geocoder-form {
 	padding: 4px;
 	padding-left: 0px;
+	z-index: 214748!important;
 
 }
 .leaflet-right .leaflet-control {
 	margin-right: 0px !important;
+	z-index: 214748!important;
 }
 
 #mybutton{
 	opacity: 0
+
 }
+

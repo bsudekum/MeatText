@@ -1,4 +1,7 @@
 
+
+
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -8,25 +11,22 @@
     <meta name="MeatText is an iOS app that tells your friends where to meet you." content="">
     <meta name="Bobby Sudekum MeatText" content="">
     <script type="text/javascript">var switchTo5x=true;</script>
-<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
-<script type="text/javascript">stLight.options({publisher: "7b9b63dc-23b8-485e-a90f-d0c817412acf"});</script>
     <script src="bootstrap/js/jquery.js"></script>
 
     <!-- Le styles -->
     <link href="bootstrap/css/bootstrap.css" rel="stylesheet">
-      <link href="bootstrap/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet">
     <style type="text/css">
-    @media (max-width: 979px) {
-
-  .navbar-fixed-top { 
-    margin-bottom: 0px;
-  }
-  .twitter-share-button { vertical-align: text-bottom }
-}
-html{
-font-family: helvetica;
-font-weight: lighter;
-}
+      @media (max-width: 979px) {
+      .navbar-fixed-top { 
+      margin-bottom: 0px;
+      } 
+      .twitter-share-button { vertical-align: text-bottom }
+      }
+      html{
+      font-family: helvetica;
+      font-weight: lighter;
+      }
 
   /* Featurettes
     ------------------------- */
@@ -68,7 +68,8 @@ font-weight: lighter;
     <![endif]-->
 
 
-    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon"> 
 
 
     <script type="text/javascript">
@@ -85,13 +86,7 @@ font-weight: lighter;
 
   <body>
     <div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+
 
 
     <div class="navbar navbar-fixed-top">
@@ -121,14 +116,14 @@ font-weight: lighter;
             <h4>Did you know MeatText is in the app store?</h4>
             <a href="https://itunes.apple.com/us/app/meattext/id567921159?"><img src="img/badge.png"/></a>
             <br>
-            <br>
+            
             <button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Close</button>
         </div>
         <div id="privacyModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="modal-body">
             <h4>Did you know MeatText is in the app store?</h4>
             <a href="https://itunes.apple.com/us/app/meattext/id567921159?"><img src="img/badge.png"/></a>
-            <br>
+            
             <br>
             <button class="btn btn-info" data-dismiss="modal" aria-hidden="true">Close</button>
         </div>
@@ -140,12 +135,46 @@ font-weight: lighter;
 <div id="text">
 
    <!-- Three columns of text below the carousel -->
-   <center id="three">
+   <center id="three" style="padding-top:150px">
       <h1>Easily share locations</h1>
-      <p class="muted">How it works</p>
+     <br>
+     
+ 
+     <!-- Button to trigger modal -->
+<a href="#videomodal" role="button" class="btn" data-toggle="modal" onclick="playVideo()">Watch the Video ►</a>
+ 
+<!-- Modal -->
+<div id="videomodal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="videomodalLabel" aria-hidden="true">
+  <div class="modal-body">
+   <script type="text/javascript">
+   function playVideo(){
+    $("#video").html("<iframe src='http://player.vimeo.com/video/54348834?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autoplay=1' width='100%' height='281' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>")
+   };
+
+   </script> 
+  <div id="video"><iframe src='http://player.vimeo.com/video/54348834?title=0&amp;byline=0&amp;portrait=0&amp;badge=0' width='100%' height='281' frameborder='0' webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>""</div>
+  <button class="btn" data-dismiss="modal" aria-hidden="true" onclick="pauseVideo()">Close</button> 
+  <script type="text/javascript">
+  function pauseVideo(){
+    $("#video").html("");
+  };
+  $('#videomodal').on('hidden', function () {
+    $("#video").html("");
+  })
+  $('#videomodal').modal({
+    backdrop: false
+  })
+  </script> 
+  </div>
+</div>
+<br>
+<br>
+<br>
+
+            <p class="muted">How it works</p>
       <br>
-      <br>
-      <br>
+      
+      
       <hr>
       <div class="row">
         <div class="span4">
@@ -156,7 +185,7 @@ font-weight: lighter;
         <div class="span4">
           <img src="img/social.png">
           <h2>Send</h2>
-          <p><strong>Tweet, E-Mail or Text.</strong><br><br>This is what your message will send: <a href="https://maps.google.com/maps?q=37.7604862,-122.4267697" target="_blank">a.MeatText.com/WnFyJs</a> - Just a URL, simple right?</p>
+          <p><strong>Tweet, E-Mail or Text.</strong><br><br>This is what your message will send: <a href="https://maps.google.com/maps?q=37.7604862,-122.4267697" target="_blank">a.meattext.com/WnFyJs</a> - Just a URL, simple right?</p>
         </div><!-- /.span4 -->
         <div class="span4">
           <img src="img/example_apple.png" width="40%">
@@ -164,14 +193,10 @@ font-weight: lighter;
           <p>MeatText defaults to your native mapping app. If you don't have a mapping app, it opens in Google Maps.</p>
         </div><!-- /.span4 -->        
       </div><!-- /.row -->
-      <br>
-      <iframe style="-webkit-transform: rotate(-90deg); -moz-transform: rotate(-90deg);"src="http://player.vimeo.com/video/54251268?title=0&amp;byline=0&amp;portrait=0&amp;badge=0" width="500" height="281" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
     </center>
-        <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://meattext.com" data-text="Share your location with MeatText" style="position:relative !important; width:82px!important;">Tweet</a>
+        <a href="https://twitter.com/share" class="twitter-share-button" data-url="www.meattext.com" data-text="Share your location with MeatText" style="position:relative !important; width:82px!important;">Tweet</a>
 <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
-<div class="fb-like" data-href="http://meattext.com" data-send="false" data-layout="button_count" data-width="450" data-show-faces="false"></div>
-<div id="pinterest">
-<a href="http://pinterest.com/pin/create/button/?url=http%3A%2F%2Fwww.meattext.com&media=http%3A%2F%2Fwww.meattext.com%2Fimg%2Fmeattext_buffer.png&description=Share%20your%20location%20with%20MeatText" class="pin-it-button" count-layout="horizontal"><img border="0" src="//assets.pinterest.com/images/PinExt.png" title="Pin It" style="vertical-align:text-bottom!important; top:-3px"/></a></div>
+
       <center>
       <hr>
       

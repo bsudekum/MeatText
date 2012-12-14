@@ -562,7 +562,7 @@
 				GCC_PREFIX_HEADER = "MeatText/MeatText-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "MeatText/MeatText-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/MeatText/Plugins/GoogSDK\"",
@@ -589,7 +589,7 @@
 				GCC_PREFIX_HEADER = "MeatText/MeatText-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				INFOPLIST_FILE = "MeatText/MeatText-Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/MeatText/Plugins/GoogSDK\"",

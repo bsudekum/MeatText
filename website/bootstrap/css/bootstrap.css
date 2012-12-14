@@ -5005,7 +5005,7 @@ hr {
 .navbar .nav > li > a {
   padding: 13px 15px 6px;
   font-family: "HelveticaNeue-Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
-  font-weight: bold;
+  font-weight: lighter;
   text-shadow: none;
 }
 .navbar .nav > li > a:hover {
@@ -5089,7 +5089,7 @@ div.subnav .nav > li > a {
   border-left-color: transparent;
   border-right-color: transparent;
   color: #555555;
-  font-weight: bold;
+  font-weight: lighter;
 }
 div.subnav .nav > li > a:hover {
   background-color: transparent;
@@ -5354,7 +5354,6 @@ a.PIN_1353466025163_pin_it_button {
 
 html, body{
 background: url('../../img/background.png') repeat top center;
-cursor: pointer
 }
 
 
@@ -5374,7 +5373,6 @@ z-index: 1000000;
 
 
 #three {
-  padding-top:150px;
-  padding-bottom: 100px
+  padding-top:100px;
 }
 

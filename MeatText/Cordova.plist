@@ -3,11 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>UIWebViewBounce</key>
-	<true/>
+	<false/>
 	<key>TopActivityIndicator</key>
 	<string>gray</string>
 	<key>EnableLocation</key>
-	<false/>
+	<true/>
 	<key>EnableViewportScale</key>
 	<false/>
 	<key>AutoHideSplashScreen</key>

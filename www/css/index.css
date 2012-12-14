@@ -12,7 +12,6 @@ body {
     width:100%;
     padding: 0px;
     margin:0px;
-    position: fixed;
     -webkit-overflow-scrolling: touch;
     -webkit-transform: translate3d(0px,0px,0px);
     overflow: hidden; 
@@ -28,7 +27,6 @@ body {
     padding: 0px;
     margin: 0px;
     position: absolute;
-    z-index: 1;
     -webkit-tap-highlight-color:rgba(0,0,0,0);
 
 }
@@ -40,27 +38,56 @@ body {
 }
 
 .leaflet-popup-content-wrapper {
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
-    border-radius: 5px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
     -webkit-tap-highlight-color:rgba(0,0,0,0);
 
+}
+.leaflet-popup-close-button{
+    font-size: 0px;
 }
 
 #geolocate{
-    position: relative;
-    top: 13px;
-    left: 7px;
+    position: absolute;
     z-index: 1000;
     background-color:white;
-    padding: 8px 10px 5px 9px;
-    border-radius: 8px;
-    border-style:solid;
-    border-color:lightgrey;
+    border-right-style:solid;
+    border-color:#CCC;
     border-width: 1px;
     -webkit-tap-highlight-color:rgba(0,0,0,0);
-    opacity: .75;
+    padding:11px;
+    opacity: .7;
+
 }
+
+#geolocate:active, #settingsButton:active{
+    background: grey;
+    border-color:white;
+    opacity: 1;
+    transition: background-color 2s linear 
+}
+.leaflet-control-geocoder{
+position: relative;
+top: -2px;
+}
+
+#settingsButton{
+position: absolute;
+top: 0px;
+right: 0px;
+z-index: 1001;
+background-color: white;
+padding: 5px 7px 2px 6px;
+border-left: solid;
+border-color: #CCC;
+border-width: 1px;
+-webkit-tap-highlight-color: rgba(0,0,0,0);
+opacity: .8;
+padding: 9px;
+}
+
+
 
 .leaflet-container a {
     text-decoration: none;
@@ -103,7 +130,15 @@ a:focus {
 }
 #panel {
     bottom:0px;
-    background: white;
+    background: #f2f5f6;
+background: -moz-radial-gradient(top,  #f2f5f6 0%, #e3eaed 42%, #c8d7dc 100%);
+background: -webkit-gradient(radial, left top, left bottom, color-stop(0%,#f2f5f6), color-stop(42%,#e3eaed), color-stop(100%,#c8d7dc));
+background: -webkit-radial-gradient(top,  #f2f5f6 0%,#e3eaed 42%,#c8d7dc 100%);
+background: -o-radial-gradient(top,  #f2f5f6 0%,#e3eaed 42%,#c8d7dc 100%);
+background: -ms-radial-gradient(top,  #f2f5f6 0%,#e3eaed 42%,#c8d7dc 100%);
+background: radial-gradient(to bottom,  #f2f5f6 0%,#e3eaed 42%,#c8d7dc 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5f6', endColorstr='#c8d7dc',GradientType=0 );
+opacity: .8;
     height: 100px;
     display: none;
     z-index: 4000;
@@ -113,20 +148,43 @@ a:focus {
     border-top-style: solid;
     border-top-width: 1px;
     border-top-color:grey;
-    opacity: .8;
+
+
 }
 
-#links{
-    position: relative;
-    left:40px;
+
+
+/*#settings {
+    bottom:0px;
+    background: #f2f5f6;
+background: -moz-radial-gradient(top,  #f2f5f6 0%, #e3eaed 42%, #c8d7dc 100%);
+background: -webkit-gradient(radial, left top, left bottom, color-stop(0%,#f2f5f6), color-stop(42%,#e3eaed), color-stop(100%,#c8d7dc));
+background: -webkit-radial-gradient(top,  #f2f5f6 0%,#e3eaed 42%,#c8d7dc 100%);
+background: -o-radial-gradient(top,  #f2f5f6 0%,#e3eaed 42%,#c8d7dc 100%);
+background: -ms-radial-gradient(top,  #f2f5f6 0%,#e3eaed 42%,#c8d7dc 100%);
+background: radial-gradient(to bottom,  #f2f5f6 0%,#e3eaed 42%,#c8d7dc 100%);
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5f6', endColorstr='#c8d7dc',GradientType=0 );
+opacity: .8;
+    height: 100px;
+    display: none;
+    z-index: 4000;
+    position: absolute;
+    width: 100%;
+    border-top: #999;
+    border-top-style: solid;
+    border-top-width: 1px;
+    border-top-color:grey;
+
 }
+*/
+
 .slide {
     margin: 0;
     padding: 0;
     width: 100%;
-
-
 }
+
+
 .btn-slide {
     text-align: center;
     width: 144px;
@@ -144,16 +202,19 @@ a:focus {
 .active {
     background-position: right 12px;
 }
+/*
 #smsText{
     position: relative;
     top: 9px;
     left: 5px;
-    background: #ddd;
     width: 222px;
     padding: -2px;
     border-radius: 4px;
     padding: 5px;
     height: 72px;
+}
+#smsText:active{
+    color:grey;
 }
 
 #smsText p{
@@ -177,6 +238,10 @@ top: -10px;
 left: 8px;
 }
 
+#emailText:active{
+    color:grey;
+}
+
 #twitterText{
 position: relative;
 top: -168px;
@@ -189,6 +254,10 @@ top: -15px;
 left: 1px;
 }
 
+#twitterText:active{
+    color:grey;
+}*/
+
 @media only screen and (device-width: 768px) {
     #links {
         left:263px;
@@ -199,5 +268,90 @@ left: 1px;
     position: absolute;
     bottom: 225px;
     left: -29px;
-    z-index=1000000;
+    z-index:1000000;
 }
+
+
+
+.leaflet-control-attribution{
+    opacity: 0px !important;
+    font-size:0px !important;
+}
+
+#background{
+position: absolute;
+top: 0px;
+height: 42px;
+z-index: 1;
+width: 100%;
+left: 0px;
+background: white;
+border-bottom-style: solid;
+border-bottom-color:#EBEBEB;
+border-bottom-width: 1px;
+opacity: 1;
+box-shadow: 0px 1px 10px rgba(50, 50, 50, 0.53);
+
+
+}
+
+
+.ui-header .ui-btn-inner, .ui-footer .ui-btn-inner, .ui-mini .ui-btn-inner{
+    font-size: 17.5px;
+}
+#button1:active{
+    font-weight: bold;
+}
+
+#footer{
+position: fixed;
+bottom: 0px;
+width: 100%;
+height: 40px;
+box-shadow: 0px 1px 10px rgba(50, 50, 50, 0.53);
+}
+
+.ui-btn-text{
+    position: relative;
+    top:-4px!important;
+}
+
+#settingsFooter{
+position: fixed;
+bottom: -6px;
+width: 100%;
+height: 45px;
+z-index: 100000;
+box-shadow: 0px 1px 10px rgba(50, 50, 50, 0.53);
+}
+
+.ui-btn-text {
+    font-size: 17.5px !important;
+    font-family: helvetica;
+    font-weight: lighter;
+    color:grey;
+    position: relative!important;
+    top:2px!important;
+}
+.ui-btn-text img {
+    font-size: 15px !important;
+    font-family: helvetica;
+    font-weight: lighter;
+    color:grey;
+    position: relative!important;
+    top:-5px!important;
+}
+
+.ui-btn-text:active{
+    font-weight:bold;
+    color:black;
+}
+
+#settings{
+position: fixed;
+bottom: -6px;
+width: 100%;
+height: 40px;
+z-index: 100000
+}
+
