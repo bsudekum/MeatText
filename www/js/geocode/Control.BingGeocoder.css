@@ -18,15 +18,15 @@
 	border-style:solid;
 	border-color:lightgrey;
 	border-width: 1px;
-	left: -65px; 
-	top: 6px;
+	left: -55px; 
+	top: 5px;
 	position: relative;
-	height:20px;
+	height:22px;
 	border-radius: 3px;
 	z-index: 214748!important;
 	background: white url(../../img/search.png) left no-repeat;
 	padding-left: 12px;
-	width: 108px;
+	width: 130px;
 	opacity: .8;
 
 }
