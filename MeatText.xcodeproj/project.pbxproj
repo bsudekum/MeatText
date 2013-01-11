@@ -56,6 +56,7 @@
 		EFBB806915F1C0A9009A5FEC /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFBB806815F1C0A9009A5FEC /* MessageUI.framework */; };
 		EFC0C46D1627AE8100C93A73 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EFC0C46C1627AE8100C93A73 /* Default@2x.png */; };
 		EFC0C46F1627B1CD00C93A73 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = EFC0C46E1627B1CD00C93A73 /* Default.png */; };
+		EFCAFB4C16862C5D00FD9F8F /* ClipboardPlugin.m in Sources */ = {isa = PBXBuildFile; fileRef = EFCAFB4B16862C5D00FD9F8F /* ClipboardPlugin.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -148,6 +149,8 @@
 		EFBB806815F1C0A9009A5FEC /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		EFC0C46C1627AE8100C93A73 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		EFC0C46E1627B1CD00C93A73 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		EFCAFB4A16862C5D00FD9F8F /* ClipboardPlugin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClipboardPlugin.h; sourceTree = "<group>"; };
+		EFCAFB4B16862C5D00FD9F8F /* ClipboardPlugin.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClipboardPlugin.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -308,6 +311,8 @@
 		307C750510C5A3420062BCA9 /* Plugins */ = {
 			isa = PBXGroup;
 			children = (
+				EFCAFB4A16862C5D00FD9F8F /* ClipboardPlugin.h */,
+				EFCAFB4B16862C5D00FD9F8F /* ClipboardPlugin.m */,
 				EF31DEED164B6F8400223E3A /* TwitterPlugin.h */,
 				EF31DEEE164B6F8400223E3A /* TwitterPlugin.m */,
 				EF296FA5164A191800132588 /* EmailComposer.h */,
@@ -500,6 +505,7 @@
 				EF38486D1617C63E009DB02E /* SMSComposer.m in Sources */,
 				EF296FA7164A191800132588 /* EmailComposer.m in Sources */,
 				EF31DEEF164B6F8400223E3A /* TwitterPlugin.m in Sources */,
+				EFCAFB4C16862C5D00FD9F8F /* ClipboardPlugin.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

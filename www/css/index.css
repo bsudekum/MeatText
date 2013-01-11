@@ -56,7 +56,7 @@ body {
     border-color:#CCC;
     border-width: 1px;
     -webkit-tap-highlight-color:rgba(0,0,0,0);
-    padding:11px;
+    padding:10px;
     opacity: .7;
 
 }
@@ -94,8 +94,8 @@ padding: 9px;
 }
 
 .leaflet-popup-content {
-    margin:6px 13px;
     color:white;
+    margin:15px 14px 14px 19px;
 }
 
 .leaflet-popup-pane{
@@ -106,10 +106,16 @@ padding: 9px;
 margin: -1px 0;
 top: 1px;
 left:1px;
-text-align: center;
+text-align: left;
 position: relative;
 opacity: 1;
 color:white;
+overflow-y: scroll;
+overflow-x:hidden;
+color:black;
+width: 120px!important;
+max-height: 60px;
+margin:-11px -7px -8px -14px;
 }
 
 .leaflet-popup-content-wrapper, .leaflet-popup-tip {
@@ -152,31 +158,6 @@ opacity: .8;
 
 }
 
-
-
-/*#settings {
-    bottom:0px;
-    background: #f2f5f6;
-background: -moz-radial-gradient(top,  #f2f5f6 0%, #e3eaed 42%, #c8d7dc 100%);
-background: -webkit-gradient(radial, left top, left bottom, color-stop(0%,#f2f5f6), color-stop(42%,#e3eaed), color-stop(100%,#c8d7dc));
-background: -webkit-radial-gradient(top,  #f2f5f6 0%,#e3eaed 42%,#c8d7dc 100%);
-background: -o-radial-gradient(top,  #f2f5f6 0%,#e3eaed 42%,#c8d7dc 100%);
-background: -ms-radial-gradient(top,  #f2f5f6 0%,#e3eaed 42%,#c8d7dc 100%);
-background: radial-gradient(to bottom,  #f2f5f6 0%,#e3eaed 42%,#c8d7dc 100%);
-filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f2f5f6', endColorstr='#c8d7dc',GradientType=0 );
-opacity: .8;
-    height: 100px;
-    display: none;
-    z-index: 4000;
-    position: absolute;
-    width: 100%;
-    border-top: #999;
-    border-top-style: solid;
-    border-top-width: 1px;
-    border-top-color:grey;
-
-}
-*/
 
 .slide {
     margin: 0;
@@ -311,10 +292,7 @@ height: 40px;
 box-shadow: 0px 1px 10px rgba(50, 50, 50, 0.53);
 }
 
-.ui-btn-text{
-    position: relative;
-    top:-4px!important;
-}
+
 
 #settingsFooter{
 position: fixed;
@@ -322,16 +300,19 @@ bottom: -6px;
 width: 100%;
 height: 45px;
 z-index: 100000;
-box-shadow: 0px 1px 10px rgba(50, 50, 50, 0.53);
 }
 
-.ui-btn-text {
-    font-size: 17.5px !important;
+.setting-text .ui-btn-text{
+    font-size: 12.5px !important;
     font-family: helvetica;
     font-weight: lighter;
     color:grey;
     position: relative!important;
-    top:2px!important;
+    top:-3px!important;   
+}
+
+.ui-btn-text{
+    font-size: 13px;
 }
 .ui-btn-text img {
     font-size: 15px !important;
@@ -339,7 +320,7 @@ box-shadow: 0px 1px 10px rgba(50, 50, 50, 0.53);
     font-weight: lighter;
     color:grey;
     position: relative!important;
-    top:-5px!important;
+    top:-8px!important;
 }
 
 .ui-btn-text:active{
@@ -354,4 +335,65 @@ width: 100%;
 height: 40px;
 z-index: 100000
 }
+#notClicked{
+    background: white!important;
+}
+.clicked {
+    
+    background-image: url(copy.png);
+    background-repeat:no-repeat;
+    background-attachment:fixed;
+    background-position:right;
+    background-image-size:1%; 
+    background: lightgrey;
+}
 
+#sent li {
+    border-bottom-style:solid;
+    border-bottom-width: 1px;
+    list-style: none;
+    border-bottom-color:#FFBE99;
+    color:#003977;
+}
+
+#sent li:active{
+    background: #ddd;
+    font-weight: medium;
+}
+
+
+#sent li a:visited {
+    background: lightgrey;
+    font-weight: bold;
+    color:black;
+}
+
+
+.leaflet-marker-shadow {
+    z-index: 10000!important;
+}
+
+.iconClass{
+    opacity: .7;
+}
+form .ui-btn{
+    opacity: 0;
+}
+
+.iconClass{
+    z-index: 1!important;
+}
+
+.seeting-text{
+    position: relative;
+    top:-3px!important;
+}
+
+.settings-text .ui-btn-text{
+    position: relative;
+    bottom:4px;
+}
+
+input:focus{
+    outline: none;
+}

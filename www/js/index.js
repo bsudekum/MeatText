@@ -11,17 +11,17 @@ var personIcon = L.icon({
         });
 
 
-var locationClick, locationPerson, vectorCircle, locationSearch;
+var locationClick, locationPerson, vectorCircle, locationSearch,foursquareIcon,marker;
 
 locationPerson = new L.LayerGroup();
 locationClick = new L.LayerGroup();
 vectorCircle = new L.LayerGroup();
 locationSearch = new L.LayerGroup();
+foursquareIcon = new L.LayerGroup();
 
-map = new L.Map('map', {layers: [locationClick, locationPerson, vectorCircle, locationSearch]});
+map = new L.Map('map', {layers: [locationClick, locationPerson, vectorCircle, locationSearch,foursquareIcon]});
 
 L.Browser.retina = true;
-
 
     var mapbox = L.zoomTMSLayer({ 
         url:            'http://{s}.tiles.mapbox.com/v3/bobbysud.map-tyt3admo/',
@@ -37,7 +37,7 @@ L.Browser.retina = true;
         detectRetina:true,
     }).addTo(map);
 
-    var bingSat = L.zoomTMSLayer({ 
+    var mapboxSat = L.zoomTMSLayer({ 
         url:            'http://{s}.tiles.mapbox.com/v3/bobbysud.map-zjt9pl97/',
         layername :     '',
         serviceVersion: '',
@@ -51,7 +51,7 @@ L.Browser.retina = true;
         detectRetina:true,
     });
 
-    var bingHybrid = L.zoomTMSLayer({ 
+    var mapboxHybrid = L.zoomTMSLayer({ 
         url:            'http://{s}.tiles.mapbox.com/v3/bobbysud.map-ddwpawil/',
         layername :     '',
         serviceVersion: '',
@@ -64,28 +64,10 @@ L.Browser.retina = true;
         unloadInvisibleTiles: true, //slows down app is false
         detectRetina:true,
     });
-    
-/*
-    var bingHybrid =  new L.bingHybrid("AmFJ03ozVugKu0Y_uijzwvFEKfKY5VCesm1eiBqGhchxQ3uKFUQMYsKJLNdfHsIR",{
-        maxZoom:18,
-        reuseTiles: true, //Panning is sticky if false
-        updateWhenIdle: false, //Loads tiles during pan
-        unloadInvisibleTiles: true, //slows down app is false
-        detectRetina:true,
-    });
 
-   var bingSat =  new L.bingSat("AmFJ03ozVugKu0Y_uijzwvFEKfKY5VCesm1eiBqGhchxQ3uKFUQMYsKJLNdfHsIR",{
-        maxZoom:18,
-        reuseTiles: true, //Panning is sticky if false
-        updateWhenIdle: false, //Loads tiles during pan
-        unloadInvisibleTiles: true, //slows down app is false
-        detectRetina:false,
-    });   
-
-*/
-   $("#button1").click(function() {
-        map.removeLayer(bingSat)
-        map.removeLayer(bingHybrid);
+   $("#btnStandard").click(function() {
+        map.removeLayer(mapboxSat)
+        map.removeLayer(mapboxHybrid);
         map.addLayer(mapbox)
         zoom = map.getZoom();
         if(zoom>17){
@@ -94,16 +76,16 @@ L.Browser.retina = true;
         }
     });
 
-    $("#button2").click(function() {
-        map.removeLayer(bingSat);
+    $("#btnHybrid").click(function() {
+        map.removeLayer(mapboxSat);
         map.removeLayer(mapbox);
-        map.addLayer(bingHybrid)
+        map.addLayer(mapboxHybrid)
     });
 
-    $("#button3").click(function() {
+    $("#btnSat").click(function() {
         map.removeLayer(mapbox);
-        map.removeLayer(bingHybrid);
-        map.addLayer(bingSat)
+        map.removeLayer(mapboxHybrid);
+        map.addLayer(mapboxSat)
     });
 
     function onLocationFound(e) {
@@ -123,15 +105,15 @@ L.Browser.retina = true;
        vectorCircle.clearLayers();
        vectorCircle.addLayer(circleperson);
 
-        marker.bindPopup("<a href='#one'/><p id='sent' onload='initFastButtons()' style='color:black;text-decoration:none;'>Share Location ➤</p></a>")
+        marker.bindPopup("<a href='#one'/><p id='sent' onload='initFastButtons()' onclick='runFoursquare()' style='color:black;text-decoration:none;'>Share Location ➤</p></a>")
             .openPopup()
 
-        }
+    }
 
-        function onLocationError(e) {
-            map.setView(new L.LatLng(37.76718664006672, -122.42511749267578), 14);
-            navigator.notification.alert("It looks like your location settings are not enabled", null, "Oops!");
-        }
+    function onLocationError(e) {
+        map.setView(new L.LatLng(37.76718664006672, -122.42511749267578), 15);
+        navigator.notification.alert("It looks like your location settings are not enabled", null, "Oops!");
+    }
 
         map.on('locationfound', onLocationFound);
         map.on('locationerror', onLocationError);
@@ -141,27 +123,7 @@ L.Browser.retina = true;
             maxZoom: 16,
             enableHighAccuracy: true,
         });
-
-    function onMapClick(e) {
-
-        lat = e.latlng.lat.toFixed(7);
-        lng = e.latlng.lng.toFixed(7);
-        latlng =lat+ ',' + lng;
-        url = "http://maps.apple.com/maps?q="+latlng;
-        message = $(url)
-        markerLocation = new L.LatLng(e.latlng.lat, e.latlng.lng);
-        marker = new L.Marker(markerLocation, {draggable: true});
-        locationClick.clearLayers();
-        locationClick.addLayer(marker);
-        marker.bindPopup("<a href='#one'/><p id='sent' onload='initFastButtons()' style='color:black;text-decoration:none;'>Share Location ➤</p></a>")
-        .openPopup();
-
-         
-    };
-
-    map.on('contextmenu', onMapClick);
-  
-//Geolocate    
+    //Geolocate Button  
     var geolocate = document.getElementById('geolocate');
 
     geolocate.onclick = function () {
@@ -183,11 +145,7 @@ L.Browser.retina = true;
        vectorCircle.clearLayers();
        vectorCircle.addLayer(circleperson);
 
-        marker.bindPopup("<a href='#one' /><p id='sent' onload='initFastButtons()' style='color:black;text-decoration:none;'>Share Location ➤</p></a>")
-
-            .openPopup()
-
-            
+        marker.bindPopup("<a href='#one' /><p id='sent' onload='initFastButtons()' onclick='runFoursquare()' style='color:black;text-decoration:none;'>Share Location ➤</p></a>").openPopup()
         };
 
         function onLocationError(e) {
@@ -203,47 +161,115 @@ L.Browser.retina = true;
         });
     }
 
-     
+    function onMapClick(e) {
+
+        foursquareIcon.clearLayers();
+        lat = e.latlng.lat.toFixed(7);
+        lng = e.latlng.lng.toFixed(7);
+        latlng =lat+ ',' + lng;
+        url = "http://maps.apple.com/maps?q="+latlng;
+        message = $(url)
+        markerLocation = new L.LatLng(e.latlng.lat, e.latlng.lng);
+        marker = new L.Marker(markerLocation, {draggable: true});
+        locationClick.clearLayers();
+        locationClick.addLayer(marker);
+
+        //Run foursquare.js
+        runFoursquare();
+
+        marker.bindPopup("<a href='#one' /><p id='sent' click='initFastButtons()' onclick='()' style='color:black;text-decoration:none;text-align:center'>Share Location ➤</p></a>", {maxWidth:100,closeButton:false})
+        .openPopup();
+        //Add loading gif
+        $("#sent").append("<img src='img/loading.gif' width='13px' height='13px' style='position:absolute; right:0px'>")
+
+    };
+
+    map.on('click', onMapClick);
+
+  
+    
     //Geocoder
-     var bingGeocoder = new L.Control.BingGeocoder('AmFJ03ozVugKu0Y_uijzwvFEKfKY5VCesm1eiBqGhchxQ3uKFUQMYsKJLNdfHsIR');
-        map.addControl(bingGeocoder);
+    var bingGeocoder = new L.Control.BingGeocoder('AmFJ03ozVugKu0Y_uijzwvFEKfKY5VCesm1eiBqGhchxQ3uKFUQMYsKJLNdfHsIR');
+    map.addControl(bingGeocoder);
 
         
-      function resetSlide(e) {
-            $("#sent").click(function(){
-                $("#footer").slideToggle("fast");
-                $("#settingsFooter").slideUp("fast");
-            });
-        };
+    function resetSlide() {
+       /* $("#footer").slideDown("fast");*/
+        $("#settingsFooter").slideUp("fast");
+    };
+
 
     function dragDown(){
-            $("#footer").slideUp("fast");
-            $("#settingsFooter").slideUp("fast");
-        };
+     /*   $("#footer").slideUp("fast");*/
+        $("#settingsFooter").slideUp("fast");
+    };
 
     $("#settingsButton").click(function() {
         $("#settingsFooter").slideToggle("fast");
-        $("#footer").slideUp("fast");
+      /*  $("#footer").slideUp("fast");*/
     });
-
-    $("#buttonDown").click(function() {
-        $("#footer").slideToggle("fast");
-    });
-
 
     map.on("popupopen", resetSlide);
-    map.on("move", dragDown);
-    map.on("click", dragDown);
+    map.on("moveend", dragDown);
+
+        //Turn off 4sq
+    $("#turn-off-4sq").click(function(){
+        $(this).toggleClass("on")
+
+        //Toggle text
+        if($(this).hasClass("on")){
+            $("#on-off").text("OFF")
+        }else{
+            $("#on-off").text("ON")
+        }
+    })
 
 
 
-}; //Device on onDeviceReady
+}; //Device on onDeviceReady 
 
 
 
 //Email for onclick event
 var emailComposer = function () {
     $('#emailText img').attr('src','img/loading.gif');
+    $('#emailText img').attr('width','30px');
+
+
+    function get_short_url(url, login, api_key, func)
+    {
+        $.getJSON(
+            "http://api.bitly.com/v3/shorten?callback=?", 
+            { 
+                "format": "json",
+                "apiKey": api_key,
+                "login": login,
+                "longUrl": url
+            },
+            function(response)
+            {
+                func(response.data.url);
+            }
+        );
+    }
+    var login = "o_7iuqro3rja";
+    var api_key = "R_0e5b4318f72e53dfee13fb1491229204";
+    get_short_url(url, login, api_key, function(short_url) {
+    console.log(short_url);
+
+    messageTwo = "Let's meet here. "+place+"\n\n"+short_url+"\n\n\n\n Sent via MeatText.com";
+
+    window.plugins.emailComposer.showEmailComposerWithCB(myCallbackEmail,"Let's meet here.",messageTwo,"","","");
+    console.log(messageTwo);
+    $('#emailText img').attr('width','40px');
+    $('#emailText img').attr('src','img/email.png');
+   
+    });
+}
+
+//Copy
+var copyText = function(){
+    $('#copyText img').attr('src','img/loading.gif');
 
     function get_short_url(url, login, api_key, func)
     {
@@ -266,16 +292,21 @@ var emailComposer = function () {
     get_short_url(url, login, api_key, function(short_url) {
         console.log(short_url);
 
-    messageTwo = "Here is the location: "+short_url+"\n\n\n\n Sent via MeatText.com";
-    window.plugins.emailComposer.showEmailComposerWithCB(myCallbackEmail,"Let's meet here.",messageTwo,"","","");
+    messageTwo = ""+short_url;
+
+    window.plugins.clipboardPlugin.setText(""+short_url)
+    navigator.notification.alert("", null, "Location Copied!", "Okay");
     console.log(messageTwo);
-    $('#emailText img').attr('src','img/email.png');
+        
+        $('#copyText img').attr('src','img/copy.png');
     });
 }
+
 
 //SMS for onclick event
 var ComposeSMS = function () {
     $('#smsText img').attr('src','img/loading.gif');
+    $('#smsText img').attr('width','30px');
 
     function get_short_url(url, login, api_key, func)
     {
@@ -287,7 +318,7 @@ var ComposeSMS = function () {
                 "login": login,
                 "longUrl": url
             },
-            function(response)
+            function(response) 
             {
                 func(response.data.url);
             }
@@ -296,16 +327,14 @@ var ComposeSMS = function () {
     var login = "o_7iuqro3rja";
     var api_key = "R_0e5b4318f72e53dfee13fb1491229204";
     get_short_url(url, login, api_key, function(short_url) {
-        console.log(short_url);
-
     
-    messageTwo = "Let's meet here.\n\n"+short_url;
+    messageTwo = "Let's meet here. "+place+"\n\n"+short_url;
     window.plugins.smsComposer.showSMSComposerWithCB(myCallback,'', messageTwo);
     console.log(messageTwo);
-        
+        $('#smsText img').attr('width','40px');
         $('#smsText img').attr('src','img/chat.png');
-    });
 
+    });
 }
 
 var myCallback = function(result){
@@ -350,7 +379,7 @@ var tweet = function () {
     get_short_url(url, login, api_key, function(short_url) {
         console.log(short_url);
     
-    messageTwo = "Here's the spot:\n"+short_url;
+    messageTwo = "Let's meet here. "+place+"\n\n"+short_url;
 
 
 // is twitter setup? If not, tell the user to go do it
@@ -366,12 +395,9 @@ var tweet = function () {
         }
     });
 
-
     console.log(messageTwo);
     $('#twitterText img').attr('src','img/twitter.png');
     });
-
-
 }
 
   

@@ -6,105 +6,110 @@
         <meta name="format-detection" content="telephone=no" />
         <link rel="stylesheet" type="text/css" href="js/geocode/Control.BingGeocoder.css"/>
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width;"/>
-        <script type="text/javascript" src="cordova-2.0.0.js"></script>
         <script type="text/javascript" src="js/jquery.js"></script>
-        
-        <script type="text/javascript" src="js/jquery.mobile.js"></script>
+        <script type="text/javascript" src="cordova-2.0.0.js"></script>
         <script type="text/javascript" src="js/leaflet/leaflet.js"></script>
         <link rel="stylesheet" type="text/css" href="js/leaflet/leaflet.css" />
         <script type="text/javascript" src="js/leaflet/L.zoomTMSLayer.js"></script>
-        <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <script type="text/javascript" src="js/jquery.mobile.js"></script>
         <link rel="stylesheet" type="text/css" href="css/jqm.css" />
+        <link rel="stylesheet" type="text/css" href="css/index.css" />
         <script type="text/javascript" src="js/sms/SMSComposer.js"></script>
         <script type="text/javascript" src="js/EmailComposer.js"></script>
+        <script type="text/javascript" src="js/underscore.js"></script>
         <script type="text/javascript" src="js/TwitterPlugin.js"></script>
+        <script type="text/javascript" src="js/clipboardPlugin.js"></script>
         <script type="text/javascript" src="js/geocode/Control.BingGeocoder.js"></script>
-        <script type="text/javascript" src="js/leaflet/bing.js"></script>
-        <script type="text/javascript" src="js/cache.js"></script>
+        <script type="text/javascript" src="js/fastclick.js"></script>
+        <script type="text/javascript" src="js/foursquare.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
+        
     </head>
 <body onLoad="initFastButtons();">
     <span id="fastclick">
-        <script type="text/javascript">
-        $(document).ready(function(){
-        $("#footer").slideUp(0);
-        $("#settingsFooter").slideUp(0);
+    <script type="text/javascript">
 
+    $(document).ready(function(){
+
+        $("#settingsFooter").slideUp(0);
         $('#mytext').attr('data-ajax', 'false');
         $('#mytext').attr('class', 'false');
         $.mobile.ajaxEnabled=false
-
-        });
-        
-$(document).bind("mobileinit", function(){
-        $.mobile.pushStateEnabled = false;
+    });
+    
+    $(document).bind("mobileinit", function(){
+        $.mobile.pushStateEnabled = false; 
         $.mobile.ajaxEnabled = false;
         $.mobile.hashListeningEnabled = false;
-});
-        </script>
+    });
 
 
 
-<div data-role="page">
-    
-  
-            <div data-role="footer" id="settingsFooter" data-theme="d">
-               <div data-role="navbar">
-                <ul>
-                    <li id="button1"><a href="">Standard</a></li>
-                    <li id="button2"><a href="" >Hybrid</a></li>
-                    <li id="button3"><a href="">Satellite</a></li>
-                </ul>
-            </div><!-- /navbar -->
-            </div><!-- /footer -->
+    </script>
+
+<div data-role="page">  
+        <div data-role="footer" id="settingsFooter" data-theme="d">
+           <div data-role="navbar">
+            <ul>
+                <li id="btnStandard" class="settings-text"><a href="">Standard</a></li>
+                <li id="btnHybrid" class="settings-text"><a href="" >Hybrid</a></li>
+                <li id="btnSat" class="settings-text"><a href="">Satellite</a></li>
+                <li id="turn-off-4sq" class="settings-text"><a href="" class="setting-text">4-Sq <strong><span id="on-off">ON</span></strong></a></li>
+
+            </ul>
+        </div><!-- /navbar -->
+        </div><!-- /footer -->
 
         <a href="#" id="settingsButton"><img src="img/gear.png" width="20px" height="20px"></a>
 
         <div id="map"></div>
         
-        <a href="#" id="geolocate"><img src="img/scope2.png" width="17px" height="17px"/></a>
+        <a href="#" id="geolocate"><img src="img/scope2.png" width="20px" height="18px"/></a>
         
         <div id="background"></div>
 
-
-
-    <div data-role="footer" id="footer" data-theme="d">
-       <div data-role="navbar">
-        <ul>
-            <li input onclick='ComposeSMS();' id="smsText"><a href=""><img src="img/chat.png" width="40px" height="30px" /></a></li>
-            <li input onclick='emailComposer()' id="emailText"><a href=""><img src="img/email.png" width="40px" height="30px"/></a></li>
-            <li input onclick='tweet()' id="twitterText"><a href=""><img src="img/twitter.png"  width="30px" height="30px"/></a></li>
-        </ul>
-    </div><!-- /navbar -->
-    </div><!-- /footer -->
-
-
-
-</div>
+        <div data-role="footer" id="footer" data-theme="d">
+           <div data-role="navbar">
+            <ul>
+                <li input onclick='ComposeSMS();' id="smsText"><a href=""><img src="img/chat.png" width="40px" height="30px" /></a></li>
+                <li input onclick='emailComposer()' id="emailText"><a href=""><img src="img/email.png" width="40px" height="30px"/></a></li>
+                <li input onclick='tweet()' id="twitterText"><a href=""><img src="img/twitter.png"  width="30px" height="30px"/></a></li>
+                <li input onclick='copyText()' id="copyText"><a href=""><img src="img/copy.png"  width="30px" height="30px"/></a></a></li>
+            </ul>
+        </div><!-- /navbar -->
+        </div><!-- /footer -->
+    </div>
 
     
 </div><!-- /page -->
-
 <script type="text/javascript">
-/*
-var locationClick, locationPerson, vectorCircle, locationSearch
+
+var personIcon = L.icon({
+            iconUrl: 'img/dot.png',
+            iconSize: [31, 31],
+            iconAnchor: [16, 16],
+            popupAnchor: [0, -6]
+        });
+
+
+var locationClick, locationPerson, vectorCircle, locationSearch,foursquareIcon,marker;
 
 locationPerson = new L.LayerGroup();
 locationClick = new L.LayerGroup();
 vectorCircle = new L.LayerGroup();
 locationSearch = new L.LayerGroup();
+foursquareIcon = new L.LayerGroup();
 
-map = new L.Map('map', {layers: [locationClick, locationPerson, vectorCircle,locationSearch]});
+map = new L.Map('map', {layers: [locationClick, locationPerson, vectorCircle, locationSearch,foursquareIcon]});
 
 L.Browser.retina = true;
-
 
     var mapbox = L.zoomTMSLayer({ 
         url:            'http://{s}.tiles.mapbox.com/v3/bobbysud.map-tyt3admo/',
         layername :     '',
         serviceVersion: '',
         tileMaxZoom:    17,
-        maxZoom:        19,
+        maxZoom:        18,
         tms:            false,
         zoomControl: false,
         reuseTiles: true, //Panning is sticky if false
@@ -113,54 +118,37 @@ L.Browser.retina = true;
         detectRetina:true,
     }).addTo(map);
 
-    var bingSat = L.zoomTMSLayer({ 
+    var mapboxSat = L.zoomTMSLayer({ 
         url:            'http://{s}.tiles.mapbox.com/v3/bobbysud.map-zjt9pl97/',
         layername :     '',
         serviceVersion: '',
         tileMaxZoom:    17,
-        maxZoom:        19,
+        maxZoom:        18,
         tms:            false,
         zoomControl: false,
-        reuseTiles: true, //Panning is sticky if false
-        updateWhenIdle: false, //Loads tiles during pan
-        unloadInvisibleTiles: true, //slows down app is false
-        detectRetina:true,
-    })
-
-    var bingHybrid = L.zoomTMSLayer({ 
-        url:            'http://{s}.tiles.mapbox.com/v3/bobbysud.map-ddwpawil/',
-        layername :     '',
-        serviceVersion: '',
-        tileMaxZoom:    17,
-        maxZoom:        19,
-        tms:            false,
-        zoomControl: false,
-        reuseTiles: true, //Panning is sticky if false
-        updateWhenIdle: false, //Loads tiles during pan
-        unloadInvisibleTiles: true, //slows down app is false
-        detectRetina:true,
-    })
-
-    var bingHybrid =  new L.bingHybrid("AmFJ03ozVugKu0Y_uijzwvFEKfKY5VCesm1eiBqGhchxQ3uKFUQMYsKJLNdfHsIR",{
-        maxZoom:18,
         reuseTiles: true, //Panning is sticky if false
         updateWhenIdle: false, //Loads tiles during pan
         unloadInvisibleTiles: true, //slows down app is false
         detectRetina:true,
     });
 
-   var bingSat =  new L.bingSat("AmFJ03ozVugKu0Y_uijzwvFEKfKY5VCesm1eiBqGhchxQ3uKFUQMYsKJLNdfHsIR",{
-        maxZoom:18,
+    var mapboxHybrid = L.zoomTMSLayer({ 
+        url:            'http://{s}.tiles.mapbox.com/v3/bobbysud.map-ddwpawil/',
+        layername :     '',
+        serviceVersion: '',
+        tileMaxZoom:    17,
+        maxZoom:        18,
+        tms:            false,
+        zoomControl: false,
         reuseTiles: true, //Panning is sticky if false
         updateWhenIdle: false, //Loads tiles during pan
         unloadInvisibleTiles: true, //slows down app is false
-        detectRetina:false,
-    });   
+        detectRetina:true,
+    });
 
-
-   $("#button1").click(function() {
-        map.removeLayer(bingSat)
-        map.removeLayer(bingHybrid);
+   $("#btnStandard").click(function() {
+        map.removeLayer(mapboxSat)
+        map.removeLayer(mapboxHybrid);
         map.addLayer(mapbox)
         zoom = map.getZoom();
         if(zoom>17){
@@ -169,19 +157,17 @@ L.Browser.retina = true;
         }
     });
 
-    $("#button2").click(function() {
-        map.removeLayer(bingSat);
+    $("#btnHybrid").click(function() {
+        map.removeLayer(mapboxSat);
         map.removeLayer(mapbox);
-        map.addLayer(bingHybrid)
+        map.addLayer(mapboxHybrid)
     });
 
-    $("#button3").click(function() {
+    $("#btnSat").click(function() {
         map.removeLayer(mapbox);
-        map.removeLayer(bingHybrid);
-        map.addLayer(bingSat)
+        map.removeLayer(mapboxHybrid);
+        map.addLayer(mapboxSat)
     });
-
-
 
     function onLocationFound(e) {
 
@@ -190,25 +176,31 @@ L.Browser.retina = true;
         latlng = +lat + ',' + lng;
         url = "http://maps.apple.com/maps?q="+latlng;
         message = $(url)
-        markerLocation = new L.LatLng(e.latlng.lat, e.latlng.lng);
-        marker = new L.Marker(markerLocation, {draggable:false});
+        markerLocation = new L.LatLng(e.latlng.lat, e.latlng.lng,{icon: personIcon});
+        marker = new L.Marker(markerLocation, {draggable: true,icon: personIcon});
         locationPerson.clearLayers();
         locationPerson.addLayer(marker);
 
+        //Add circle
         var radius = e.accuracy / 2;
-       circleperson = new L.circle(e.latlng, radius,{color: "#3871B9", weight: 1.5,fillOpacity:0})
-       vectorCircle.clearLayers();
-       vectorCircle.addLayer(circleperson);
+        circleperson = new L.circle(e.latlng, radius,{color: "#3871B9", weight: 1.5,fillOpacity:0})
+        vectorCircle.clearLayers();
+        vectorCircle.addLayer(circleperson);
 
-        marker.bindPopup("<a href='#one'/><p id='sent' onclick='slide()' onload='initFastButtons()' style='color:black;text-decoration:none;'>Share Location ➤</p></a>")
-            .openPopup()
+        //4sq
+        runFoursquare();
 
-        }
+        marker.bindPopup("<a href='#one' /><p id='sent' onclick='foursquareIcon.clearLayers();runFoursquare()' style='color:black;text-decoration:none;text-align:center;overflow:scroll;'>Share Location ➤</p></a>", {maxWidth:100,closeButton:false})
+        .openPopup();
+        //Add loading gif
+        $("#sent").append("<img src='img/loading.gif' width='13px' height='13px' style='position:absolute; right:0px'>")
 
-        function onLocationError(e) {
-            map.setView(new L.LatLng(37.76718664006672, -122.42511749267578), 14);
-            navigator.notification.alert("It looks like your location settings are not enabled", null, "Oops!");
-        }
+    }
+
+    function onLocationError(e) {
+        map.setView(new L.LatLng(37.76718664006672, -122.42511749267578), 15);
+        navigator.notification.alert("It looks like your location settings are not enabled", null, "Oops!");
+    }
 
         map.on('locationfound', onLocationFound);
         map.on('locationerror', onLocationError);
@@ -218,57 +210,36 @@ L.Browser.retina = true;
             maxZoom: 16,
             enableHighAccuracy: true,
         });
-
-    function onMapClick(e) {
-
-        lat = e.latlng.lat.toFixed(7);
-        lng = e.latlng.lng.toFixed(7);
-        latlng =lat+ ',' + lng;
-        url = "http://maps.apple.com/maps?q="+latlng;
-        message = $(url)
-        markerLocation = new L.LatLng(e.latlng.lat, e.latlng.lng);
-        marker = new L.Marker(markerLocation, {draggable: true});
-        locationClick.clearLayers();
-        locationClick.addLayer(marker);
-        marker.bindPopup("<a href='#one'/><p id='sent' onclick='slide()' onload='initFastButtons()' style='color:black;text-decoration:none;'>Share Location ➤</p></a>")
-        .openPopup();
-
-         
-    };
-
-    map.on('contextmenu', onMapClick);
-  
-//Geolocate    
+    //Geolocate Button  
     var geolocate = document.getElementById('geolocate');
 
     geolocate.onclick = function () {
 
         function onLocationFound(e) {
 
+
         lat = e.latlng.lat.toFixed(7);
         lng = e.latlng.lng.toFixed(7);
         latlng = +lat + ',' + lng;
         url = "http://maps.apple.com/maps?q="+latlng;
         message = $(url)
-        markerLocation = new L.LatLng(e.latlng.lat, e.latlng.lng);
-        marker = new L.Marker(markerLocation, {draggable:false});
+        markerLocation = new L.LatLng(e.latlng.lat, e.latlng.lng,{icon: personIcon});
+        marker = new L.Marker(markerLocation, {draggable: true,icon: personIcon});
         locationPerson.clearLayers();
         locationPerson.addLayer(marker);
         
         var radius = e.accuracy / 2;
-       circleperson = new L.circle(e.latlng, radius,{color: "#3871B9", weight: 1.5,fillOpacity:0})
-       vectorCircle.clearLayers();
-       vectorCircle.addLayer(circleperson);
+        circleperson = new L.circle(e.latlng, radius,{color: "#3871B9", weight: 1.5,fillOpacity:0})
+        vectorCircle.clearLayers();
+        vectorCircle.addLayer(circleperson);
 
-        marker.bindPopup("<a href='#one' /><p id='sent' onload='initFastButtons()' style='color:black;text-decoration:none;'>Share Location ➤</p></a>")
 
-            .openPopup()
-
-            
+        marker.bindPopup("<a href='#one' /><p id='sent' style='color:black;text-decoration:none;text-align:center;overflow:scroll;'>Share Location ➤</p></a>", {maxWidth:100,closeButton:false})
+        .openPopup();
+        //Add loading gif
+        $("#sent").append("<img src='img/loading.gif' width='13px' height='13px' style='position:absolute; right:0px'>")
         };
 
-        function onLocationError(e) {
-        }
 
         map.on('locationfound', onLocationFound);
         map.on('locationerror', onLocationError);
@@ -280,44 +251,70 @@ L.Browser.retina = true;
         });
     }
 
-     
+    function onMapClick(e) {
+
+
+        foursquareIcon.clearLayers();
+        lat = e.latlng.lat.toFixed(7);
+        lng = e.latlng.lng.toFixed(7);
+        latlng =lat+ ',' + lng;
+        url = "http://maps.apple.com/maps?q="+latlng;
+        message = $(url)
+        markerLocation = new L.LatLng(e.latlng.lat, e.latlng.lng);
+        marker = new L.Marker(markerLocation, {draggable: true});
+        locationClick.clearLayers();
+        locationClick.addLayer(marker);
+
+        //Run foursquare.js
+        runFoursquare();
+
+
+        marker.bindPopup("<a href='#one' /><p id='sent' onclick='foursquareIcon.clearLayers();runFoursquare()' style='color:black;text-decoration:none;text-align:center'>Share Location ➤</p></a>", {maxWidth:100,closeButton:false})
+        .openPopup();
+        //Add loading gif
+        $("#sent").append("<img src='img/loading.gif' width='13px' height='13px' style='position:absolute; right:0px'>")
+
+
+    };
+
+    map.on('contextmenu', onMapClick);
+
     //Geocoder
-     var bingGeocoder = new L.Control.BingGeocoder('AmFJ03ozVugKu0Y_uijzwvFEKfKY5VCesm1eiBqGhchxQ3uKFUQMYsKJLNdfHsIR');
-        map.addControl(bingGeocoder);
+    var bingGeocoder = new L.Control.BingGeocoder('AmFJ03ozVugKu0Y_uijzwvFEKfKY5VCesm1eiBqGhchxQ3uKFUQMYsKJLNdfHsIR');
+    map.addControl(bingGeocoder);
 
-        
-      function resetSlide(e) {
-            $("#sent").click(function(){
-                $("#footer").slideToggle("fast");
-                $("#settingsFooter").slideUp("fast");
-            });
-        };
-
-
-        $("#sent").click(function(){
-                alert("hi")
-            });
+        function resetSlide() {
+       /* $("#footer").slideDown("fast");*/
+        $("#settingsFooter").slideUp("fast");
+    };
 
 
     function dragDown(){
-            $("#footer").slideUp("fast");
-            $("#settingsFooter").slideUp("fast");
-        };
+     /*   $("#footer").slideUp("fast");*/
+        $("#settingsFooter").slideUp("fast");
+    };
 
     $("#settingsButton").click(function() {
         $("#settingsFooter").slideToggle("fast");
-        $("#footer").slideUp("fast");
+      /*  $("#footer").slideUp("fast");*/
     });
-
-    $("#buttonDown").click(function() {
-        $("#panel").slideToggle("fast");
-    });
-
 
     map.on("popupopen", resetSlide);
-    map.on("move", dragDown);
-    map.on("click", dragDown);
-*/
+    map.on("moveend", dragDown);
+
+        //Turn off 4sq
+    $("#turn-off-4sq").click(function(){
+        $(this).toggleClass("on")
+
+        //Toggle text
+        if($(this).hasClass("on")){
+            $("#on-off").text("OFF")
+        }else{
+            $("#on-off").text("ON")
+        }
+    })
+
+
 </script>
 </span>
 </body>

@@ -290,7 +290,6 @@
 .ui-overlay-c {
 	border: 1px solid 		#aaa /*{c-body-border}*/;
 	color: 					#333 /*{c-body-color}*/;
-	text-shadow: 0 /*{c-body-shadow-x}*/ 1px /*{c-body-shadow-y}*/ 0 /*{c-body-shadow-radius}*/ #fff /*{c-body-shadow-color}*/;
 	background: 			#f9f9f9 /*{c-body-background-color}*/;
 	background-image: -webkit-gradient(linear, left top, left bottom, from( #f9f9f9 /*{c-body-background-start}*/), to( #eee /*{c-body-background-end}*/)); /* Saf4+, Chrome */
 	background-image: -webkit-linear-gradient( #f9f9f9 /*{c-body-background-start}*/, #eee /*{c-body-background-end}*/); /* Chrome 10+, Saf5.1+ */
@@ -1752,6 +1751,7 @@ div.ui-mobile-viewport { overflow-x: hidden; }
 .ui-header .ui-navbar .ui-grid-d li.ui-block-e .ui-btn-icon-right .ui-icon,
 .ui-footer .ui-navbar .ui-grid-d li.ui-block-e .ui-btn-icon-right .ui-icon { right: 8px; }
 .ui-navbar li .ui-btn .ui-btn-inner { padding-top: .7em; padding-bottom: .8em }
+.ui-navbar li .ui-btn .ui-btn-inner a { padding-bottom: .8em }
 .ui-navbar li .ui-btn-icon-top .ui-btn-inner { padding-top: 30px; }
 .ui-navbar li .ui-btn-icon-bottom .ui-btn-inner { padding-bottom: 30px; }
 .ui-btn { display: block; text-align: center; cursor:pointer; position: relative; margin: .5em 0; padding: 0; }

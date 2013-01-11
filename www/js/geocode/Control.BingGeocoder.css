@@ -18,7 +18,7 @@
 	border-style:solid;
 	border-color:lightgrey;
 	border-width: 1px;
-	left: -55px; 
+	left: -80px; 
 	top: 5px;
 	position: relative;
 	height:22px;
@@ -33,7 +33,7 @@
 
 
 #mytext:focus{
-	border-color:grey;
+
 }
 
 .leaflet-touch .leaflet-control-geocoder a {
@@ -69,4 +69,5 @@
 	opacity: 0
 
 }
-
+:none;
+}
