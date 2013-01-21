@@ -3,6 +3,8 @@ document.addEventListener("deviceready", onDeviceReady, false);
 
 function onDeviceReady() {
 
+$("img[src*='dot.png']").css('opacity','1');
+
 var personIcon = L.icon({
             iconUrl: 'img/dot.png',
             iconSize: [31, 31],
@@ -232,9 +234,8 @@ L.Browser.retina = true;
 
 //Email for onclick event
 var emailComposer = function () {
-    $('#emailText img').attr('src','img/loading.gif');
-    $('#emailText img').attr('width','30px');
 
+    $(".icon-envelope-alt").addClass("icon-spin");
 
     function get_short_url(url, login, api_key, func)
     {
@@ -255,21 +256,22 @@ var emailComposer = function () {
     var login = "o_7iuqro3rja";
     var api_key = "R_0e5b4318f72e53dfee13fb1491229204";
     get_short_url(url, login, api_key, function(short_url) {
-    console.log(short_url);
+        console.log(short_url);
 
-    messageTwo = "Let's meet here. "+place+"\n\n"+short_url+"\n\n\n\n Sent via MeatText.com";
+    messageTwo = "Let's meet here. "+placeAddress+".\n\n"+short_url+"\n\n\n\n Sent via MeatText.com";
 
     window.plugins.emailComposer.showEmailComposerWithCB(myCallbackEmail,"Let's meet here.",messageTwo,"","","");
     console.log(messageTwo);
-    $('#emailText img').attr('width','40px');
-    $('#emailText img').attr('src','img/email.png');
-   
+
+    $(".icon-envelope-alt").removeClass("icon-spin");
+
     });
 }
 
 //Copy
 var copyText = function(){
-    $('#copyText img').attr('src','img/loading.gif');
+
+    $(".icon-link").addClass("icon-spin");
 
     function get_short_url(url, login, api_key, func)
     {
@@ -295,18 +297,20 @@ var copyText = function(){
     messageTwo = ""+short_url;
 
     window.plugins.clipboardPlugin.setText(""+short_url)
-    navigator.notification.alert("", null, "Location Copied!", "Okay");
+    navigator.notification.alert("", null, "Location Copied", "Okay");
     console.log(messageTwo);
-        
-        $('#copyText img').attr('src','img/copy.png');
+    
+    $(".icon-link").removeClass("icon-spin");
+
+
     });
 }
 
 
 //SMS for onclick event
 var ComposeSMS = function () {
-    $('#smsText img').attr('src','img/loading.gif');
-    $('#smsText img').attr('width','30px');
+
+    $(".icon-comments").addClass("icon-spin");
 
     function get_short_url(url, login, api_key, func)
     {
@@ -328,11 +332,16 @@ var ComposeSMS = function () {
     var api_key = "R_0e5b4318f72e53dfee13fb1491229204";
     get_short_url(url, login, api_key, function(short_url) {
     
-    messageTwo = "Let's meet here. "+place+"\n\n"+short_url;
-    window.plugins.smsComposer.showSMSComposerWithCB(myCallback,'', messageTwo);
-    console.log(messageTwo);
-        $('#smsText img').attr('width','40px');
-        $('#smsText img').attr('src','img/chat.png');
+    messageTwo = "Let's meet here. "+placeAddress+"\n\n"+short_url;
+
+    //Althought this is not ideal, there are many errors that are happening without a small amount of 'buffer' time.
+    setTimeout(function(){
+
+        window.plugins.smsComposer.showSMSComposerWithCB(myCallback,'', messageTwo);
+
+    },1000)
+    
+    $(".icon-comments").removeClass("icon-spin");
 
     });
 }
@@ -357,7 +366,9 @@ var myCallbackEmail = function(result){
 
 //Tweet for your location
 var tweet = function () {
-    $('#twitterText img').attr('src','img/loading.gif');
+
+    $(".icon-twitter").addClass("icon-spin");
+
     function get_short_url(url, login, api_key, func)
     {
         $.getJSON(
@@ -379,7 +390,7 @@ var tweet = function () {
     get_short_url(url, login, api_key, function(short_url) {
         console.log(short_url);
     
-    messageTwo = "Let's meet here. "+place+"\n\n"+short_url;
+    messageTwo = "Let's meet here. "+placeAddress+".\n\n"+short_url;
 
 
 // is twitter setup? If not, tell the user to go do it
@@ -395,8 +406,10 @@ var tweet = function () {
         }
     });
 
+    $(".icon-twitter").removeClass("icon-spin");
+
+
     console.log(messageTwo);
-    $('#twitterText img').attr('src','img/twitter.png');
     });
 }
 

@@ -368,13 +368,18 @@ z-index: 100000
     color:black;
 }
 
+#sent{
+    overflow: scroll;
+}
+
 
 .leaflet-marker-shadow {
     z-index: 10000!important;
 }
 
 .iconClass{
-    opacity: .7;
+    opacity: .8;
+    -webkit-filter: hue-rotate(50deg); 
 }
 form .ui-btn{
     opacity: 0;
@@ -392,8 +397,48 @@ form .ui-btn{
 .settings-text .ui-btn-text{
     position: relative;
     bottom:4px;
+    font-weight: lighter;
 }
 
 input:focus{
     outline: none;
 }
+
+.leaflet-clickable{
+    opacity: .5;
+}
+
+.icon-selected{
+    border-style: solid;
+    border-color: rgb(255, 87, 141);
+    border-radius: 6px;
+    border-width: 3px;
+    opacity: 1;
+    z-index: 1000!important;
+    -webkit-transition:opacity .5s ease-in;   
+
+}
+
+#footer-icon{
+    font-size: 18px!important;
+    position: relative;
+    text-shadow: 0px 0px 3px #808080;
+    bottom:4px;
+}
+
+#geolocate{
+    color: #333;
+    text-decoration: none;
+    position: absolute;
+    left: 2px;
+    text-shadow: 0px 0px 1px #808080;
+
+}
+
+#settingsButton{
+    text-decoration: none;
+    position: absolute;
+    color: #333;
+    text-shadow: 0px 0px 1px #808080;
+}
+

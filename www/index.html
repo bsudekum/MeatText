@@ -5,7 +5,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="format-detection" content="telephone=no" />
         <link rel="stylesheet" type="text/css" href="js/geocode/Control.BingGeocoder.css"/>
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width;"/>
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"/>
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="cordova-2.0.0.js"></script>
         <script type="text/javascript" src="js/leaflet/leaflet.js"></script>
@@ -13,6 +13,7 @@
         <script type="text/javascript" src="js/leaflet/L.zoomTMSLayer.js"></script>
         <script type="text/javascript" src="js/jquery.mobile.js"></script>
         <link rel="stylesheet" type="text/css" href="css/jqm.css" />
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.css" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <script type="text/javascript" src="js/sms/SMSComposer.js"></script>
         <script type="text/javascript" src="js/EmailComposer.js"></script>
@@ -35,46 +36,51 @@
         $('#mytext').attr('data-ajax', 'false');
         $('#mytext').attr('class', 'false');
         $.mobile.ajaxEnabled=false
+        $("img[src*='marker-icon.png']").css('opacity','1');
+        $("img[src*='dot.png']").css('opacity','1');
     });
     
     $(document).bind("mobileinit", function(){
         $.mobile.pushStateEnabled = false; 
         $.mobile.ajaxEnabled = false;
         $.mobile.hashListeningEnabled = false;
+        $.mobile.defaultHomeScroll = 0
+
     });
 
 
 
     </script>
 
-<div data-role="page">  
+<div data-role="page"> 
+    
+    <div id="map" onclick='return false'></div>
+
         <div data-role="footer" id="settingsFooter" data-theme="d">
            <div data-role="navbar">
             <ul>
                 <li id="btnStandard" class="settings-text"><a href="">Standard</a></li>
                 <li id="btnHybrid" class="settings-text"><a href="" >Hybrid</a></li>
-                <li id="btnSat" class="settings-text"><a href="">Satellite</a></li>
                 <li id="turn-off-4sq" class="settings-text"><a href="" class="setting-text">4-Sq <strong><span id="on-off">ON</span></strong></a></li>
-
+                <li id="rate" class="settings-text"><a href="itms-apps://itunes.com/apps/meattext/id567921159">Rate It</a></li>
             </ul>
         </div><!-- /navbar -->
         </div><!-- /footer -->
 
-        <a href="#" id="settingsButton"><img src="img/gear.png" width="20px" height="20px"></a>
+        <a href="#" id="settingsButton"><i class="icon-cog icon-large"</i></a>
+        <a href="#" id="geolocate"><i class="icon-screenshot icon-large"</i></a>
 
-        <div id="map"></div>
         
-        <a href="#" id="geolocate"><img src="img/scope2.png" width="20px" height="18px"/></a>
         
         <div id="background"></div>
 
-        <div data-role="footer" id="footer" data-theme="d">
-           <div data-role="navbar">
+        <div data-role="footer" id="footer" data-theme="d" d >
+           <div data-role="navbar" data-tap-toggle="false">
             <ul>
-                <li input onclick='ComposeSMS();' id="smsText"><a href=""><img src="img/chat.png" width="40px" height="30px" /></a></li>
-                <li input onclick='emailComposer()' id="emailText"><a href=""><img src="img/email.png" width="40px" height="30px"/></a></li>
-                <li input onclick='tweet()' id="twitterText"><a href=""><img src="img/twitter.png"  width="30px" height="30px"/></a></li>
-                <li input onclick='copyText()' id="copyText"><a href=""><img src="img/copy.png"  width="30px" height="30px"/></a></a></li>
+                <li input onclick='ComposeSMS();' class="" ><a href=""><i class="icon-comments icon-large" id="footer-icon" style="color:#FFD7D7"></i></a></li>
+                <li input onclick='emailComposer()' ><a href=""><i class="icon-envelope-alt icon-large" id="footer-icon" style="color:#CAFAE3"></i></a></li>
+                <li input onclick='tweet()' ><a href=""><i class="icon-twitter icon-large" id="footer-icon" style="color:#C0BCF0"></i></a></li>
+                <li input onclick='copyText()'><a href=""><i class="icon-link icon-large" id="footer-icon" style="color:#E2C599"></i></a></li>
             </ul>
         </div><!-- /navbar -->
         </div><!-- /footer -->
@@ -82,6 +88,7 @@
 
     
 </div><!-- /page -->
+
 <script type="text/javascript">
 
 var personIcon = L.icon({
@@ -163,21 +170,24 @@ L.Browser.retina = true;
         map.addLayer(mapboxHybrid)
     });
 
-    $("#btnSat").click(function() {
-        map.removeLayer(mapbox);
-        map.removeLayer(mapboxHybrid);
-        map.addLayer(mapboxSat)
-    });
+    //Reset the message so when a place is clicked and then the user finds their location, the previous location is not caried over.
+    function resetMessage(){
+        var messageTwo = '';
+    }
+
 
     function onLocationFound(e) {
 
+        $("img[src*='dot.png']").css('opacity','1');
+
+        foursquareIcon.clearLayers();
         lat = e.latlng.lat.toFixed(7);
         lng = e.latlng.lng.toFixed(7);
         latlng = +lat + ',' + lng;
         url = "http://maps.apple.com/maps?q="+latlng;
         message = $(url)
         markerLocation = new L.LatLng(e.latlng.lat, e.latlng.lng,{icon: personIcon});
-        marker = new L.Marker(markerLocation, {draggable: true,icon: personIcon});
+        marker = new L.Marker(markerLocation, {draggable: false,icon: personIcon});
         locationPerson.clearLayers();
         locationPerson.addLayer(marker);
 
@@ -187,15 +197,17 @@ L.Browser.retina = true;
         vectorCircle.clearLayers();
         vectorCircle.addLayer(circleperson);
 
-        //4sq
         runFoursquare();
-
-        marker.bindPopup("<a href='#one' /><p id='sent' onclick='foursquareIcon.clearLayers();runFoursquare()' style='color:black;text-decoration:none;text-align:center;overflow:scroll;'>Share Location ➤</p></a>", {maxWidth:100,closeButton:false})
+        marker.bindPopup("<a href='#one' /><p id='sent' onclick='foursquareIcon.clearLayers()' style='color:black;text-decoration:none;text-align:center;overflow:scroll;'>Share Location ➤</p></a>", {maxWidth:100,closeButton:false})
         .openPopup();
         //Add loading gif
-        $("#sent").append("<img src='img/loading.gif' width='13px' height='13px' style='position:absolute; right:0px'>")
+        $("#sent").click(function(){
+            $("#sent").append("<img src='img/loading.gif' width='13px' height='13px' style='position:absolute; right:0px'>")
+        })
 
+        map.on("popupopen",resetMessage)
     }
+
 
     function onLocationError(e) {
         map.setView(new L.LatLng(37.76718664006672, -122.42511749267578), 15);
@@ -217,14 +229,16 @@ L.Browser.retina = true;
 
         function onLocationFound(e) {
 
+        $("img[src*='dot.png']").css('opacity','1');
 
+        placeAddress = '';
         lat = e.latlng.lat.toFixed(7);
         lng = e.latlng.lng.toFixed(7);
         latlng = +lat + ',' + lng;
         url = "http://maps.apple.com/maps?q="+latlng;
         message = $(url)
         markerLocation = new L.LatLng(e.latlng.lat, e.latlng.lng,{icon: personIcon});
-        marker = new L.Marker(markerLocation, {draggable: true,icon: personIcon});
+        marker = new L.Marker(markerLocation, {draggable: false,icon: personIcon});
         locationPerson.clearLayers();
         locationPerson.addLayer(marker);
         
@@ -233,16 +247,16 @@ L.Browser.retina = true;
         vectorCircle.clearLayers();
         vectorCircle.addLayer(circleperson);
 
+        runFoursquare();
 
-        marker.bindPopup("<a href='#one' /><p id='sent' style='color:black;text-decoration:none;text-align:center;overflow:scroll;'>Share Location ➤</p></a>", {maxWidth:100,closeButton:false})
+        marker.bindPopup("<a href='#one' /><p id='sent' style='color:black;text-decoration:none;text-align:center;overflow:scroll;'>Share Location ➤</p></a>")
         .openPopup();
         //Add loading gif
         $("#sent").append("<img src='img/loading.gif' width='13px' height='13px' style='position:absolute; right:0px'>")
         };
 
 
-        map.on('locationfound', onLocationFound);
-        map.on('locationerror', onLocationError);
+    
 
         map.locate({
             setView: true,
@@ -253,7 +267,7 @@ L.Browser.retina = true;
 
     function onMapClick(e) {
 
-
+        placeAddress = '';
         foursquareIcon.clearLayers();
         lat = e.latlng.lat.toFixed(7);
         lng = e.latlng.lng.toFixed(7);
@@ -261,7 +275,7 @@ L.Browser.retina = true;
         url = "http://maps.apple.com/maps?q="+latlng;
         message = $(url)
         markerLocation = new L.LatLng(e.latlng.lat, e.latlng.lng);
-        marker = new L.Marker(markerLocation, {draggable: true});
+        marker = new L.Marker(markerLocation, {draggable: false,opacity:1, title:'hello'});
         locationClick.clearLayers();
         locationClick.addLayer(marker);
 
@@ -277,7 +291,7 @@ L.Browser.retina = true;
 
     };
 
-    map.on('contextmenu', onMapClick);
+    map.on('click', onMapClick);
 
     //Geocoder
     var bingGeocoder = new L.Control.BingGeocoder('AmFJ03ozVugKu0Y_uijzwvFEKfKY5VCesm1eiBqGhchxQ3uKFUQMYsKJLNdfHsIR');
