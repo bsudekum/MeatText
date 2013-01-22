@@ -56,7 +56,7 @@ body {
     border-color:#CCC;
     border-width: 1px;
     -webkit-tap-highlight-color:rgba(0,0,0,0);
-    padding:10px;
+    padding:11px;
     opacity: .7;
 
 }
@@ -84,7 +84,7 @@ border-color: #CCC;
 border-width: 1px;
 -webkit-tap-highlight-color: rgba(0,0,0,0);
 opacity: .8;
-padding: 9px;
+padding: 11px;
 }
 
 
@@ -422,7 +422,7 @@ input:focus{
 #footer-icon{
     font-size: 18px!important;
     position: relative;
-    text-shadow: 0px 0px 3px #808080;
+    text-shadow: 2px 2px 2px #808080;
     bottom:4px;
 }
 

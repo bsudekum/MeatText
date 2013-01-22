@@ -4,7 +4,6 @@
     <head> 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <meta name="format-detection" content="telephone=no" />
-        <link rel="stylesheet" type="text/css" href="js/geocode/Control.BingGeocoder.css"/>
         <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width"/>
         <script type="text/javascript" src="js/jquery.js"></script>
         <script type="text/javascript" src="cordova-2.0.0.js"></script>
@@ -15,12 +14,14 @@
         <link rel="stylesheet" type="text/css" href="css/jqm.css" />
         <link rel="stylesheet" type="text/css" href="css/font-awesome.css" />
         <link rel="stylesheet" type="text/css" href="css/index.css" />
+        <link rel="stylesheet" type="text/css" href="js/google-geocoder/css/l.geosearch.css" />
+        <script type="text/javascript" src="js/google-geocoder/js/l.control.geosearch.js"></script>
+        <script type="text/javascript" src="js/google-geocoder/js/l.geosearch.provider.google.js"></script>
         <script type="text/javascript" src="js/sms/SMSComposer.js"></script>
         <script type="text/javascript" src="js/EmailComposer.js"></script>
         <script type="text/javascript" src="js/underscore.js"></script>
         <script type="text/javascript" src="js/TwitterPlugin.js"></script>
-        <script type="text/javascript" src="js/clipboardPlugin.js"></script>
-        <script type="text/javascript" src="js/geocode/Control.BingGeocoder.js"></script>
+        <script type="text/javascript" src="js/clipboardPlugin.js"></scrip
         <script type="text/javascript" src="js/fastclick.js"></script>
         <script type="text/javascript" src="js/foursquare.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
@@ -67,8 +68,8 @@
         </div><!-- /navbar -->
         </div><!-- /footer -->
 
-        <a href="#" id="settingsButton"><i class="icon-cog icon-large"</i></a>
-        <a href="#" id="geolocate"><i class="icon-screenshot icon-large"</i></a>
+        <a href="#" id="settingsButton"><i class="icon-cog icon-large" style="color:rgb(158, 158, 158)"></i></a>
+        <a href="#" id="geolocate"><i class="icon-screenshot icon-large" style="color:rgb(158, 158, 158)"></i></a>
 
         
         
@@ -77,10 +78,10 @@
         <div data-role="footer" id="footer" data-theme="d" d >
            <div data-role="navbar" data-tap-toggle="false">
             <ul>
-                <li input onclick='ComposeSMS();' class="" ><a href=""><i class="icon-comments icon-large" id="footer-icon" style="color:#FFD7D7"></i></a></li>
-                <li input onclick='emailComposer()' ><a href=""><i class="icon-envelope-alt icon-large" id="footer-icon" style="color:#CAFAE3"></i></a></li>
-                <li input onclick='tweet()' ><a href=""><i class="icon-twitter icon-large" id="footer-icon" style="color:#C0BCF0"></i></a></li>
-                <li input onclick='copyText()'><a href=""><i class="icon-link icon-large" id="footer-icon" style="color:#E2C599"></i></a></li>
+                <li input onclick='ComposeSMS();' class="" ><a href=""><i class="icon-comments icon-large" id="footer-icon" style="color:#FFA6A6"></i></a></li>
+                <li input onclick='emailComposer()' ><a href=""><i class="icon-envelope-alt icon-large" id="footer-icon" style="color:#7FD390"></i></a></li>
+                <li input onclick='tweet()' ><a href=""><i class="icon-twitter icon-large" id="footer-icon" style="color:#76A7FF"></i></a></li>
+                <li input onclick='copyText()'><a href=""><i class="icon-link icon-large" id="footer-icon" style="color:#ECB767"></i></a></li>
             </ul>
         </div><!-- /navbar -->
         </div><!-- /footer -->
@@ -222,6 +223,13 @@ L.Browser.retina = true;
             maxZoom: 16,
             enableHighAccuracy: true,
         });
+
+        function getURLParameter(name) {
+            return decodeURI(
+                (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,])[1]
+            );
+        }
+
     //Geolocate Button  
     var geolocate = document.getElementById('geolocate');
 
@@ -293,24 +301,22 @@ L.Browser.retina = true;
 
     map.on('click', onMapClick);
 
-    //Geocoder
-    var bingGeocoder = new L.Control.BingGeocoder('AmFJ03ozVugKu0Y_uijzwvFEKfKY5VCesm1eiBqGhchxQ3uKFUQMYsKJLNdfHsIR');
-    map.addControl(bingGeocoder);
+    new L.Control.GeoSearch({
+        provider: new L.GeoSearch.Provider.Google()
+    }).addTo(map);
+
 
         function resetSlide() {
-       /* $("#footer").slideDown("fast");*/
         $("#settingsFooter").slideUp("fast");
     };
 
 
     function dragDown(){
-     /*   $("#footer").slideUp("fast");*/
         $("#settingsFooter").slideUp("fast");
     };
 
     $("#settingsButton").click(function() {
         $("#settingsFooter").slideToggle("fast");
-      /*  $("#footer").slideUp("fast");*/
     });
 
     map.on("popupopen", resetSlide);
@@ -327,7 +333,6 @@ L.Browser.retina = true;
             $("#on-off").text("ON")
         }
     })
-
 
 </script>
 </span>

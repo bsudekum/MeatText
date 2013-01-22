@@ -58,7 +58,7 @@ var runFoursquare = function(){
                   console.log(address)
 
                 venue = item.venue.name
-                venueDash = venue.replace(/\s+/g, '-').replace(/\./g, "").replace(/'/g, '').replace(/&/g,"");
+                venueDash = venue.replace(/\s+/g, '-').replace(/\./g, "").replace(/'/g, '').replace(/@/g, '').replace(/&/g,"");
                 size = $("#foursquare li").size()
 
                 iconPath = item.venue.categories[0].icon.prefix
@@ -97,12 +97,12 @@ var runFoursquare = function(){
                 $("#sent").append("<div id='foursquare' onclick='initFastButtons()' id='fastclick'></div>"); // Adds venues to the list
                 
                 $("#foursquare").append("<li distance="+distance+" class="+venue+" id="+address+">"+venue+"</li>").hide().each(function(i) {
-                    $(this).delay(1000*i).animate({
+                    $(this).delay(100*i).animate({
                         "height": "show",
                         "marginTop": "show",
                         "marginBottom": "show",
                         "paddingTop": "show",
-                        "paddingBottom": "show"}, 800);
+                        "paddingBottom": "show"}, 700);
                     }); // Adds venues to the list
 
                 //Sort List on distance
@@ -130,7 +130,7 @@ var runFoursquare = function(){
                 });
 
                 $("#foursquare li").click(function() {
-                    placeDash = place.replace(/\s+/g, '-').replace(/\./g,'').replace(/'/g, '').replace(/&/g,'');
+                    placeDash = place.replace(/\s+/g, '-').replace(/\./g,'').replace(/@/g, '').replace(/'/g, '').replace(/&/g,'');
                     console.log(placeDash)
                     $(".leaflet-marker-pane").find("."+placeDash).addClass("icon-selected").siblings().removeClass("icon-selected");;
                     return false

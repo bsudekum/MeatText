@@ -84,33 +84,44 @@ L.Browser.retina = true;
         map.addLayer(mapboxHybrid)
     });
 
-    $("#btnSat").click(function() {
-        map.removeLayer(mapbox);
-        map.removeLayer(mapboxHybrid);
-        map.addLayer(mapboxSat)
-    });
+    //Reset the message so when a place is clicked and then the user finds their location, the previous location is not caried over.
+    function resetMessage(){
+        var messageTwo = '';
+    }
+
 
     function onLocationFound(e) {
 
+        $("img[src*='dot.png']").css('opacity','1');
+
+        foursquareIcon.clearLayers();
         lat = e.latlng.lat.toFixed(7);
         lng = e.latlng.lng.toFixed(7);
         latlng = +lat + ',' + lng;
         url = "http://maps.apple.com/maps?q="+latlng;
         message = $(url)
         markerLocation = new L.LatLng(e.latlng.lat, e.latlng.lng,{icon: personIcon});
-        marker = new L.Marker(markerLocation, {draggable: true,icon: personIcon});
+        marker = new L.Marker(markerLocation, {draggable: false,icon: personIcon});
         locationPerson.clearLayers();
         locationPerson.addLayer(marker);
 
+        //Add circle
         var radius = e.accuracy / 2;
-       circleperson = new L.circle(e.latlng, radius,{color: "#3871B9", weight: 1.5,fillOpacity:0})
-       vectorCircle.clearLayers();
-       vectorCircle.addLayer(circleperson);
+        circleperson = new L.circle(e.latlng, radius,{color: "#3871B9", weight: 1.5,fillOpacity:0})
+        vectorCircle.clearLayers();
+        vectorCircle.addLayer(circleperson);
 
-        marker.bindPopup("<a href='#one'/><p id='sent' onload='initFastButtons()' onclick='runFoursquare()' style='color:black;text-decoration:none;'>Share Location ➤</p></a>")
-            .openPopup()
+        runFoursquare();
+        marker.bindPopup("<a href='#one' /><p id='sent' onclick='foursquareIcon.clearLayers()' style='color:black;text-decoration:none;text-align:center;overflow:scroll;'>Share Location ➤</p></a>", {maxWidth:100,closeButton:false})
+        .openPopup();
+        //Add loading gif
+        $("#sent").click(function(){
+            $("#sent").append("<img src='img/loading.gif' width='13px' height='13px' style='position:absolute; right:0px'>")
+        })
 
+        map.on("popupopen",resetMessage)
     }
+
 
     function onLocationError(e) {
         map.setView(new L.LatLng(37.76718664006672, -122.42511749267578), 15);
@@ -125,6 +136,9 @@ L.Browser.retina = true;
             maxZoom: 16,
             enableHighAccuracy: true,
         });
+
+     
+
     //Geolocate Button  
     var geolocate = document.getElementById('geolocate');
 
@@ -132,29 +146,34 @@ L.Browser.retina = true;
 
         function onLocationFound(e) {
 
+        $("img[src*='dot.png']").css('opacity','1');
+
+        placeAddress = '';
         lat = e.latlng.lat.toFixed(7);
         lng = e.latlng.lng.toFixed(7);
         latlng = +lat + ',' + lng;
         url = "http://maps.apple.com/maps?q="+latlng;
         message = $(url)
         markerLocation = new L.LatLng(e.latlng.lat, e.latlng.lng,{icon: personIcon});
-        marker = new L.Marker(markerLocation, {draggable: true,icon: personIcon});
+        marker = new L.Marker(markerLocation, {draggable: false,icon: personIcon});
         locationPerson.clearLayers();
         locationPerson.addLayer(marker);
         
         var radius = e.accuracy / 2;
-       circleperson = new L.circle(e.latlng, radius,{color: "#3871B9", weight: 1.5,fillOpacity:0})
-       vectorCircle.clearLayers();
-       vectorCircle.addLayer(circleperson);
+        circleperson = new L.circle(e.latlng, radius,{color: "#3871B9", weight: 1.5,fillOpacity:0})
+        vectorCircle.clearLayers();
+        vectorCircle.addLayer(circleperson);
 
-        marker.bindPopup("<a href='#one' /><p id='sent' onload='initFastButtons()' onclick='runFoursquare()' style='color:black;text-decoration:none;'>Share Location ➤</p></a>").openPopup()
+        runFoursquare();
+
+        marker.bindPopup("<a href='#one' /><p id='sent' style='color:black;text-decoration:none;text-align:center;overflow:scroll;'>Share Location ➤</p></a>")
+        .openPopup();
+        //Add loading gif
+        $("#sent").append("<img src='img/loading.gif' width='13px' height='13px' style='position:absolute; right:0px'>")
         };
 
-        function onLocationError(e) {
-        }
 
-        map.on('locationfound', onLocationFound);
-        map.on('locationerror', onLocationError);
+    
 
         map.locate({
             setView: true,
@@ -165,6 +184,7 @@ L.Browser.retina = true;
 
     function onMapClick(e) {
 
+        placeAddress = '';
         foursquareIcon.clearLayers();
         lat = e.latlng.lat.toFixed(7);
         lng = e.latlng.lng.toFixed(7);
@@ -172,43 +192,37 @@ L.Browser.retina = true;
         url = "http://maps.apple.com/maps?q="+latlng;
         message = $(url)
         markerLocation = new L.LatLng(e.latlng.lat, e.latlng.lng);
-        marker = new L.Marker(markerLocation, {draggable: true});
+        marker = new L.Marker(markerLocation, {draggable: false,opacity:1, title:'hello'});
         locationClick.clearLayers();
         locationClick.addLayer(marker);
 
         //Run foursquare.js
         runFoursquare();
 
-        marker.bindPopup("<a href='#one' /><p id='sent' click='initFastButtons()' onclick='()' style='color:black;text-decoration:none;text-align:center'>Share Location ➤</p></a>", {maxWidth:100,closeButton:false})
+
+        marker.bindPopup("<a href='#one' /><p id='sent' onclick='foursquareIcon.clearLayers();runFoursquare()' style='color:black;text-decoration:none;text-align:center'>Share Location ➤</p></a>", {maxWidth:100,closeButton:false})
         .openPopup();
         //Add loading gif
         $("#sent").append("<img src='img/loading.gif' width='13px' height='13px' style='position:absolute; right:0px'>")
+
 
     };
 
     map.on('click', onMapClick);
 
-  
-    
-    //Geocoder
-    var bingGeocoder = new L.Control.BingGeocoder('AmFJ03ozVugKu0Y_uijzwvFEKfKY5VCesm1eiBqGhchxQ3uKFUQMYsKJLNdfHsIR');
-    map.addControl(bingGeocoder);
 
-        
-    function resetSlide() {
-       /* $("#footer").slideDown("fast");*/
+
+        function resetSlide() {
         $("#settingsFooter").slideUp("fast");
     };
 
 
     function dragDown(){
-     /*   $("#footer").slideUp("fast");*/
         $("#settingsFooter").slideUp("fast");
     };
 
     $("#settingsButton").click(function() {
         $("#settingsFooter").slideToggle("fast");
-      /*  $("#footer").slideUp("fast");*/
     });
 
     map.on("popupopen", resetSlide);
@@ -227,6 +241,7 @@ L.Browser.retina = true;
     })
 
 
+    
 
 }; //Device on onDeviceReady 
 
@@ -258,7 +273,7 @@ var emailComposer = function () {
     get_short_url(url, login, api_key, function(short_url) {
         console.log(short_url);
 
-    messageTwo = "Let's meet here. "+placeAddress+".\n\n"+short_url+"\n\n\n\n Sent via MeatText.com";
+    messageTwo = "Let's meet here. "+placeAddress+"\n\n"+short_url+"\n\n\n\n Sent via MeatText.com";
 
     window.plugins.emailComposer.showEmailComposerWithCB(myCallbackEmail,"Let's meet here.",messageTwo,"","","");
     console.log(messageTwo);
@@ -296,7 +311,7 @@ var copyText = function(){
 
     messageTwo = ""+short_url;
 
-    window.plugins.clipboardPlugin.setText(""+short_url)
+    window.plugins.clipboardPlugin.setText(""+placeAddress+"\n\n"+short_url)
     navigator.notification.alert("", null, "Location Copied", "Okay");
     console.log(messageTwo);
     
@@ -332,16 +347,15 @@ var ComposeSMS = function () {
     var api_key = "R_0e5b4318f72e53dfee13fb1491229204";
     get_short_url(url, login, api_key, function(short_url) {
     
-    messageTwo = "Let's meet here. "+placeAddress+"\n\n"+short_url;
+    messageTwo = "Let's meet here. "+short_url+"\n\n"+placeAddress;
 
     //Althought this is not ideal, there are many errors that are happening without a small amount of 'buffer' time.
     setTimeout(function(){
-
         window.plugins.smsComposer.showSMSComposerWithCB(myCallback,'', messageTwo);
-
-    },1000)
+        $(".icon-comments").removeClass("icon-spin");
+    },500)
     
-    $(".icon-comments").removeClass("icon-spin");
+    
 
     });
 }
@@ -390,7 +404,7 @@ var tweet = function () {
     get_short_url(url, login, api_key, function(short_url) {
         console.log(short_url);
     
-    messageTwo = "Let's meet here. "+placeAddress+".\n\n"+short_url;
+    messageTwo = "Let's meet here. "+placeAddress+"\n\n"+short_url;
 
 
 // is twitter setup? If not, tell the user to go do it
