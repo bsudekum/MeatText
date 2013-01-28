@@ -21,7 +21,7 @@
         <script type="text/javascript" src="js/EmailComposer.js"></script>
         <script type="text/javascript" src="js/underscore.js"></script>
         <script type="text/javascript" src="js/TwitterPlugin.js"></script>
-        <script type="text/javascript" src="js/clipboardPlugin.js"></scrip
+        <script type="text/javascript" src="js/clipboardPlugin.js"></script>
         <script type="text/javascript" src="js/fastclick.js"></script>
         <script type="text/javascript" src="js/foursquare.js"></script>
         <script type="text/javascript" src="js/index.js"></script>
@@ -120,9 +120,7 @@ L.Browser.retina = true;
         maxZoom:        18,
         tms:            false,
         zoomControl: false,
-        reuseTiles: true, //Panning is sticky if false
         updateWhenIdle: false, //Loads tiles during pan
-        unloadInvisibleTiles: true, //slows down app is false
         detectRetina:true,
     }).addTo(map);
 
@@ -134,9 +132,7 @@ L.Browser.retina = true;
         maxZoom:        18,
         tms:            false,
         zoomControl: false,
-        reuseTiles: true, //Panning is sticky if false
         updateWhenIdle: false, //Loads tiles during pan
-        unloadInvisibleTiles: true, //slows down app is false
         detectRetina:true,
     });
 
@@ -148,9 +144,7 @@ L.Browser.retina = true;
         maxZoom:        18,
         tms:            false,
         zoomControl: false,
-        reuseTiles: true, //Panning is sticky if false
         updateWhenIdle: false, //Loads tiles during pan
-        unloadInvisibleTiles: true, //slows down app is false
         detectRetina:true,
     });
 
@@ -215,20 +209,7 @@ L.Browser.retina = true;
         navigator.notification.alert("It looks like your location settings are not enabled", null, "Oops!");
     }
 
-        map.on('locationfound', onLocationFound);
-        map.on('locationerror', onLocationError);
-
-        map.locate({
-            setView: true,
-            maxZoom: 16,
-            enableHighAccuracy: true,
-        });
-
-        function getURLParameter(name) {
-            return decodeURI(
-                (RegExp(name + '=' + '(.+?)(&|$)').exec(location.search)||[,])[1]
-            );
-        }
+      
 
     //Geolocate Button  
     var geolocate = document.getElementById('geolocate');
@@ -299,11 +280,7 @@ L.Browser.retina = true;
 
     };
 
-    map.on('click', onMapClick);
-
-    new L.Control.GeoSearch({
-        provider: new L.GeoSearch.Provider.Google()
-    }).addTo(map);
+    map.on('contextmenu', onMapClick);
 
 
         function resetSlide() {

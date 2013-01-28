@@ -44,7 +44,6 @@ var runFoursquare = function(){
       
 
                 groupsUn = venues.response.groups[0].items;
-                console.log(groupsUn)
                 groups = groupsUn.sort();
 
 
@@ -55,7 +54,6 @@ var runFoursquare = function(){
                   locationLng = item.venue.location.lng;
 
                   address = (item.venue.location.address).replace(/\s+/g, '-');
-                  console.log(address)
 
                 venue = item.venue.name
                 venueDash = venue.replace(/\s+/g, '-').replace(/\./g, "").replace(/'/g, '').replace(/@/g, '').replace(/&/g,"");
@@ -124,14 +122,12 @@ var runFoursquare = function(){
                 $("#foursquare li").click(function() {
                     place = $(this).text()
                     address2 = ($(this).attr('id')).replace(/-/g, ' ')
-                    placeAddress = place+", "+address2+"."
-                    console.log(placeAddress)
+                    placeAddress = place+", "+address2+""
                     return false
                 });
 
                 $("#foursquare li").click(function() {
                     placeDash = place.replace(/\s+/g, '-').replace(/\./g,'').replace(/@/g, '').replace(/'/g, '').replace(/&/g,'');
-                    console.log(placeDash)
                     $(".leaflet-marker-pane").find("."+placeDash).addClass("icon-selected").siblings().removeClass("icon-selected");;
                     return false
                 });

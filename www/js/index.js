@@ -12,122 +12,6 @@ var personIcon = L.icon({
             popupAnchor: [0, -6]
         });
 
-
-var locationClick, locationPerson, vectorCircle, locationSearch,foursquareIcon,marker;
-
-locationPerson = new L.LayerGroup();
-locationClick = new L.LayerGroup();
-vectorCircle = new L.LayerGroup();
-locationSearch = new L.LayerGroup();
-foursquareIcon = new L.LayerGroup();
-
-map = new L.Map('map', {layers: [locationClick, locationPerson, vectorCircle, locationSearch,foursquareIcon]});
-
-L.Browser.retina = true;
-
-    var mapbox = L.zoomTMSLayer({ 
-        url:            'http://{s}.tiles.mapbox.com/v3/bobbysud.map-tyt3admo/',
-        layername :     '',
-        serviceVersion: '',
-        tileMaxZoom:    17,
-        maxZoom:        18,
-        tms:            false,
-        zoomControl: false,
-        reuseTiles: true, //Panning is sticky if false
-        updateWhenIdle: false, //Loads tiles during pan
-        unloadInvisibleTiles: true, //slows down app is false
-        detectRetina:true,
-    }).addTo(map);
-
-    var mapboxSat = L.zoomTMSLayer({ 
-        url:            'http://{s}.tiles.mapbox.com/v3/bobbysud.map-zjt9pl97/',
-        layername :     '',
-        serviceVersion: '',
-        tileMaxZoom:    17,
-        maxZoom:        18,
-        tms:            false,
-        zoomControl: false,
-        reuseTiles: true, //Panning is sticky if false
-        updateWhenIdle: false, //Loads tiles during pan
-        unloadInvisibleTiles: true, //slows down app is false
-        detectRetina:true,
-    });
-
-    var mapboxHybrid = L.zoomTMSLayer({ 
-        url:            'http://{s}.tiles.mapbox.com/v3/bobbysud.map-ddwpawil/',
-        layername :     '',
-        serviceVersion: '',
-        tileMaxZoom:    17,
-        maxZoom:        18,
-        tms:            false,
-        zoomControl: false,
-        reuseTiles: true, //Panning is sticky if false
-        updateWhenIdle: false, //Loads tiles during pan
-        unloadInvisibleTiles: true, //slows down app is false
-        detectRetina:true,
-    });
-
-   $("#btnStandard").click(function() {
-        map.removeLayer(mapboxSat)
-        map.removeLayer(mapboxHybrid);
-        map.addLayer(mapbox)
-        zoom = map.getZoom();
-        if(zoom>17){
-            map.zoomOut(1);
-            map.maxZoom(17);
-        }
-    });
-
-    $("#btnHybrid").click(function() {
-        map.removeLayer(mapboxSat);
-        map.removeLayer(mapbox);
-        map.addLayer(mapboxHybrid)
-    });
-
-    //Reset the message so when a place is clicked and then the user finds their location, the previous location is not caried over.
-    function resetMessage(){
-        var messageTwo = '';
-    }
-
-
-    function onLocationFound(e) {
-
-        $("img[src*='dot.png']").css('opacity','1');
-
-        foursquareIcon.clearLayers();
-        lat = e.latlng.lat.toFixed(7);
-        lng = e.latlng.lng.toFixed(7);
-        latlng = +lat + ',' + lng;
-        url = "http://maps.apple.com/maps?q="+latlng;
-        message = $(url)
-        markerLocation = new L.LatLng(e.latlng.lat, e.latlng.lng,{icon: personIcon});
-        marker = new L.Marker(markerLocation, {draggable: false,icon: personIcon});
-        locationPerson.clearLayers();
-        locationPerson.addLayer(marker);
-
-        //Add circle
-        var radius = e.accuracy / 2;
-        circleperson = new L.circle(e.latlng, radius,{color: "#3871B9", weight: 1.5,fillOpacity:0})
-        vectorCircle.clearLayers();
-        vectorCircle.addLayer(circleperson);
-
-        runFoursquare();
-        marker.bindPopup("<a href='#one' /><p id='sent' onclick='foursquareIcon.clearLayers()' style='color:black;text-decoration:none;text-align:center;overflow:scroll;'>Share Location ➤</p></a>", {maxWidth:100,closeButton:false})
-        .openPopup();
-        //Add loading gif
-        $("#sent").click(function(){
-            $("#sent").append("<img src='img/loading.gif' width='13px' height='13px' style='position:absolute; right:0px'>")
-        })
-
-        map.on("popupopen",resetMessage)
-    }
-
-
-    function onLocationError(e) {
-        map.setView(new L.LatLng(37.76718664006672, -122.42511749267578), 15);
-        navigator.notification.alert("It looks like your location settings are not enabled", null, "Oops!");
-    }
-
         map.on('locationfound', onLocationFound);
         map.on('locationerror', onLocationError);
 
@@ -137,110 +21,9 @@ L.Browser.retina = true;
             enableHighAccuracy: true,
         });
 
-     
-
-    //Geolocate Button  
-    var geolocate = document.getElementById('geolocate');
-
-    geolocate.onclick = function () {
-
-        function onLocationFound(e) {
-
-        $("img[src*='dot.png']").css('opacity','1');
-
-        placeAddress = '';
-        lat = e.latlng.lat.toFixed(7);
-        lng = e.latlng.lng.toFixed(7);
-        latlng = +lat + ',' + lng;
-        url = "http://maps.apple.com/maps?q="+latlng;
-        message = $(url)
-        markerLocation = new L.LatLng(e.latlng.lat, e.latlng.lng,{icon: personIcon});
-        marker = new L.Marker(markerLocation, {draggable: false,icon: personIcon});
-        locationPerson.clearLayers();
-        locationPerson.addLayer(marker);
-        
-        var radius = e.accuracy / 2;
-        circleperson = new L.circle(e.latlng, radius,{color: "#3871B9", weight: 1.5,fillOpacity:0})
-        vectorCircle.clearLayers();
-        vectorCircle.addLayer(circleperson);
-
-        runFoursquare();
-
-        marker.bindPopup("<a href='#one' /><p id='sent' style='color:black;text-decoration:none;text-align:center;overflow:scroll;'>Share Location ➤</p></a>")
-        .openPopup();
-        //Add loading gif
-        $("#sent").append("<img src='img/loading.gif' width='13px' height='13px' style='position:absolute; right:0px'>")
-        };
-
-
-    
-
-        map.locate({
-            setView: true,
-            maxZoom: 16,
-            enableHighAccuracy: true,
-        });
-    }
-
-    function onMapClick(e) {
-
-        placeAddress = '';
-        foursquareIcon.clearLayers();
-        lat = e.latlng.lat.toFixed(7);
-        lng = e.latlng.lng.toFixed(7);
-        latlng =lat+ ',' + lng;
-        url = "http://maps.apple.com/maps?q="+latlng;
-        message = $(url)
-        markerLocation = new L.LatLng(e.latlng.lat, e.latlng.lng);
-        marker = new L.Marker(markerLocation, {draggable: false,opacity:1, title:'hello'});
-        locationClick.clearLayers();
-        locationClick.addLayer(marker);
-
-        //Run foursquare.js
-        runFoursquare();
-
-
-        marker.bindPopup("<a href='#one' /><p id='sent' onclick='foursquareIcon.clearLayers();runFoursquare()' style='color:black;text-decoration:none;text-align:center'>Share Location ➤</p></a>", {maxWidth:100,closeButton:false})
-        .openPopup();
-        //Add loading gif
-        $("#sent").append("<img src='img/loading.gif' width='13px' height='13px' style='position:absolute; right:0px'>")
-
-
-    };
-
-    map.on('click', onMapClick);
-
-
-
-        function resetSlide() {
-        $("#settingsFooter").slideUp("fast");
-    };
-
-
-    function dragDown(){
-        $("#settingsFooter").slideUp("fast");
-    };
-
-    $("#settingsButton").click(function() {
-        $("#settingsFooter").slideToggle("fast");
-    });
-
-    map.on("popupopen", resetSlide);
-    map.on("moveend", dragDown);
-
-        //Turn off 4sq
-    $("#turn-off-4sq").click(function(){
-        $(this).toggleClass("on")
-
-        //Toggle text
-        if($(this).hasClass("on")){
-            $("#on-off").text("OFF")
-        }else{
-            $("#on-off").text("ON")
-        }
-    })
-
-
+        new L.Control.GeoSearch({
+            provider: new L.GeoSearch.Provider.Google()
+        }).addTo(map);
     
 
 }; //Device on onDeviceReady 
@@ -347,7 +130,7 @@ var ComposeSMS = function () {
     var api_key = "R_0e5b4318f72e53dfee13fb1491229204";
     get_short_url(url, login, api_key, function(short_url) {
     
-    messageTwo = "Let's meet here. "+short_url+"\n\n"+placeAddress;
+    messageTwo = "Let's meet here. "+placeAddress+"\n\n"+short_url;
 
     //Althought this is not ideal, there are many errors that are happening without a small amount of 'buffer' time.
     setTimeout(function(){
